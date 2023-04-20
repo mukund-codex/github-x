@@ -35,6 +35,6 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        return $this->response($user->toArray(), __('messages.user.registered'));
+        return $this->response($user->toArray(), __('messages.user.registered'), 201);
     }
 }
