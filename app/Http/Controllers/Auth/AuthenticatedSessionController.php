@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Traits\HttpResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,16 +12,15 @@ use Str;
 
 class AuthenticatedSessionController extends Controller
 {
-    /**
-     * Handle an incoming authentication request.
-     */
+    use HttpResponse;
+
     public function store(LoginRequest $request): JsonResponse
     {
         $request->authenticate();
 
         $token = Auth::user()->createToken(request()->userAgent())->plainTextToken;
 
-        return response()->json(['data' => ['token' => $token]]);
+        return $this->response(['token' => $token], __('messages.user.logged_in'));
     }
 
     /**
@@ -34,6 +34,6 @@ class AuthenticatedSessionController extends Controller
         )->first();
         $token->expires_at = now();
         $token->save();
-        return response()->json(['data' => ['token' => '']]);
+        return $this->response(['token' => ''], __('messages.user.logged_out'));
     }
 }

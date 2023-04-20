@@ -21,6 +21,7 @@ class AuthenticationTest extends TestCase
 
         $this->assertAuthenticated();
         $response->assertOk();
+        $response->assertSee(__('messages.user.logged_in'));
     }
 
     public function test_users_can_not_authenticate_with_invalid_password(): void
