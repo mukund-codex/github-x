@@ -14,11 +14,69 @@ class RegistrationTest extends TestCase
         $response = $this->post(route('register'), [
             'name' => 'Test User',
             'email' => 'test@example.com',
-            'password' => 'password',
-            'password_confirmation' => 'password',
+            'password' => 'Admin@123',
+            'password_confirmation' => 'Admin@123',
         ]);
 
         $response->assertCreated();
         $response->assertSee(__('messages.user.registered'));
+    }
+
+    public function test_password_format_validations(): void
+    {
+        $response = $this->post(route('register'), [
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+            'password' => 'password',
+            'password_confirmation' => 'password',
+        ]);
+
+        $response->assertInvalid();
+
+        $response_1 = $this->post(route('register'), [
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+            'password' => 'PASSWORD',
+            'password_confirmation' => 'PASSWORD',
+        ]);
+
+        $response_1->assertInvalid();
+
+        $response_2 = $this->post(route('register'), [
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+            'password' => 'PASSword',
+            'password_confirmation' => 'PASSword',
+        ]);
+
+        $response_2->assertInvalid();
+
+        $response_3 = $this->post(route('register'), [
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+            'password' => 'PASSword1',
+            'password_confirmation' => 'PASSword1',
+        ]);
+
+        $response_3->assertInvalid();
+
+        $response_4 = $this->post(route('register'), [
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+            'password' => 'Sword1@',
+            'password_confirmation' => 'Sword1@',
+        ]);
+
+        $response_4->assertInvalid();
+
+        $response_5 = $this->post(route('register'), [
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+            'password' => 'PASSword@123',
+            'password_confirmation' => 'PASSword@123',
+        ]);
+
+        $response_5->assertCreated();
+        $response_5->assertSee(__('messages.user.registered'));
     }
 }
