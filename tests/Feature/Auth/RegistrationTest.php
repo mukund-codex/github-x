@@ -18,6 +18,7 @@ class RegistrationTest extends TestCase
             'password_confirmation' => 'password',
         ]);
 
-        $response->assertNoContent();
+        $response->assertOk();
+        $response->assertSee(__('messages.user.registered'));
     }
 }
