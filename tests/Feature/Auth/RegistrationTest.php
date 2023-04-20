@@ -12,7 +12,7 @@ class RegistrationTest extends TestCase
     public function test_new_users_can_register(): void
     {
         $response = $this->post(route('register'), [
-            'name' => 'Test User',
+            'first_name' => 'Test',
             'email' => 'test@example.com',
             'password' => 'Admin@123',
             'password_confirmation' => 'Admin@123',
@@ -20,12 +20,15 @@ class RegistrationTest extends TestCase
 
         $response->assertCreated();
         $response->assertSee(__('messages.user.registered'));
+        $this->assertDatabaseHas('users', [
+            'first_name' => 'Test'
+        ]);
     }
 
     public function test_password_format_validations(): void
     {
         $response_lower_case_password = $this->post(route('register'), [
-            'name' => 'Test User',
+            'first_name' => 'Test',
             'email' => 'test@example.com',
             'password' => 'password',
             'password_confirmation' => 'password',
@@ -34,7 +37,7 @@ class RegistrationTest extends TestCase
         $response_lower_case_password->assertInvalid();
 
         $response_upper_case_password = $this->post(route('register'), [
-            'name' => 'Test User',
+            'first_name' => 'Test',
             'email' => 'test@example.com',
             'password' => 'PASSWORD',
             'password_confirmation' => 'PASSWORD',
@@ -43,7 +46,7 @@ class RegistrationTest extends TestCase
         $response_upper_case_password->assertInvalid();
 
         $response_mixed_case_password = $this->post(route('register'), [
-            'name' => 'Test User',
+            'first_name' => 'Test',
             'email' => 'test@example.com',
             'password' => 'PASSword',
             'password_confirmation' => 'PASSword',
@@ -52,7 +55,7 @@ class RegistrationTest extends TestCase
         $response_mixed_case_password->assertInvalid();
 
         $response_mixed_case_and_number_password = $this->post(route('register'), [
-            'name' => 'Test User',
+            'first_name' => 'Test',
             'email' => 'test@example.com',
             'password' => 'PASSword1',
             'password_confirmation' => 'PASSword1',
@@ -61,7 +64,7 @@ class RegistrationTest extends TestCase
         $response_mixed_case_and_number_password->assertInvalid();
 
         $response_small_password = $this->post(route('register'), [
-            'name' => 'Test User',
+            'first_name' => 'Test',
             'email' => 'test@example.com',
             'password' => 'Sword1@',
             'password_confirmation' => 'Sword1@',
@@ -70,7 +73,7 @@ class RegistrationTest extends TestCase
         $response_small_password->assertInvalid();
 
         $response_valid_password = $this->post(route('register'), [
-            'name' => 'Test User',
+            'first_name' => 'Test',
             'email' => 'test@example.com',
             'password' => 'PASSword@123',
             'password_confirmation' => 'PASSword@123',
