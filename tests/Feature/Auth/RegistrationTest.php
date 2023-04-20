@@ -24,59 +24,59 @@ class RegistrationTest extends TestCase
 
     public function test_password_format_validations(): void
     {
-        $response = $this->post(route('register'), [
+        $response_lower_case_password = $this->post(route('register'), [
             'name' => 'Test User',
             'email' => 'test@example.com',
             'password' => 'password',
             'password_confirmation' => 'password',
         ]);
 
-        $response->assertInvalid();
+        $response_lower_case_password->assertInvalid();
 
-        $response_1 = $this->post(route('register'), [
+        $response_upper_case_password = $this->post(route('register'), [
             'name' => 'Test User',
             'email' => 'test@example.com',
             'password' => 'PASSWORD',
             'password_confirmation' => 'PASSWORD',
         ]);
 
-        $response_1->assertInvalid();
+        $response_upper_case_password->assertInvalid();
 
-        $response_2 = $this->post(route('register'), [
+        $response_mixed_case_password = $this->post(route('register'), [
             'name' => 'Test User',
             'email' => 'test@example.com',
             'password' => 'PASSword',
             'password_confirmation' => 'PASSword',
         ]);
 
-        $response_2->assertInvalid();
+        $response_mixed_case_password->assertInvalid();
 
-        $response_3 = $this->post(route('register'), [
+        $response_mixed_case_and_number_password = $this->post(route('register'), [
             'name' => 'Test User',
             'email' => 'test@example.com',
             'password' => 'PASSword1',
             'password_confirmation' => 'PASSword1',
         ]);
 
-        $response_3->assertInvalid();
+        $response_mixed_case_and_number_password->assertInvalid();
 
-        $response_4 = $this->post(route('register'), [
+        $response_small_password = $this->post(route('register'), [
             'name' => 'Test User',
             'email' => 'test@example.com',
             'password' => 'Sword1@',
             'password_confirmation' => 'Sword1@',
         ]);
 
-        $response_4->assertInvalid();
+        $response_small_password->assertInvalid();
 
-        $response_5 = $this->post(route('register'), [
+        $response_valid_password = $this->post(route('register'), [
             'name' => 'Test User',
             'email' => 'test@example.com',
             'password' => 'PASSword@123',
             'password_confirmation' => 'PASSword@123',
         ]);
 
-        $response_5->assertCreated();
-        $response_5->assertSee(__('messages.user.registered'));
+        $response_valid_password->assertCreated();
+        $response_valid_password->assertSee(__('messages.user.registered'));
     }
 }
