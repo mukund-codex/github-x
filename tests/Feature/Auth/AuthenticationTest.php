@@ -20,6 +20,18 @@ class AuthenticationTest extends TestCase
         ]);
 
         $this->assertAuthenticated();
+        $response->assertJsonStructure([
+                'data' => [
+                    'id',
+                    'first_name',
+                    'last_name',
+                    'email',
+                    'email_verified_at',
+                    'created_at',
+                    'token',
+                ]
+            ]
+        );
         $response->assertOk();
         $response->assertSee(__('messages.user.logged_in'));
     }

@@ -20,7 +20,10 @@ class AuthenticatedSessionController extends Controller
 
         $token = Auth::user()->createToken(request()->userAgent())->plainTextToken;
 
-        return $this->response(['token' => $token], __('messages.user.logged_in'));
+        return $this->response(
+            array_merge(Auth::user()->toArray(), ['token' => $token]),
+            __('messages.user.logged_in')
+        );
     }
 
     /**
