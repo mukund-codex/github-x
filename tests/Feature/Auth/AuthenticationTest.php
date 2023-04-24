@@ -20,7 +20,8 @@ class AuthenticationTest extends TestCase
         ]);
 
         $this->assertAuthenticated();
-        $response->assertJsonStructure([
+        $response->assertJsonStructure(
+            [
                 'data' => [
                     'id',
                     'first_name',
