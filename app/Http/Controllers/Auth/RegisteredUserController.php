@@ -3,37 +3,29 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\RegisterUserRequest;
 use App\Models\User;
 use App\Traits\HttpResponse;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
 
 class RegisteredUserController extends Controller
 {
     use HttpResponse;
-    /**
-     * Handle an incoming registration request.
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
-    public function store(Request $request): JsonResponse
-    {
-        $request->validate([
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['nullable', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
 
-        $user = User::create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name ?? null,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+    public function store(RegisterUserRequest $request): JsonResponse
+    {
+        $request->validated();
+        $user_info = $request->safe();
+        $user = resolve(User::class)->create(
+            [
+                'first_name' => $user_info['first_name'],
+                'last_name' => $user_info['last_name'] ?? null,
+                'email' => $user_info['email'],
+                'password' => Hash::make($user_info['password']),
+            ]
+        );
 
         event(new Registered($user));
 
