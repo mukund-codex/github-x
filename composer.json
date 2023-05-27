@@ -89,7 +89,7 @@
             "echo \"\nSeed, if in need: \\e[32mphp artisan db:seed\\e[0m\"\n"
         ],
         "ci": [
-            "@composer install",
+            "@dev",
             "postman collection run postman/ci-collection.json"
         ]
     },
