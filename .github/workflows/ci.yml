@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - '**/.php'
+      - '**/.yml'
       - '.env.*'
     branches:
       - main
@@ -20,7 +21,7 @@ jobs:
         run: docker-compose up -d
 
       - name: Composer install
-        run: docker-compose exec -T lbp-0x composer install
+        run: docker-compose exec -T lbp-api composer install
 
       - name: CI checks
-        run: docker-compose exec -T lbp-0x composer run ci
+        run: docker-compose exec -T lbp-api composer run ci
