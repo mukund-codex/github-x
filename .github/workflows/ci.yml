@@ -20,8 +20,5 @@ jobs:
       - name: Docker Compose
         run: docker-compose up -d
 
-      - name: Composer install
-        run: docker-compose exec -T lbp-api composer install
-
       - name: CI checks
         run: docker-compose exec -T lbp-api composer run ci
