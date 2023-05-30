@@ -75,6 +75,8 @@
         "security-checker": "vendor/bin/security-checker security:check",
         "pint": "vendor/bin/pint app tests",
         "pest": "vendor/bin/pest --stop-on-error --stop-on-failure --parallel --compact",
+        "coverage": "vendor/bin/pest --stop-on-error --stop-on-failure --parallel --compact --coverage",
+        "postman": "postman collection run postman/ci-collection.json",
         "pre-commit": [
             "@pint",
             "@phpmd",
@@ -88,11 +90,16 @@
             "composer install",
             "echo \"\nSeed, if in need: \\e[32mphp artisan db:seed\\e[0m\"\n"
         ],
+        "tests": [
+            "@pre-commit",
+            "@pre-push",
+            "@postman"
+        ],
         "ci": [
             "@composer clearcache",
             "@composer install",
             "@dev",
-            "postman collection run postman/ci-collection.json"
+            "@tests"
         ]
     },
     "extra": {
