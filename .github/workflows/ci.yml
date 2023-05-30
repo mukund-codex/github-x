@@ -15,15 +15,8 @@ on:
 jobs:
   CI:
     runs-on: ubuntu-latest
-    environment:
-      - COMMITS_CHECK_ENDPOINT: https://api.reviewee.it/repository/fl-laravel_boilerplate/haveRejectedCommits
-      - COMMITS_CHECK_INDICATOR: \"success\":true
     steps:
       - uses: actions/checkout@v2
-      - run:
-          name: Check Rejected Commits
-          command: wget ${COMMITS_CHECK_ENDPOINT} -q -O - | grep -q ${COMMITS_CHECK_INDICATOR}
-
       - name: Docker Compose
         run: docker-compose up -d
 
