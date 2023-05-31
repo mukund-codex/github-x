@@ -9,6 +9,9 @@
 ```
 docker-compose up -d
 ```
+_When running this the first time, it will take a while to download the images and build the containers_
+
+
 
 ```
 http://10.10.1.1
