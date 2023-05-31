@@ -2,7 +2,7 @@
 1. Git - To clone this repo
 2. Docker and docker-compose - To run the app
 
-[Having Docker issues on Mac?](https://github.com/founderandlightning/fl-laravel_boilerplate/wiki/Docker)
+[Having Docker issues on Mac?](https://github.com/founderandlightning/fl-laravel_boilerplate/wiki/docker-setup#the-mac-problem)
 
 ### Run locally
 
