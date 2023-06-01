@@ -14,18 +14,19 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "2062dc3e-3003-419c-9f3a-2d14f21ea60c",
 								"exec": [
+									"",
 									"pm.test('Reponse code to be 200', function () {",
 									"    pm.expect(pm.response.code).to.be.equal(200);",
 									"});",
 									""
 								],
-								"type": "text/javascript",
-								"id": "2062dc3e-3003-419c-9f3a-2d14f21ea60c"
+								"type": "text/javascript"
 							}
 						}
 					],
-					"_postman_id": "5a7b4f09-6383-4753-94cb-5be2b4ec4f2f",
+					"id": "5a7b4f09-6383-4753-94cb-5be2b4ec4f2f",
 					"protocolProfileBehavior": {
 						"disabledSystemHeaders": {},
 						"disableBodyPruning": true
@@ -104,7 +105,7 @@
 					]
 				}
 			],
-			"_postman_id": "815a95f4-5ee4-4007-8ead-2a73bcdb7444",
+			"id": "815a95f4-5ee4-4007-8ead-2a73bcdb7444",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -175,7 +176,7 @@
 							}
 						}
 					],
-					"_postman_id": "72de2667-ede1-4a82-ab40-49e45563d886",
+					"id": "72de2667-ede1-4a82-ab40-49e45563d886",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -210,12 +211,106 @@
 									"value": "{{user_password}}",
 									"type": "text"
 								}
-							],
-							"options": {}
+							]
 						},
 						"url": "{{base_url}}/register"
 					},
 					"response": [
+						{
+							"id": "96c56249-9626-40a5-a4a5-875d1af8c9a0",
+							"name": "Successful",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "first_name",
+											"value": "{{first_name}}",
+											"type": "text"
+										},
+										{
+											"key": "last_name",
+											"value": "{{last_name}}",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "{{user_email}}",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "{{user_password}}",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "{{user_password}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": "{{base_url}}/register"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 02 May 2023 07:58:15 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.56 (Debian)"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://10.10.1.6:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"data\": {\n        \"first_name\": \"John\",\n        \"last_name\": \"Doe\",\n        \"email\": \"john_doe+655@jdecode.dev\",\n        \"updated_at\": \"2023-05-02T07:58:15.000000Z\",\n        \"created_at\": \"2023-05-02T07:58:15.000000Z\",\n        \"id\": 6\n    },\n    \"message\": \"User registered successfully.\"\n}"
+						},
 						{
 							"id": "24b8950f-a283-47bd-9ac9-fdcb13ee2f56",
 							"name": "Failure | Email missing",
@@ -311,101 +406,6 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": "{\n    \"message\": \"The email field is required.\",\n    \"errors\": {\n        \"email\": [\n            \"The email field is required.\"\n        ]\n    }\n}"
-						},
-						{
-							"id": "96c56249-9626-40a5-a4a5-875d1af8c9a0",
-							"name": "Successful",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "first_name",
-											"value": "{{first_name}}",
-											"type": "text"
-										},
-										{
-											"key": "last_name",
-											"value": "{{last_name}}",
-											"type": "text"
-										},
-										{
-											"key": "email",
-											"value": "{{user_email}}",
-											"type": "text"
-										},
-										{
-											"key": "password",
-											"value": "{{user_password}}",
-											"type": "text"
-										},
-										{
-											"key": "password_confirmation",
-											"value": "{{user_password}}",
-											"type": "text"
-										}
-									]
-								},
-								"url": "{{base_url}}/register"
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Date",
-									"value": "Tue, 02 May 2023 07:58:15 GMT"
-								},
-								{
-									"key": "Server",
-									"value": "Apache/2.4.56 (Debian)"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.2.4"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "60"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "58"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "http://10.10.1.6:3000"
-								},
-								{
-									"key": "Access-Control-Allow-Credentials",
-									"value": "true"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5, max=100"
-								},
-								{
-									"key": "Connection",
-									"value": "Keep-Alive"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"data\": {\n        \"first_name\": \"John\",\n        \"last_name\": \"Doe\",\n        \"email\": \"john_doe+655@jdecode.dev\",\n        \"updated_at\": \"2023-05-02T07:58:15.000000Z\",\n        \"created_at\": \"2023-05-02T07:58:15.000000Z\",\n        \"id\": 6\n    },\n    \"message\": \"User registered successfully.\"\n}"
 						}
 					]
 				},
@@ -442,7 +442,7 @@
 							}
 						}
 					],
-					"_postman_id": "0860af18-b71b-445c-8e30-7df97184a0c1",
+					"id": "0860af18-b71b-445c-8e30-7df97184a0c1",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -462,92 +462,11 @@
 									"value": "{{user_password}}",
 									"type": "text"
 								}
-							],
-							"options": {}
+							]
 						},
 						"url": "{{base_url}}/login"
 					},
 					"response": [
-						{
-							"id": "2309b39c-decc-472e-8619-cf2e79602ebd",
-							"name": "Failure | Invalid credentials",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "email",
-											"value": "{{user_email}}",
-											"type": "text"
-										},
-										{
-											"key": "password",
-											"value": "{{user_password}}1",
-											"type": "text"
-										}
-									]
-								},
-								"url": "{{base_url}}/login"
-							},
-							"status": "Unprocessable Content",
-							"code": 422,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Date",
-									"value": "Tue, 02 May 2023 08:00:56 GMT"
-								},
-								{
-									"key": "Server",
-									"value": "Apache/2.4.56 (Debian)"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.2.4"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "60"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "58"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "http://10.10.1.6:3000"
-								},
-								{
-									"key": "Access-Control-Allow-Credentials",
-									"value": "true"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5, max=100"
-								},
-								{
-									"key": "Connection",
-									"value": "Keep-Alive"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"message\": \"These credentials do not match our records.\",\n    \"errors\": {\n        \"email\": [\n            \"These credentials do not match our records.\"\n        ]\n    }\n}"
-						},
 						{
 							"id": "84bf3463-fa2b-4d2f-b836-2c0013282e0c",
 							"name": "Successful",
@@ -627,6 +546,86 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": "{\n    \"data\": {\n        \"token\": \"3|P1H6sn7q0DTmN6LfEkckgyV4uWD5feYLyODNTHt2\"\n    },\n    \"message\": \"User logged in successfully.\"\n}"
+						},
+						{
+							"id": "2309b39c-decc-472e-8619-cf2e79602ebd",
+							"name": "Failure | Invalid credentials",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "{{user_email}}",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "{{user_password}}1",
+											"type": "text"
+										}
+									]
+								},
+								"url": "{{base_url}}/login"
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 02 May 2023 08:00:56 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.56 (Debian)"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://10.10.1.6:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"These credentials do not match our records.\",\n    \"errors\": {\n        \"email\": [\n            \"These credentials do not match our records.\"\n        ]\n    }\n}"
 						}
 					]
 				},
@@ -658,7 +657,7 @@
 							}
 						}
 					],
-					"_postman_id": "73280787-18c3-4df9-aa1b-ad78ef50b37b",
+					"id": "73280787-18c3-4df9-aa1b-ad78ef50b37b",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -673,8 +672,7 @@
 						"header": [],
 						"body": {
 							"mode": "formdata",
-							"formdata": [],
-							"options": {}
+							"formdata": []
 						},
 						"url": "{{base_url}}/user"
 					},
@@ -812,7 +810,7 @@
 					]
 				}
 			],
-			"_postman_id": "b4af021a-692e-485e-831a-af5b8fe7bf1d",
+			"id": "b4af021a-692e-485e-831a-af5b8fe7bf1d",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -867,7 +865,7 @@
 							}
 						}
 					],
-					"_postman_id": "f1396b31-7276-4609-9f28-90955a69f108",
+					"id": "f1396b31-7276-4609-9f28-90955a69f108",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -882,77 +880,11 @@
 						"header": [],
 						"body": {
 							"mode": "formdata",
-							"formdata": [],
-							"options": {}
+							"formdata": []
 						},
 						"url": "{{base_url}}/logout"
 					},
 					"response": [
-						{
-							"id": "268e3b51-14f0-4592-846f-7eecf6f1cab6",
-							"name": "Failure",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": "{{base_url}}/logout"
-							},
-							"status": "Unauthorized",
-							"code": 401,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Date",
-									"value": "Tue, 02 May 2023 07:59:07 GMT"
-								},
-								{
-									"key": "Server",
-									"value": "Apache/2.4.56 (Debian)"
-								},
-								{
-									"key": "Vary",
-									"value": "Authorization"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.2.4"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "http://10.10.1.6:3000"
-								},
-								{
-									"key": "Access-Control-Allow-Credentials",
-									"value": "true"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5, max=100"
-								},
-								{
-									"key": "Connection",
-									"value": "Keep-Alive"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"message\": \"Unauthenticated.\"\n}"
-						},
 						{
 							"id": "f77a3bd5-6a67-4ede-9cc6-46b5fb3b448c",
 							"name": "Success",
@@ -1025,6 +957,71 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": "{\n    \"data\": {\n        \"token\": \"\"\n    },\n    \"message\": \"User logged out successfully.\"\n}"
+						},
+						{
+							"id": "268e3b51-14f0-4592-846f-7eecf6f1cab6",
+							"name": "Failure",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": "{{base_url}}/logout"
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 02 May 2023 07:59:07 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.56 (Debian)"
+								},
+								{
+									"key": "Vary",
+									"value": "Authorization"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://10.10.1.6:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"Unauthenticated.\"\n}"
 						}
 					]
 				},
@@ -1056,7 +1053,7 @@
 							}
 						}
 					],
-					"_postman_id": "bb7d6735-e7c8-4229-b817-26969465c82d",
+					"id": "bb7d6735-e7c8-4229-b817-26969465c82d",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1077,8 +1074,7 @@
 									"value": "{{user_email}}",
 									"type": "text"
 								}
-							],
-							"options": {}
+							]
 						},
 						"url": "{{base_url}}/forgot-password"
 					},
@@ -1244,7 +1240,7 @@
 					]
 				}
 			],
-			"_postman_id": "d82ee22c-0f68-41f2-9ee8-7d4dd4f9946c",
+			"id": "d82ee22c-0f68-41f2-9ee8-7d4dd4f9946c",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -1309,13 +1305,13 @@
 	],
 	"variable": [
 		{
-			"id": "618f14c2-0914-47da-b73d-c404edec5dd5",
+			"id": "73f3ccca-9854-4534-97c8-b0759ec6170f",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api",
 			"type": "string"
 		},
 		{
-			"id": "20afffc6-9a0f-4e13-8aef-5c4f4cff9847",
+			"id": "f468fbd0-c1dc-4f0d-adb5-d59c7c299cbb",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
