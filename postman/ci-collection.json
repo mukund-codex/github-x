@@ -649,7 +649,7 @@
 							"script": {
 								"id": "6a1dad77-4483-451b-8b14-18c1f9f015d9",
 								"exec": [
-									"console.log(pm.response);",
+									"console.log(pm.request);",
 									"pm.test('Reponse code to be 200', function () {",
 									"    pm.expect(pm.response.code).to.be.equal(200);",
 									"});",
@@ -668,7 +668,7 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{user_token}}"
+								"token": "7|BPk9flQBLmaUpTbYIJHLr4SeQfXWyxhqKcAoZxF5"
 							}
 						},
 						"method": "GET",
@@ -1308,13 +1308,13 @@
 	],
 	"variable": [
 		{
-			"id": "c5c3bd71-a982-4a67-a58e-f1583a254932",
+			"id": "555c334d-1a45-4b14-8afc-f39da93f0069",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api",
 			"type": "string"
 		},
 		{
-			"id": "b64ee115-0b0b-4eb7-942d-511df6a5b402",
+			"id": "cbc907e8-d98a-494c-b1ac-47508d96dfec",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
