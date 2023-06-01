@@ -415,16 +415,17 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "87d2c942-f226-477b-8158-75cae44ec8f3",
 								"exec": [
 									""
 								],
-								"type": "text/javascript",
-								"id": "87d2c942-f226-477b-8158-75cae44ec8f3"
+								"type": "text/javascript"
 							}
 						},
 						{
 							"listen": "test",
 							"script": {
+								"id": "499f1b89-e947-42ce-aac9-b66d77b941cf",
 								"exec": [
 									"pm.test('Reponse code to be 200', function () {",
 									"    pm.expect(pm.response.code).to.be.equal(200);",
@@ -433,12 +434,12 @@
 									"pm.test(\"Body is present\", function () {",
 									"    ((responseBody) !== undefined && (responseBody.length > 1));",
 									"    jsonData = JSON.parse(responseBody);",
+									"    console.log(jsonData);",
 									"});",
 									"",
 									"pm.environment.set('user_token', jsonData.data.token);"
 								],
-								"type": "text/javascript",
-								"id": "499f1b89-e947-42ce-aac9-b66d77b941cf"
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -1305,13 +1306,13 @@
 	],
 	"variable": [
 		{
-			"id": "73f3ccca-9854-4534-97c8-b0759ec6170f",
+			"id": "0e0fd692-0a70-4ba0-8ef5-a1d17a23e674",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api",
 			"type": "string"
 		},
 		{
-			"id": "f468fbd0-c1dc-4f0d-adb5-d59c7c299cbb",
+			"id": "bbb40736-f717-4052-acfa-c75a8258dd66",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
