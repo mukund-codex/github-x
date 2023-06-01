@@ -93,6 +93,7 @@
         "tests": [
             "@pre-commit",
             "@pre-push",
+            "chmod -R 777 storage bootstrap",
             "@postman"
         ],
         "ci": [
