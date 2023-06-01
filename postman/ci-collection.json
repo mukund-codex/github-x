@@ -668,7 +668,7 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "7|BPk9flQBLmaUpTbYIJHLr4SeQfXWyxhqKcAoZxF5"
+								"token": "{{user_token}}"
 							}
 						},
 						"method": "GET",
@@ -1308,13 +1308,13 @@
 	],
 	"variable": [
 		{
-			"id": "555c334d-1a45-4b14-8afc-f39da93f0069",
+			"id": "c192ac85-e395-43d4-bc0a-3f44c0604fe0",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api",
 			"type": "string"
 		},
 		{
-			"id": "cbc907e8-d98a-494c-b1ac-47508d96dfec",
+			"id": "453d7d93-d2ff-4ac1-85f3-bb8bd2da8d8e",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
