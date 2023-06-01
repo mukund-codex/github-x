@@ -649,6 +649,7 @@
 							"script": {
 								"id": "6a1dad77-4483-451b-8b14-18c1f9f015d9",
 								"exec": [
+									"console.log(pm.response);",
 									"pm.test('Reponse code to be 200', function () {",
 									"    pm.expect(pm.response.code).to.be.equal(200);",
 									"});",
@@ -1307,13 +1308,13 @@
 	],
 	"variable": [
 		{
-			"id": "f79b5387-ee2b-4a80-9c2c-81f2b409257b",
+			"id": "c5c3bd71-a982-4a67-a58e-f1583a254932",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api",
 			"type": "string"
 		},
 		{
-			"id": "23180aa3-0eae-42eb-94bb-920e50bf3ee9",
+			"id": "b64ee115-0b0b-4eb7-942d-511df6a5b402",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
