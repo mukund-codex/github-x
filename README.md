@@ -19,7 +19,9 @@ http://10.10.1.1
 
 ### More info
 
-Checkout [Wiki](https://github.com/founderandlightning/fl-laravel_boilerplate/wiki) for more information about deploying the repo, what it contains, how it works etc.
-
-Checkout [Coding Guidelines](https://github.com/founderandlightning/fl-laravel_boilerplate/wiki/coding-guidelines)
+Checkout [Wiki](https://github.com/founderandlightning/fl-laravel_boilerplate/wiki) for more info about:
+ - [Coding Guidelines](https://github.com/founderandlightning/fl-laravel_boilerplate/wiki/Coding-Guidelines)
+ - [Composer.json](https://github.com/founderandlightning/fl-laravel_boilerplate/wiki/Composer-json)
+ - [Docker setup](https://github.com/founderandlightning/fl-laravel_boilerplate/wiki/Docker-setup)
+ - [DevOps](https://github.com/founderandlightning/fl-laravel_boilerplate/wiki/DevOps)
 
