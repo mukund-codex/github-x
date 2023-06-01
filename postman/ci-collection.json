@@ -636,16 +636,18 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "d8991982-8770-42a9-bc47-50b722a50903",
 								"exec": [
+									"console.log(pm.environment.get(\"user_token\"));",
 									""
 								],
-								"type": "text/javascript",
-								"id": "d8991982-8770-42a9-bc47-50b722a50903"
+								"type": "text/javascript"
 							}
 						},
 						{
 							"listen": "test",
 							"script": {
+								"id": "6a1dad77-4483-451b-8b14-18c1f9f015d9",
 								"exec": [
 									"pm.test('Reponse code to be 200', function () {",
 									"    pm.expect(pm.response.code).to.be.equal(200);",
@@ -653,8 +655,7 @@
 									"",
 									""
 								],
-								"type": "text/javascript",
-								"id": "6a1dad77-4483-451b-8b14-18c1f9f015d9"
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -1306,13 +1307,13 @@
 	],
 	"variable": [
 		{
-			"id": "0e0fd692-0a70-4ba0-8ef5-a1d17a23e674",
+			"id": "f79b5387-ee2b-4a80-9c2c-81f2b409257b",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api",
 			"type": "string"
 		},
 		{
-			"id": "bbb40736-f717-4052-acfa-c75a8258dd66",
+			"id": "23180aa3-0eae-42eb-94bb-920e50bf3ee9",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
