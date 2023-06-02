@@ -130,7 +130,7 @@ return [
         'rollbar' => [
             'driver' => 'monolog',
             'handler' => MonologHandler::class,
-            'access_token' => env('ROLLBAR_TOKEN'),
+            'access_token' => env('ROLLBAR_ACCESS_TOKEN'),
             'level' => env('LOG_LEVEL', 'debug'),
             'person_fn' => 'Auth::user',
         ],
