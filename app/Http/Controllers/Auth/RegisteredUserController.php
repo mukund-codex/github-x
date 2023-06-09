@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterUserRequest;
 use App\Models\User;
 use App\Traits\HttpResponse;
+use Config;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
@@ -26,6 +27,7 @@ class RegisteredUserController extends Controller
                 'password' => Hash::make($user_info['password']),
             ]
         );
+        $user->assignRole(Config::get('const.roles.user'));
 
         event(new Registered($user));
 
