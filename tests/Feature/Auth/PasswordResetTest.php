@@ -12,6 +12,11 @@ class PasswordResetTest extends TestCase
 {
     use RefreshDatabase;
 
+    public function setUp(): void
+    {
+        $this->seed();
+    }
+
     public function test_reset_password_link_can_be_requested(): void
     {
         Notification::fake();

@@ -8,6 +8,12 @@ use Tests\TestCase;
 class RegistrationTest extends TestCase
 {
     use RefreshDatabase;
+
+    public function setUp(): void
+    {
+        $this->seed();
+    }
+
     public function test_new_users_can_register(): void
     {
         $response = $this->post(route('register'), [

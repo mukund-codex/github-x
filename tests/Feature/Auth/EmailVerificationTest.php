@@ -14,6 +14,11 @@ class EmailVerificationTest extends TestCase
 {
     use RefreshDatabase;
 
+    public function setUp(): void
+    {
+        $this->seed();
+    }
+
     public function test_email_can_be_verified(): void
     {
         $user = User::factory()->create([
