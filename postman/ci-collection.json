@@ -434,7 +434,6 @@
 									"pm.test(\"Body is present\", function () {",
 									"    ((responseBody) !== undefined && (responseBody.length > 1));",
 									"    jsonData = JSON.parse(responseBody);",
-									"    console.log(jsonData);",
 									"});",
 									"",
 									"pm.environment.set('user_token', jsonData.data.token);"
@@ -1308,13 +1307,13 @@
 	],
 	"variable": [
 		{
-			"id": "c192ac85-e395-43d4-bc0a-3f44c0604fe0",
+			"id": "4d4db23a-00a2-4517-9367-7411fe4278e4",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api",
 			"type": "string"
 		},
 		{
-			"id": "453d7d93-d2ff-4ac1-85f3-bb8bd2da8d8e",
+			"id": "fad0661a-6e28-47c0-9065-bd8c268d1317",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
