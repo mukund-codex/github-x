@@ -637,7 +637,6 @@
 							"script": {
 								"id": "d8991982-8770-42a9-bc47-50b722a50903",
 								"exec": [
-									"console.log(pm.environment.get(\"user_token\"));",
 									""
 								],
 								"type": "text/javascript"
@@ -1307,13 +1306,13 @@
 	],
 	"variable": [
 		{
-			"id": "4d4db23a-00a2-4517-9367-7411fe4278e4",
+			"id": "d574891c-17bd-47f5-9991-d9302396fd87",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api",
 			"type": "string"
 		},
 		{
-			"id": "fad0661a-6e28-47c0-9065-bd8c268d1317",
+			"id": "559b63a7-1755-4c2b-beb3-29d8e6b40b67",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
