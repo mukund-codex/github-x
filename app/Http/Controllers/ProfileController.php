@@ -39,7 +39,7 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         $user->delete();
-        return $this->response([], __('messages.user.deleted'));
+        return $this->response([], __('messages.profile.deleted'));
     }
 
 }
