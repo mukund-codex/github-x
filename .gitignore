@@ -24,4 +24,4 @@ _ide_helper_models.php
 /fe-app
 docker-compose.override.yml
 /wiki
-
+.DS_Store
