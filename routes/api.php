@@ -18,6 +18,11 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::middleware(['auth:sanctum'])->get('/billing-portal', function (Request $request) {
+    //$request->user()->createOrGetStripeCustomer();
+    return $request->user()->billingPortalUrl();
+});
+
 Route::get('/', function () {
     return ['this-is-laravel-api' => app()->version()];
 });
