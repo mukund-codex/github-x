@@ -144,6 +144,498 @@
 			"name": "User onboarding",
 			"item": [
 				{
+					"name": "User Register and Login",
+					"item": [
+						{
+							"name": "Register",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"",
+											"pm.environment.set('first_name', 'John');",
+											"pm.environment.set('last_name', 'Doe');",
+											"pm.environment.set('user_email', 'john_doe+' +  Math.floor((Math.random() * 10000) + 1) + '@jdecode.dev' );",
+											"pm.environment.set('user_password', 'JohnDoe@123');",
+											""
+										],
+										"type": "text/javascript",
+										"id": "9c780194-c36b-4f2c-94eb-34b593a27308"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Reponse code to be 201', function () {",
+											"    pm.expect(pm.response.code).to.be.equal(201);",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript",
+										"id": "584dd471-5590-47f7-891d-925413768e69"
+									}
+								}
+							],
+							"id": "72de2667-ede1-4a82-ab40-49e45563d886",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "first_name",
+											"value": "{{first_name}}",
+											"type": "text"
+										},
+										{
+											"key": "last_name",
+											"value": "{{last_name}}",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "{{user_email}}",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "{{user_password}}",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "{{user_password}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": "{{base_url}}/register"
+							},
+							"response": [
+								{
+									"id": "96c56249-9626-40a5-a4a5-875d1af8c9a0",
+									"name": "Successful",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "first_name",
+													"value": "{{first_name}}",
+													"type": "text"
+												},
+												{
+													"key": "last_name",
+													"value": "{{last_name}}",
+													"type": "text"
+												},
+												{
+													"key": "email",
+													"value": "{{user_email}}",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "{{user_password}}",
+													"type": "text"
+												},
+												{
+													"key": "password_confirmation",
+													"value": "{{user_password}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": "{{base_url}}/register"
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Tue, 02 May 2023 07:58:15 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Apache/2.4.56 (Debian)"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.4"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "http://10.10.1.6:3000"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5, max=100"
+										},
+										{
+											"key": "Connection",
+											"value": "Keep-Alive"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"data\": {\n        \"first_name\": \"John\",\n        \"last_name\": \"Doe\",\n        \"email\": \"john_doe+655@jdecode.dev\",\n        \"updated_at\": \"2023-05-02T07:58:15.000000Z\",\n        \"created_at\": \"2023-05-02T07:58:15.000000Z\",\n        \"id\": 6\n    },\n    \"message\": \"User registered successfully.\"\n}"
+								},
+								{
+									"id": "24b8950f-a283-47bd-9ac9-fdcb13ee2f56",
+									"name": "Failure | Email missing",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "first_name",
+													"value": "{{first_name}}",
+													"type": "text"
+												},
+												{
+													"key": "last_name",
+													"value": "{{last_name}}",
+													"type": "text"
+												},
+												{
+													"key": "email",
+													"value": "{{user_email}}",
+													"type": "text",
+													"disabled": true
+												},
+												{
+													"key": "password",
+													"value": "{{user_password}}",
+													"type": "text"
+												},
+												{
+													"key": "password_confirmation",
+													"value": "{{user_password}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": "{{base_url}}/register"
+									},
+									"status": "Unprocessable Content",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Tue, 02 May 2023 08:00:14 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Apache/2.4.56 (Debian)"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.4"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "http://10.10.1.6:3000"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5, max=100"
+										},
+										{
+											"key": "Connection",
+											"value": "Keep-Alive"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"message\": \"The email field is required.\",\n    \"errors\": {\n        \"email\": [\n            \"The email field is required.\"\n        ]\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Login",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "87d2c942-f226-477b-8158-75cae44ec8f3",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "499f1b89-e947-42ce-aac9-b66d77b941cf",
+										"exec": [
+											"pm.test('Reponse code to be 200', function () {",
+											"    pm.expect(pm.response.code).to.be.equal(200);",
+											"});",
+											"",
+											"pm.test(\"Body is present\", function () {",
+											"    ((responseBody) !== undefined && (responseBody.length > 1));",
+											"    jsonData = JSON.parse(responseBody);",
+											"});",
+											"",
+											"pm.environment.set('user_token', jsonData.data.token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "0860af18-b71b-445c-8e30-7df97184a0c1",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "{{user_email}}",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "{{user_password}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": "{{base_url}}/login"
+							},
+							"response": [
+								{
+									"id": "84bf3463-fa2b-4d2f-b836-2c0013282e0c",
+									"name": "Successful",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "email",
+													"value": "{{user_email}}",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "{{user_password}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": "{{base_url}}/login"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Tue, 02 May 2023 07:58:30 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Apache/2.4.56 (Debian)"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.4"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "57"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "http://10.10.1.6:3000"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5, max=100"
+										},
+										{
+											"key": "Connection",
+											"value": "Keep-Alive"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"data\": {\n        \"token\": \"3|P1H6sn7q0DTmN6LfEkckgyV4uWD5feYLyODNTHt2\"\n    },\n    \"message\": \"User logged in successfully.\"\n}"
+								},
+								{
+									"id": "2309b39c-decc-472e-8619-cf2e79602ebd",
+									"name": "Failure | Invalid credentials",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "email",
+													"value": "{{user_email}}",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "{{user_password}}1",
+													"type": "text"
+												}
+											]
+										},
+										"url": "{{base_url}}/login"
+									},
+									"status": "Unprocessable Content",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Tue, 02 May 2023 08:00:56 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Apache/2.4.56 (Debian)"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.4"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "http://10.10.1.6:3000"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5, max=100"
+										},
+										{
+											"key": "Connection",
+											"value": "Keep-Alive"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n    \"message\": \"These credentials do not match our records.\",\n    \"errors\": {\n        \"email\": [\n            \"These credentials do not match our records.\"\n        ]\n    }\n}"
+								}
+							]
+						}
+					],
+					"id": "8a1aff52-aeeb-4289-b8f6-4596c9502c67"
+				},
+				{
 					"name": "Profile",
 					"item": [
 						{
@@ -558,1095 +1050,6 @@
 						}
 					],
 					"id": "46064ab3-4359-4ac4-9678-0c6caa32f26e"
-				},
-				{
-					"name": "Users",
-					"item": [
-						{
-							"name": "User",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "2062dc3e-3003-419c-9f3a-2d14f21ea60c",
-										"exec": [
-											"pm.test('Reponse code to be 201', function () {",
-											"    pm.expect(pm.response.code).to.be.equal(201);",
-											"});",
-											"",
-											""
-										],
-										"type": "text/javascript"
-									}
-								},
-								{
-									"listen": "prerequest",
-									"script": {
-										"id": "43c481f3-a29f-4637-8747-283a08b53097",
-										"exec": [
-											"",
-											"pm.environment.set('first_name', 'John');",
-											"pm.environment.set('last_name', 'Doe');",
-											"pm.environment.set('user_email', 'john_doe+' +  Math.floor((Math.random() * 10000) + 1) + '@jdecode.dev' );",
-											"pm.environment.set('user_password', 'JohnDoe@123');",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"id": "499cbedb-c229-4eee-bd3d-bed7f56c96f2",
-							"protocolProfileBehavior": {
-								"disabledSystemHeaders": {},
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{user_token}}"
-									}
-								},
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "first_name",
-											"value": "{{first_name}}",
-											"type": "text"
-										},
-										{
-											"key": "last_name",
-											"value": "{{last_name}}",
-											"type": "text"
-										},
-										{
-											"key": "email",
-											"value": "{{user_email}}",
-											"type": "text"
-										},
-										{
-											"key": "password",
-											"value": "{{user_password}}",
-											"type": "text"
-										},
-										{
-											"key": "password_confirmation",
-											"value": "{{user_password}}",
-											"type": "text"
-										},
-										{
-											"key": "role",
-											"value": "{{user_role}}",
-											"type": "text"
-										}
-									]
-								},
-								"url": "{{base_url}}/users"
-							},
-							"response": [
-								{
-									"id": "420b2a21-9a3e-4362-9416-bd7fb100b527",
-									"name": "Home page",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"url": "{{base_url}}"
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Date",
-											"value": "Tue, 02 May 2023 07:58:07 GMT"
-										},
-										{
-											"key": "Server",
-											"value": "Apache/2.4.56 (Debian)"
-										},
-										{
-											"key": "X-Powered-By",
-											"value": "PHP/8.2.4"
-										},
-										{
-											"key": "Cache-Control",
-											"value": "no-cache, private"
-										},
-										{
-											"key": "X-RateLimit-Limit",
-											"value": "60"
-										},
-										{
-											"key": "X-RateLimit-Remaining",
-											"value": "59"
-										},
-										{
-											"key": "Access-Control-Allow-Origin",
-											"value": "http://10.10.1.6:3000"
-										},
-										{
-											"key": "Access-Control-Allow-Credentials",
-											"value": "true"
-										},
-										{
-											"key": "Keep-Alive",
-											"value": "timeout=5, max=100"
-										},
-										{
-											"key": "Connection",
-											"value": "Keep-Alive"
-										},
-										{
-											"key": "Transfer-Encoding",
-											"value": "chunked"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n    \"this-is-laravel-api\": \"10.5.1\"\n}"
-								}
-							]
-						},
-						{
-							"name": "User",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "2062dc3e-3003-419c-9f3a-2d14f21ea60c",
-										"exec": [
-											"pm.test('Reponse code to be 200', function () {",
-											"    pm.expect(pm.response.code).to.be.equal(200);",
-											"});",
-											"",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"id": "b05589aa-c3a5-4a29-bf7a-7afc0ab74ed5",
-							"protocolProfileBehavior": {
-								"disabledSystemHeaders": {},
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{user_token}}"
-									}
-								},
-								"method": "PATCH",
-								"header": [],
-								"body": {
-									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"key": "first_name",
-											"value": "{{first_name}}",
-											"type": "text"
-										},
-										{
-											"key": "last_name",
-											"value": "{{last_name}}",
-											"type": "text"
-										},
-										{
-											"key": "password",
-											"value": "{{user_password}}",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "password_confirmation",
-											"value": "{{user_password}}",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "role",
-											"value": "{{user_role}}",
-											"type": "text"
-										}
-									]
-								},
-								"url": "{{base_url}}/users/{{user_id}}"
-							},
-							"response": [
-								{
-									"id": "2696f87f-e58e-40bd-b583-f580b0021972",
-									"name": "Home page",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"url": "{{base_url}}"
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Date",
-											"value": "Tue, 02 May 2023 07:58:07 GMT"
-										},
-										{
-											"key": "Server",
-											"value": "Apache/2.4.56 (Debian)"
-										},
-										{
-											"key": "X-Powered-By",
-											"value": "PHP/8.2.4"
-										},
-										{
-											"key": "Cache-Control",
-											"value": "no-cache, private"
-										},
-										{
-											"key": "X-RateLimit-Limit",
-											"value": "60"
-										},
-										{
-											"key": "X-RateLimit-Remaining",
-											"value": "59"
-										},
-										{
-											"key": "Access-Control-Allow-Origin",
-											"value": "http://10.10.1.6:3000"
-										},
-										{
-											"key": "Access-Control-Allow-Credentials",
-											"value": "true"
-										},
-										{
-											"key": "Keep-Alive",
-											"value": "timeout=5, max=100"
-										},
-										{
-											"key": "Connection",
-											"value": "Keep-Alive"
-										},
-										{
-											"key": "Transfer-Encoding",
-											"value": "chunked"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n    \"this-is-laravel-api\": \"10.5.1\"\n}"
-								}
-							]
-						},
-						{
-							"name": "User",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "2062dc3e-3003-419c-9f3a-2d14f21ea60c",
-										"exec": [
-											"pm.test('Reponse code to be 200', function () {",
-											"    pm.expect(pm.response.code).to.be.equal(200);",
-											"});",
-											"",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"id": "7d782df3-0899-42bf-ba51-5bd87c8d18a6",
-							"protocolProfileBehavior": {
-								"disabledSystemHeaders": {},
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{user_token}}"
-									}
-								},
-								"method": "GET",
-								"header": [],
-								"url": "{{base_url}}/users/{{user_id}}"
-							},
-							"response": [
-								{
-									"id": "a8a83127-3e0e-4622-acf1-2d5c2acc321e",
-									"name": "Home page",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"url": "{{base_url}}"
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Date",
-											"value": "Tue, 02 May 2023 07:58:07 GMT"
-										},
-										{
-											"key": "Server",
-											"value": "Apache/2.4.56 (Debian)"
-										},
-										{
-											"key": "X-Powered-By",
-											"value": "PHP/8.2.4"
-										},
-										{
-											"key": "Cache-Control",
-											"value": "no-cache, private"
-										},
-										{
-											"key": "X-RateLimit-Limit",
-											"value": "60"
-										},
-										{
-											"key": "X-RateLimit-Remaining",
-											"value": "59"
-										},
-										{
-											"key": "Access-Control-Allow-Origin",
-											"value": "http://10.10.1.6:3000"
-										},
-										{
-											"key": "Access-Control-Allow-Credentials",
-											"value": "true"
-										},
-										{
-											"key": "Keep-Alive",
-											"value": "timeout=5, max=100"
-										},
-										{
-											"key": "Connection",
-											"value": "Keep-Alive"
-										},
-										{
-											"key": "Transfer-Encoding",
-											"value": "chunked"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n    \"this-is-laravel-api\": \"10.5.1\"\n}"
-								}
-							]
-						},
-						{
-							"name": "Users",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "2062dc3e-3003-419c-9f3a-2d14f21ea60c",
-										"exec": [
-											"pm.test('Reponse code to be 200', function () {",
-											"    pm.expect(pm.response.code).to.be.equal(200);",
-											"});",
-											"",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"id": "6f0d0a1c-15c1-4719-b730-27ccaf78fbde",
-							"protocolProfileBehavior": {
-								"disabledSystemHeaders": {},
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{user_token}}"
-									}
-								},
-								"method": "GET",
-								"header": [],
-								"url": "{{base_url}}/users"
-							},
-							"response": [
-								{
-									"id": "fc9c094c-dd6d-4e72-b14e-1fc527f7c066",
-									"name": "Home page",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"url": "{{base_url}}"
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Date",
-											"value": "Tue, 02 May 2023 07:58:07 GMT"
-										},
-										{
-											"key": "Server",
-											"value": "Apache/2.4.56 (Debian)"
-										},
-										{
-											"key": "X-Powered-By",
-											"value": "PHP/8.2.4"
-										},
-										{
-											"key": "Cache-Control",
-											"value": "no-cache, private"
-										},
-										{
-											"key": "X-RateLimit-Limit",
-											"value": "60"
-										},
-										{
-											"key": "X-RateLimit-Remaining",
-											"value": "59"
-										},
-										{
-											"key": "Access-Control-Allow-Origin",
-											"value": "http://10.10.1.6:3000"
-										},
-										{
-											"key": "Access-Control-Allow-Credentials",
-											"value": "true"
-										},
-										{
-											"key": "Keep-Alive",
-											"value": "timeout=5, max=100"
-										},
-										{
-											"key": "Connection",
-											"value": "Keep-Alive"
-										},
-										{
-											"key": "Transfer-Encoding",
-											"value": "chunked"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n    \"this-is-laravel-api\": \"10.5.1\"\n}"
-								}
-							]
-						},
-						{
-							"name": "User",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "2062dc3e-3003-419c-9f3a-2d14f21ea60c",
-										"exec": [
-											"pm.test('Reponse code to be 200', function () {",
-											"    pm.expect(pm.response.code).to.be.equal(200);",
-											"});",
-											"",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"id": "fabfd975-35f8-4ab1-b143-3f1e25252b05",
-							"protocolProfileBehavior": {
-								"disabledSystemHeaders": {},
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{user_token}}"
-									}
-								},
-								"method": "DELETE",
-								"header": [],
-								"url": "{{base_url}}/users/{{user_id}}"
-							},
-							"response": [
-								{
-									"id": "a8acb8cc-2b26-47b9-9f97-7f6cc33a26b0",
-									"name": "Home page",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"url": "{{base_url}}"
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Date",
-											"value": "Tue, 02 May 2023 07:58:07 GMT"
-										},
-										{
-											"key": "Server",
-											"value": "Apache/2.4.56 (Debian)"
-										},
-										{
-											"key": "X-Powered-By",
-											"value": "PHP/8.2.4"
-										},
-										{
-											"key": "Cache-Control",
-											"value": "no-cache, private"
-										},
-										{
-											"key": "X-RateLimit-Limit",
-											"value": "60"
-										},
-										{
-											"key": "X-RateLimit-Remaining",
-											"value": "59"
-										},
-										{
-											"key": "Access-Control-Allow-Origin",
-											"value": "http://10.10.1.6:3000"
-										},
-										{
-											"key": "Access-Control-Allow-Credentials",
-											"value": "true"
-										},
-										{
-											"key": "Keep-Alive",
-											"value": "timeout=5, max=100"
-										},
-										{
-											"key": "Connection",
-											"value": "Keep-Alive"
-										},
-										{
-											"key": "Transfer-Encoding",
-											"value": "chunked"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n    \"this-is-laravel-api\": \"10.5.1\"\n}"
-								}
-							]
-						}
-					],
-					"id": "adf55f22-ce4c-4303-b4de-ef35387cadbf"
-				},
-				{
-					"name": "User Register and Login",
-					"item": [],
-					"id": "8a1aff52-aeeb-4289-b8f6-4596c9502c67"
-				},
-				{
-					"name": "Register",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"",
-									"pm.environment.set('first_name', 'John');",
-									"pm.environment.set('last_name', 'Doe');",
-									"pm.environment.set('user_email', 'john_doe+' +  Math.floor((Math.random() * 10000) + 1) + '@jdecode.dev' );",
-									"pm.environment.set('user_password', 'JohnDoe@123');",
-									""
-								],
-								"type": "text/javascript",
-								"id": "9c780194-c36b-4f2c-94eb-34b593a27308"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test('Reponse code to be 201', function () {",
-									"    pm.expect(pm.response.code).to.be.equal(201);",
-									"});",
-									"",
-									""
-								],
-								"type": "text/javascript",
-								"id": "584dd471-5590-47f7-891d-925413768e69"
-							}
-						}
-					],
-					"id": "72de2667-ede1-4a82-ab40-49e45563d886",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "first_name",
-									"value": "{{first_name}}",
-									"type": "text"
-								},
-								{
-									"key": "last_name",
-									"value": "{{last_name}}",
-									"type": "text"
-								},
-								{
-									"key": "email",
-									"value": "{{user_email}}",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "{{user_password}}",
-									"type": "text"
-								},
-								{
-									"key": "password_confirmation",
-									"value": "{{user_password}}",
-									"type": "text"
-								}
-							]
-						},
-						"url": "{{base_url}}/register"
-					},
-					"response": [
-						{
-							"id": "96c56249-9626-40a5-a4a5-875d1af8c9a0",
-							"name": "Successful",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "first_name",
-											"value": "{{first_name}}",
-											"type": "text"
-										},
-										{
-											"key": "last_name",
-											"value": "{{last_name}}",
-											"type": "text"
-										},
-										{
-											"key": "email",
-											"value": "{{user_email}}",
-											"type": "text"
-										},
-										{
-											"key": "password",
-											"value": "{{user_password}}",
-											"type": "text"
-										},
-										{
-											"key": "password_confirmation",
-											"value": "{{user_password}}",
-											"type": "text"
-										}
-									]
-								},
-								"url": "{{base_url}}/register"
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Date",
-									"value": "Tue, 02 May 2023 07:58:15 GMT"
-								},
-								{
-									"key": "Server",
-									"value": "Apache/2.4.56 (Debian)"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.2.4"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "60"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "58"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "http://10.10.1.6:3000"
-								},
-								{
-									"key": "Access-Control-Allow-Credentials",
-									"value": "true"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5, max=100"
-								},
-								{
-									"key": "Connection",
-									"value": "Keep-Alive"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"data\": {\n        \"first_name\": \"John\",\n        \"last_name\": \"Doe\",\n        \"email\": \"john_doe+655@jdecode.dev\",\n        \"updated_at\": \"2023-05-02T07:58:15.000000Z\",\n        \"created_at\": \"2023-05-02T07:58:15.000000Z\",\n        \"id\": 6\n    },\n    \"message\": \"User registered successfully.\"\n}"
-						},
-						{
-							"id": "24b8950f-a283-47bd-9ac9-fdcb13ee2f56",
-							"name": "Failure | Email missing",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "first_name",
-											"value": "{{first_name}}",
-											"type": "text"
-										},
-										{
-											"key": "last_name",
-											"value": "{{last_name}}",
-											"type": "text"
-										},
-										{
-											"key": "email",
-											"value": "{{user_email}}",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "password",
-											"value": "{{user_password}}",
-											"type": "text"
-										},
-										{
-											"key": "password_confirmation",
-											"value": "{{user_password}}",
-											"type": "text"
-										}
-									]
-								},
-								"url": "{{base_url}}/register"
-							},
-							"status": "Unprocessable Content",
-							"code": 422,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Date",
-									"value": "Tue, 02 May 2023 08:00:14 GMT"
-								},
-								{
-									"key": "Server",
-									"value": "Apache/2.4.56 (Debian)"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.2.4"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "60"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "59"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "http://10.10.1.6:3000"
-								},
-								{
-									"key": "Access-Control-Allow-Credentials",
-									"value": "true"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5, max=100"
-								},
-								{
-									"key": "Connection",
-									"value": "Keep-Alive"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"message\": \"The email field is required.\",\n    \"errors\": {\n        \"email\": [\n            \"The email field is required.\"\n        ]\n    }\n}"
-						}
-					]
-				},
-				{
-					"name": "Login",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "87d2c942-f226-477b-8158-75cae44ec8f3",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "499f1b89-e947-42ce-aac9-b66d77b941cf",
-								"exec": [
-									"pm.test('Reponse code to be 200', function () {",
-									"    pm.expect(pm.response.code).to.be.equal(200);",
-									"});",
-									"",
-									"pm.test(\"Body is present\", function () {",
-									"    ((responseBody) !== undefined && (responseBody.length > 1));",
-									"    jsonData = JSON.parse(responseBody);",
-									"});",
-									"",
-									"pm.environment.set('user_token', jsonData.data.token);"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"id": "0860af18-b71b-445c-8e30-7df97184a0c1",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "email",
-									"value": "{{user_email}}",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "{{user_password}}",
-									"type": "text"
-								}
-							]
-						},
-						"url": "{{base_url}}/login"
-					},
-					"response": [
-						{
-							"id": "84bf3463-fa2b-4d2f-b836-2c0013282e0c",
-							"name": "Successful",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "email",
-											"value": "{{user_email}}",
-											"type": "text"
-										},
-										{
-											"key": "password",
-											"value": "{{user_password}}",
-											"type": "text"
-										}
-									]
-								},
-								"url": "{{base_url}}/login"
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Date",
-									"value": "Tue, 02 May 2023 07:58:30 GMT"
-								},
-								{
-									"key": "Server",
-									"value": "Apache/2.4.56 (Debian)"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.2.4"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "60"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "57"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "http://10.10.1.6:3000"
-								},
-								{
-									"key": "Access-Control-Allow-Credentials",
-									"value": "true"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5, max=100"
-								},
-								{
-									"key": "Connection",
-									"value": "Keep-Alive"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"data\": {\n        \"token\": \"3|P1H6sn7q0DTmN6LfEkckgyV4uWD5feYLyODNTHt2\"\n    },\n    \"message\": \"User logged in successfully.\"\n}"
-						},
-						{
-							"id": "2309b39c-decc-472e-8619-cf2e79602ebd",
-							"name": "Failure | Invalid credentials",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "email",
-											"value": "{{user_email}}",
-											"type": "text"
-										},
-										{
-											"key": "password",
-											"value": "{{user_password}}1",
-											"type": "text"
-										}
-									]
-								},
-								"url": "{{base_url}}/login"
-							},
-							"status": "Unprocessable Content",
-							"code": 422,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Date",
-									"value": "Tue, 02 May 2023 08:00:56 GMT"
-								},
-								{
-									"key": "Server",
-									"value": "Apache/2.4.56 (Debian)"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.2.4"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "60"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "58"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "http://10.10.1.6:3000"
-								},
-								{
-									"key": "Access-Control-Allow-Credentials",
-									"value": "true"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5, max=100"
-								},
-								{
-									"key": "Connection",
-									"value": "Keep-Alive"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"message\": \"These credentials do not match our records.\",\n    \"errors\": {\n        \"email\": [\n            \"These credentials do not match our records.\"\n        ]\n    }\n}"
-						}
-					]
 				}
 			],
 			"id": "b4af021a-692e-485e-831a-af5b8fe7bf1d",
@@ -2144,13 +1547,13 @@
 	],
 	"variable": [
 		{
-			"id": "7a194305-e84f-465b-a455-87bc6ab97429",
+			"id": "1161fd9b-247e-406a-8ea6-73886c3dc974",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api",
 			"type": "string"
 		},
 		{
-			"id": "e138991c-d0c7-4509-9f88-bd7331b2f2e8",
+			"id": "f31c6858-da88-43ca-9c76-bf2bafd1a3b9",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
