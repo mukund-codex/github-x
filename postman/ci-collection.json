@@ -1642,187 +1642,6 @@
 							"body": "{\n    \"message\": \"These credentials do not match our records.\",\n    \"errors\": {\n        \"email\": [\n            \"These credentials do not match our records.\"\n        ]\n    }\n}"
 						}
 					]
-				},
-				{
-					"name": "User",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "d8991982-8770-42a9-bc47-50b722a50903",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "6a1dad77-4483-451b-8b14-18c1f9f015d9",
-								"exec": [
-									"console.log(pm.request);",
-									"pm.test('Reponse code to be 200', function () {",
-									"    pm.expect(pm.response.code).to.be.equal(200);",
-									"});",
-									"",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"id": "73280787-18c3-4df9-aa1b-ad78ef50b37b",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{user_token}}"
-							}
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": "{{base_url}}/user"
-					},
-					"response": [
-						{
-							"id": "31220ed5-641c-4630-9c3c-3599a7900407",
-							"name": "Successful",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": "{{base_url}}/user"
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Date",
-									"value": "Tue, 02 May 2023 07:58:40 GMT"
-								},
-								{
-									"key": "Server",
-									"value": "Apache/2.4.56 (Debian)"
-								},
-								{
-									"key": "Vary",
-									"value": "Authorization"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.2.4"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "60"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "59"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "http://10.10.1.6:3000"
-								},
-								{
-									"key": "Access-Control-Allow-Credentials",
-									"value": "true"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5, max=100"
-								},
-								{
-									"key": "Connection",
-									"value": "Keep-Alive"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"id\": 6,\n    \"email\": \"john_doe+655@jdecode.dev\",\n    \"email_verified_at\": null,\n    \"created_at\": \"2023-05-02T07:58:15.000000Z\",\n    \"updated_at\": \"2023-05-02T07:58:15.000000Z\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\"\n}"
-						},
-						{
-							"id": "94d04e3a-bdb5-4b4f-a9ef-11d4b237f5e2",
-							"name": "Failure | Unauthorized",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": "{{base_url}}/user"
-							},
-							"status": "Unauthorized",
-							"code": 401,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Date",
-									"value": "Tue, 02 May 2023 08:01:54 GMT"
-								},
-								{
-									"key": "Server",
-									"value": "Apache/2.4.56 (Debian)"
-								},
-								{
-									"key": "Vary",
-									"value": "Authorization"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.2.4"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "http://10.10.1.6:3000"
-								},
-								{
-									"key": "Access-Control-Allow-Credentials",
-									"value": "true"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5, max=100"
-								},
-								{
-									"key": "Connection",
-									"value": "Keep-Alive"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"message\": \"Unauthenticated.\"\n}"
-						}
-					]
 				}
 			],
 			"id": "b4af021a-692e-485e-831a-af5b8fe7bf1d",
@@ -2320,13 +2139,13 @@
 	],
 	"variable": [
 		{
-			"id": "bb8170e8-e939-4942-9252-54513179c517",
+			"id": "5de133b3-c23e-4f11-9221-72ac12b30bf4",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api",
 			"type": "string"
 		},
 		{
-			"id": "9b2a06a2-a2a6-4279-a842-4e5391c07a6b",
+			"id": "53e1d6e6-9b79-4c37-a1e1-9bb42451f6e7",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
