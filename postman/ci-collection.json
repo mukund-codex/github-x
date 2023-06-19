@@ -1547,13 +1547,13 @@
 	],
 	"variable": [
 		{
-			"id": "1161fd9b-247e-406a-8ea6-73886c3dc974",
+			"id": "76520b72-eda8-443e-8d88-3726eaacccfb",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api",
 			"type": "string"
 		},
 		{
-			"id": "f31c6858-da88-43ca-9c76-bf2bafd1a3b9",
+			"id": "4192a97d-8216-4d5f-95ce-70fde46a042c",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
