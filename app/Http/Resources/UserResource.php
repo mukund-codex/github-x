@@ -21,7 +21,6 @@ class UserResource extends JsonResource
             'updated_at' => $this->updated_at,
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
-            'billing_portal_url' => $this->billingPortalUrl(),
 //            'notifications_count' => $this->notifications_count,
 //            'tokens_count' => $this->tokens_count,
 //            'permissions_count' => $this->permissions_count,

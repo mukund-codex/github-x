@@ -39,7 +39,10 @@ class UserController extends Controller
 
         event(new Registered($user));
 
-        return $this->response($user->toArray(), __('messages.user.registered'), 201);
+        return (new UserResource($user))
+            ->additional(['message' => __('messages.user.registered')])
+            ->response()
+            ->setStatusCode(201);
     }
 
     public function show(User $user): UserResource
@@ -50,20 +53,18 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request, User $user): JsonResponse
     {
         $request->validated();
-        $user_info = $request->safe();
-        $update = [
-            'first_name' => $user_info['first_name'],
-            'last_name' => $user_info['last_name'] ?? null,
-        ];
-        if (isset($user_info['password'])) {
-            $update['password'] = Hash::make($user_info['password']);
+        $update = $request->safe();
+        if (isset($update['password'])) {
+            $update['password'] = Hash::make($update['password']);
         }
-        $user->update($update);
-        if (isset($user_info['role'])) {
-            $user->syncRoles([$user_info['role']]);
+        $user->update($update->except('role'));
+        if (isset($update['role'])) {
+            $user->syncRoles([$update['role']]);
         }
 
-        return $this->response($user->toArray(), __('messages.user.updated'));
+        return (new UserResource($user))
+            ->additional(['message' => __('messages.user.updated')])
+            ->response();
     }
 
     public function destroy(User $user)

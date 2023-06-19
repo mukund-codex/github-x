@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Cashier\Billable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+
 use function Illuminate\Events\queueable;
 
 class User extends Authenticatable implements MustVerifyEmail
