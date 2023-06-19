@@ -1158,7 +1158,7 @@
 					"id": "adf55f22-ce4c-4303-b4de-ef35387cadbf"
 				},
 				{
-					"name": "New Folder",
+					"name": "User Register and Login",
 					"item": [],
 					"id": "8a1aff52-aeeb-4289-b8f6-4596c9502c67"
 				},
@@ -2144,13 +2144,13 @@
 	],
 	"variable": [
 		{
-			"id": "4fe68aca-f5fe-4bf5-a6bd-bbe1a6201172",
+			"id": "7a194305-e84f-465b-a455-87bc6ab97429",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api",
 			"type": "string"
 		},
 		{
-			"id": "0b4cae03-a201-404b-991d-11ce3e6c43f7",
+			"id": "e138991c-d0c7-4509-9f88-bd7331b2f2e8",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
