@@ -11,5 +11,8 @@ return [
     'profile' => [
         'updated' => 'Profile updated successfully.',
         'deleted' => 'Profile deleted successfully.',
+    ],
+    'subscription' => [
+        'trial_ending_subject' => 'Subscription Trial Ending'
     ]
 ];
