@@ -22,8 +22,14 @@ class UserResource extends JsonResource
             'updated_at' => $this->updated_at,
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
-            'subscription_exists' => (bool) $subscription,
-            'subscription_status' => $subscription?->stripe_status,
+            'subscription' => [
+                'exists' => (bool) $subscription,
+                'status' => $subscription?->stripe_status,
+                'quantity' => $subscription?->quantity,
+                'created_at' => $subscription?->created_at,
+                'trial_ends_at' => $subscription?->trial_ends_at,
+                'ends_at' => $subscription?->ends_at,
+            ]
 //            'notifications_count' => $this->notifications_count,
 //            'tokens_count' => $this->tokens_count,
 //            'permissions_count' => $this->permissions_count,
