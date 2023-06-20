@@ -13,7 +13,6 @@ class UserResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $subscription = $this->subscriptions()->orderByDesc('id')->first();
         return [
             'id' => $this->id,
             'email' => $this->email,
@@ -22,14 +21,7 @@ class UserResource extends JsonResource
             'updated_at' => $this->updated_at,
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
-            'subscription' => [
-                'exists' => (bool) $subscription,
-                'status' => $subscription?->stripe_status,
-                'quantity' => $subscription?->quantity,
-                'created_at' => $subscription?->created_at,
-                'trial_ends_at' => $subscription?->trial_ends_at,
-                'ends_at' => $subscription?->ends_at,
-            ]
+            'has_subscribed' => $this->subscribed()
 //            'notifications_count' => $this->notifications_count,
 //            'tokens_count' => $this->tokens_count,
 //            'permissions_count' => $this->permissions_count,
