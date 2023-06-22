@@ -14,8 +14,7 @@ class ProfileTest extends TestCase
     public function test_get_profile()
     {
         $user = User::factory()->create();
-        Sanctum::actingAs($user);
-        $response = $this->get(route('profile.update', $user));
+        $response = $this->actingAs($user)->get(route('profile.update', $user));
         $response->assertOk();
         $response->assertJsonStructure(
             [
@@ -35,11 +34,9 @@ class ProfileTest extends TestCase
     public function test_update_profile()
     {
         $user = User::factory()->create();
-        Sanctum::actingAs($user);
-        $response = $this->patch(route('profile.update'), [
+        $response = $this->actingAs($user)->patch(route('profile.update'), [
             'first_name' => 'Test123',
         ]);
-
         $response->assertOk();
         $response->assertSee(__('messages.profile.updated'));
         $this->assertDatabaseHas('users', [
@@ -63,8 +60,7 @@ class ProfileTest extends TestCase
     public function test_delete_profile()
     {
         $user = User::factory()->create();
-        Sanctum::actingAs($user);
-        $response = $this->delete(route('profile.destroy'));
+        $response = $this->actingAs($user)->delete(route('profile.destroy'));
 
         $response->assertOk();
         $response->assertSee(__('messages.profile.deleted'));
