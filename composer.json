@@ -104,7 +104,7 @@
         ],
         "ci": [
             "@composer clearcache",
-            "@composer install",
+            "@composer install --prefer-source",
             "@dev",
             "@tests"
         ]
