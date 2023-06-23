@@ -104,9 +104,8 @@
         ],
         "ci": [
             "@composer self-update",
-            "@composer dump-autoload",
-            "@composer clearcache",
             "@composer install --prefer-source",
+            "@composer clearcache",
             "@dev",
             "@tests"
         ]
