@@ -63,6 +63,7 @@
             "@putenv CACHE_DRIVER=file",
             "@post-create-project-cmd",
             "@php artisan migrate",
+            "@php artisan db:seed",
             "chmod -R 777 storage bootstrap",
             "@cghooks",
             "@ide-helper"
@@ -89,8 +90,8 @@
         ],
         "post-merge": [
             "@php artisan migrate",
-            "composer install",
-            "echo \"\nSeed, if in need: \\e[32mphp artisan db:seed\\e[0m\"\n"
+            "@php artisan db:seed",
+            "composer install"
         ],
         "tests": [
             "@pre-commit",
