@@ -9,11 +9,10 @@ use Spatie\Permission\Models\Role;
 
 class PermissionSeeder extends Seeder
 {
-
     public function run(): void
     {
-        Role::create(['name' => Config::get('const.roles.super_admin')]);
-        Role::create(['name' => Config::get('const.roles.user')]);
+        Role::updateOrCreate(['name' => Config::get('const.roles.super_admin')]);
+        Role::updateOrCreate(['name' => Config::get('const.roles.user')]);
 
         $permissions = [
             'view user',
@@ -24,7 +23,7 @@ class PermissionSeeder extends Seeder
         ];
 
         foreach ($permissions as $permission) {
-            Permission::create(['name' => $permission]);
+            Permission::updateOrCreate(['name' => $permission]);
         }
     }
 

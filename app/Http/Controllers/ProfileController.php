@@ -15,24 +15,27 @@ class ProfileController extends Controller
 
     public function show(): UserResource
     {
-        return new UserResource(Auth::user());
+        $user = Auth::user();
+        return (new UserResource($user))->additional([
+            'additional_data' => [
+                'billing_portal_url' => $user->hasStripeId() ? $user->billingPortalUrl() : null
+            ]
+        ]);
     }
 
     public function update(UpdateProfileRequest $request): JsonResponse
     {
         $request->validated();
-        $user_info = $request->safe();
-        $update = [
-            'first_name' => $user_info['first_name'],
-            'last_name' => $user_info['last_name'] ?? null,
-        ];
-        if (isset($user_info['password'])) {
-            $update['password'] = Hash::make($user_info['password']);
+        $update = $request->safe();
+        if (isset($update['password'])) {
+            $update['password'] = Hash::make($update['password']);
         }
         $user = Auth::user();
-        $user->update($update);
+        $user->update($update->toArray());
 
-        return $this->response($user->toArray(), __('messages.profile.updated'));
+        return (new UserResource($user))
+            ->additional(['message' => __('messages.profile.updated')])
+            ->response();
     }
 
     public function destroy(): JsonResponse

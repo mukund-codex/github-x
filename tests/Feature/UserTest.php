@@ -37,8 +37,7 @@ class UserTest extends TestCase
     public function test_get_users_list_not_allowed()
     {
         $user = User::factory()->create();
-        Sanctum::actingAs($user);
-        $response = $this->get(route('users.index'));
+        $response = $this->actingAs($user)->get(route('users.index'));
         $response->assertForbidden();
     }
 
@@ -46,8 +45,7 @@ class UserTest extends TestCase
     {
         $user = User::factory()->create();
         $user->givePermissionTo('view user');
-        Sanctum::actingAs($user);
-        $response = $this->get(route('users.show', $user));
+        $response = $this->actingAs($user)->get(route('users.show', $user));
         $response->assertOk();
         $response->assertJsonStructure(
             [
@@ -68,8 +66,7 @@ class UserTest extends TestCase
     {
         $user = User::factory()->create();
         $user->givePermissionTo('create user');
-        Sanctum::actingAs($user);
-        $response = $this->post(route('users.store'), [
+        $response = $this->actingAs($user)->post(route('users.store'), [
             'first_name' => 'Test',
             'email' => 'test@example.com',
             'password' => 'Admin@123',
@@ -93,7 +90,9 @@ class UserTest extends TestCase
                     'first_name',
                     'last_name',
                     'email',
+                    'email_verified_at',
                     'created_at',
+                    'updated_at',
                 ]
             ]
         );
@@ -103,8 +102,7 @@ class UserTest extends TestCase
     {
         $user = User::factory()->create();
         $user->givePermissionTo('update user');
-        Sanctum::actingAs($user);
-        $response = $this->patch(route('users.update', $user), [
+        $response = $this->actingAs($user)->patch(route('users.update', $user), [
             'first_name' => 'Test123',
         ]);
 
@@ -122,6 +120,7 @@ class UserTest extends TestCase
                     'email',
                     'email_verified_at',
                     'created_at',
+                    'updated_at',
                 ]
             ]
         );
@@ -133,8 +132,8 @@ class UserTest extends TestCase
         $id = $user_to_delete->id;
         $user = User::factory()->create();
         $user->givePermissionTo('delete user');
-        Sanctum::actingAs($user);
-        $response = $this->delete(route('users.destroy', $user_to_delete));
+        $response = $this->actingAs($user)
+            ->delete(route('users.destroy', $user_to_delete));
 
         $response->assertOk();
         $response->assertSee(__('messages.user.deleted'));
