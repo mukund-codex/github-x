@@ -24,10 +24,9 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         if (App::environment() === 'local' || App::runningUnitTests()) {
-            User::updateOrCreate([
+            User::updateOrCreate(['email' => 'admin@example.com'], [
                 'first_name' => 'Super',
                 'last_name' => 'Admin',
-                'email' => 'admin@example.com',
                 'password' => Hash::make('Password@123'),
                 'email_verified_at' => now(),
                 'remember_token' => Str::random(10),
