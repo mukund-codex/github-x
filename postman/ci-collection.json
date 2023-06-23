@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "cbcf99eb-81bc-4ef4-aa43-2c47e4e88c28",
-		"name": "ci",
+		"name": "ci_old",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
@@ -1547,13 +1547,13 @@
 	],
 	"variable": [
 		{
-			"id": "d9732ecc-9c07-450a-a482-ec672c91955c",
+			"id": "768d03ae-698d-4548-8717-e9caaf4b286e",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api",
 			"type": "string"
 		},
 		{
-			"id": "c38e5164-f4ab-4b6d-846f-78a1985077d9",
+			"id": "a871d6a2-e932-482a-9b20-33278b48bbb4",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
