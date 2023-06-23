@@ -14,7 +14,10 @@
         "laravel/telescope": "^4.14",
         "laravel/tinker": "^2.8",
         "rollbar/rollbar-laravel": "^8.0",
-        "spatie/laravel-permission": "^5.10"
+        "spatie/laravel-permission": "^5.10",
+        "symfony/http-client": "^6.1",
+        "symfony/postmark-mailer": "^6.1",
+        "wildbit/postmark-php": "^4.0"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.13",
@@ -90,8 +93,8 @@
         ],
         "post-merge": [
             "@php artisan migrate",
-            "@php artisan db:seed",
-            "composer install"
+            "composer install",
+            "@php artisan db:seed"
         ],
         "tests": [
             "@pre-commit",
