@@ -15,7 +15,7 @@ jobs:
           command: wget ${COMMITS_CHECK_ENDPOINT} -q -O - | grep -q ${COMMITS_CHECK_INDICATOR}
       - run:
           name: Docker compose
-          command: docker-compose up -d --force-recreate
+          command: docker-compose up -d
 
       - run:
           name: CI checks

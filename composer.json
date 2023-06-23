@@ -103,7 +103,7 @@
             "@postman"
         ],
         "ci": [
-            "@composer self-update",
+            "@composer dump-autoload",
             "@composer install --prefer-source",
             "@composer clearcache",
             "@dev",
