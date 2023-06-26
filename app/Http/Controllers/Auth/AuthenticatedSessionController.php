@@ -8,6 +8,7 @@ use App\Traits\HttpResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 use Str;
 
 class AuthenticatedSessionController extends Controller

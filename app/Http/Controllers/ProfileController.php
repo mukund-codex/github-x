@@ -2,47 +2,76 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProfileUpdateRequest;
 use App\Http\Requests\UpdateProfileRequest;
-use App\Http\Resources\UserResource;
-use App\Traits\HttpResponse;
-use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Validation\Rules\Password;
+use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
-    use HttpResponse;
-
-    public function show(): UserResource
+    /**
+     * Display the user's profile form.
+     */
+    public function edit(Request $request): View
     {
-        $user = Auth::user();
-        return (new UserResource($user))->additional([
-            'additional_data' => [
-                'billing_portal_url' => $user->hasStripeId() ? $user->billingPortalUrl() : null
-            ]
+        return view('profile.edit', [
+            'user' => $request->user(),
         ]);
     }
 
-    public function update(UpdateProfileRequest $request): JsonResponse
+    /**
+     * Update the user's profile information.
+     */
+    public function update(UpdateProfileRequest $request): RedirectResponse
     {
-        $request->validated();
-        $update = $request->safe();
-        if (isset($update['password'])) {
-            $update['password'] = Hash::make($update['password']);
+        $request->user()->fill($request->validated());
+
+        if ($request->user()->isDirty('email')) {
+            $request->user()->email_verified_at = null;
         }
-        $user = Auth::user();
-        $user->update($update->toArray());
 
-        return (new UserResource($user))
-            ->additional(['message' => __('messages.profile.updated')])
-            ->response();
+        $request->user()->save();
+
+        return Redirect::route('admin.profile.edit')->with('status', 'profile-updated');
     }
 
-    public function destroy(): JsonResponse
+    public function updatePassword(Request $request): RedirectResponse
     {
-        $user = Auth::user();
-        $user->delete();
-        return $this->response([], __('messages.profile.deleted'));
+        $validated = $request->validateWithBag('updatePassword', [
+            'current_password' => ['required', 'current_password'],
+            'password' => ['required', Password::defaults(), 'confirmed'],
+        ]);
+
+        $request->user()->update([
+            'password' => Hash::make($validated['password']),
+        ]);
+
+        return back()->with('status', 'password-updated');
     }
 
+    /**
+     * Delete the user's account.
+     */
+    public function destroy(Request $request): RedirectResponse
+    {
+        $request->validateWithBag('userDeletion', [
+            'password' => ['required', 'current_password'],
+        ]);
+
+        $user = $request->user();
+
+        Auth::logout();
+
+        $user->delete();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return Redirect::to(route('admin.login'));
+    }
 }
