@@ -8,7 +8,6 @@ use App\Http\Resources\UserResource;
 use App\Traits\HttpResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
