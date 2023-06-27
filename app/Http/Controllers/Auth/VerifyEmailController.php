@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use Auth;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -23,7 +22,7 @@ class VerifyEmailController extends Controller
         if ($request->user()->hasVerifiedEmail()) {
             Auth::logout();
             return redirect()->intended(
-                config('app.frontend_url') . RouteServiceProvider::HOME . '?verified=1'
+                config('app.frontend_url') . config('frontend.verified_email_redirect')
             );
         }
 
@@ -33,7 +32,7 @@ class VerifyEmailController extends Controller
 
         Auth::logout();
         return redirect()->intended(
-            config('app.frontend_url') . RouteServiceProvider::HOME . '?verified=1'
+            config('app.frontend_url') . config('frontend.verified_email_redirect')
         );
     }
 }
