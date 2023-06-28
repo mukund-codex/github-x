@@ -14,6 +14,7 @@ services:
       - "1010:80"
     environment:
       APP_NAME: "Laravel API boilerplate"
+      DB_HOST: "ci-lbp-pg"
     networks:
       ci-lbp-network:
         ipv4_address: 10.10.1.1
