@@ -15,7 +15,7 @@ jobs:
           command: wget ${COMMITS_CHECK_ENDPOINT} -q -O - | grep -q ${COMMITS_CHECK_INDICATOR}
       - run:
           name: Docker compose
-          command: docker-compose up -d
+          command: docker-compose -f ci-docker-compose.yml up -d
       - run:
           name: CI checks
           command: docker-compose -f ci-docker-compose.yml exec ci-lbp-api composer run ci
