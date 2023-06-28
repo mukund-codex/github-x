@@ -15,7 +15,7 @@ services:
     environment:
       APP_NAME: "Laravel API boilerplate"
     networks:
-      lbp-network:
+      ci-lbp-network:
         ipv4_address: 10.10.1.1
     extra_hosts:
       - host.docker.internal:host-gateway
@@ -30,7 +30,7 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: testing
     networks:
-      lbp-network:
+      ci-lbp-network:
         ipv4_address: 10.10.1.2
 
 #  lbp-mailpit:
