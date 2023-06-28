@@ -15,6 +15,7 @@ class PermissionSeeder extends Seeder
         Role::updateOrCreate(['name' => Config::get('const.roles.user')]);
 
         $permissions = [
+            'view dashboard',
             'view user',
             'create user',
             'update user',

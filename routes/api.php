@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\v1\ProfileController;
-use App\Http\Controllers\v1\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,25 +23,6 @@ Route::middleware(['auth:sanctum'])->group(function() {
             Route::get('/', 'show')->name('profile.show');
             Route::patch('/', 'update')->name('profile.update');
             Route::delete('/', 'destroy')->name('profile.destroy');
-    });
-    Route::controller(UserController::class)
-        ->prefix('/users')
-        ->group( function() {
-            Route::get('/{user}', 'show')
-                ->name('users.show')
-                ->can('view user');
-            Route::post('/', 'store')
-                ->name('users.store')
-                ->can('create user');
-            Route::patch('/{user}', 'update')
-                ->name('users.update')
-                ->can('update user');
-            Route::get('/', 'index')
-                ->name('users.index')
-                ->can('view users');
-            Route::delete('/{user}', 'destroy')
-                ->name('users.destroy')
-                ->can('delete user');
     });
 });
 

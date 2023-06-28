@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\v1;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Http\Resources\UserResource;
@@ -11,19 +10,31 @@ use App\Traits\HttpResponse;
 use Config;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\View\View;
 
 class UserController extends Controller
 {
     use HttpResponse;
 
-    public function index(): AnonymousResourceCollection
+    public function index(): View
     {
-        return UserResource::collection(User::all());
+        return view('users.list', [
+            'users' => UserResource::collection(User::all())
+        ]);
     }
 
-    public function store(RegisterUserRequest $request): JsonResponse
+    public function edit(User $user): View
+    {
+        return view('users.edit', [
+            'user' => $user
+        ]);
+    }
+
+    public function store(RegisterUserRequest $request): RedirectResponse
     {
         $request->validated();
         $user_info = $request->safe();
@@ -40,18 +51,10 @@ class UserController extends Controller
 
         event(new Registered($user));
 
-        return (new UserResource($user))
-            ->additional(['message' => __('messages.user.registered')])
-            ->response()
-            ->setStatusCode(201);
+        return Redirect::route('admin.users.index', $user)->with('status', 'user-created');
     }
 
-    public function show(User $user): UserResource
-    {
-        return new UserResource($user);
-    }
-
-    public function update(UpdateUserRequest $request, User $user): JsonResponse
+    public function update(UpdateUserRequest $request, User $user): RedirectResponse
     {
         $request->validated();
         $update = $request->safe();
@@ -63,15 +66,14 @@ class UserController extends Controller
             $user->syncRoles([$update['role']]);
         }
 
-        return (new UserResource($user))
-            ->additional(['message' => __('messages.user.updated')])
-            ->response();
+        return Redirect::route('admin.users.index', $user)->with('status', 'user-updated');
+
     }
 
-    public function destroy(User $user)
+    public function delete(User $user): RedirectResponse
     {
         $user->delete();
-        return $this->response([], __('messages.user.deleted'));
+        return Redirect::route('admin.users.index', $user)->with('status', 'user-deleted');
     }
 
 }

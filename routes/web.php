@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,16 +26,37 @@ Route::prefix('/admin')->group(function() {
         Route::post('/login', [AdminLoginController::class, 'store'])->name('admin.login.store');
     });
 
-    Route::middleware('role:super_admin')->group(function() {
+    Route::middleware('permission:view dashboard')->group(function() {
 
         Route::middleware(['auth', 'verified'])->group(function () {
             Route::get('/', function () {
                 return view('dashboard');
             })->name('admin.dashboard');
+
             Route::get('/profile', [ProfileController::class, 'edit'])->name('admin.profile.edit');
             Route::patch('/profile', [ProfileController::class, 'update'])->name('admin.profile.update');
             Route::put('password', [ProfileController::class, 'updatePassword'])->name('admin.password.update');
             Route::delete('/profile', [ProfileController::class, 'destroy'])->name('admin.profile.destroy');
+
+            Route::controller(UserController::class)
+                ->prefix('/users')
+                ->group( function() {
+                    Route::get('/{user}', 'edit')
+                        ->name('admin.users.edit')
+                        ->can('update user');
+                    Route::post('/', 'store')
+                        ->name('admin.users.store')
+                        ->can('create user');
+                    Route::patch('/{user}', 'update')
+                        ->name('admin.users.update')
+                        ->can('update user');
+                    Route::get('/', 'index')
+                        ->name('admin.users.index')
+                        ->can('view users');
+                    Route::get('/{user}/delete', 'delete')
+                        ->name('admin.users.delete')
+                        ->can('delete user');
+                });
         });
 
         Route::post('logout', [AdminLoginController::class, 'destroy'])
