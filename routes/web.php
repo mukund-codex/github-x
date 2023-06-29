@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RoleListController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,6 +42,9 @@ Route::prefix('/admin')->group(function() {
             Route::controller(UserController::class)
                 ->prefix('/users')
                 ->group( function() {
+                    Route::get('/add', 'create')
+                        ->name('admin.users.create')
+                        ->can('create user');
                     Route::get('/{user}', 'edit')
                         ->name('admin.users.edit')
                         ->can('update user');
@@ -57,6 +61,8 @@ Route::prefix('/admin')->group(function() {
                         ->name('admin.users.delete')
                         ->can('delete user');
                 });
+
+            Route::get('/roles', RoleListController::class)->name('admin.roles.index');
         });
 
         Route::post('logout', [AdminLoginController::class, 'destroy'])

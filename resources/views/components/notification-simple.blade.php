@@ -17,7 +17,7 @@
     x-transition:leave-end="opacity-0"
     x-data="{ show: true }"
     x-show="show"
-    x-init="setTimeout(() => show = false, 4000)"
+    x-init="setTimeout(() => show = false, 6000)"
     class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
     <div class="p-4">
         <div class="flex items-start">

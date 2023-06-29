@@ -10,6 +10,7 @@ use App\Traits\HttpResponse;
 use Config;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
@@ -19,10 +20,14 @@ class UserController extends Controller
 {
     use HttpResponse;
 
-    public function index(): View
+    public function index(Request $request): View
     {
+        $sort_by = $request->query('sort_by') ?? 'id';
+        $order_by = $request->query('order_by') ?? 'asc';
         return view('users.list', [
-            'users' => UserResource::collection(User::all())
+            'users' => UserResource::collection(
+                User::orderBy($sort_by, $order_by)->paginate(10)->withQueryString()
+            )
         ]);
     }
 
@@ -30,6 +35,13 @@ class UserController extends Controller
     {
         return view('users.edit', [
             'user' => $user,
+            'roles' => Role::all()->pluck('name', 'id')
+        ]);
+    }
+
+    public function create(): View
+    {
+        return view('users.create', [
             'roles' => Role::all()->pluck('name', 'id')
         ]);
     }
