@@ -6,7 +6,6 @@ use Spatie\Permission\Models\Role;
 
 class RoleListController extends Controller
 {
-
     public function __invoke()
     {
         $roles = Role::all();
