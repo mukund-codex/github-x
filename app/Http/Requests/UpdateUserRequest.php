@@ -14,8 +14,8 @@ class UpdateUserRequest extends FormRequest
         return [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['nullable', 'string', 'max:255'],
-            'password' => ['nullable', 'confirmed', Rules\Password::defaults()],
-            'role' => ['nullable', 'string', Rule::in(Config::get('const.roles'))],
+            'role' => ['nullable', 'array'],
+            'role.*' => ['string', Rule::in(Config::get('const.roles'))],
         ];
     }
 }

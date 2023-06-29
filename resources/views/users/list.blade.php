@@ -65,7 +65,7 @@
                                         {{ __('Roles') }}
                                     </th>
                                     <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                                        <span class="sr-only">Edit</span>
+                                        <span class="sr-only">{{ __('Actions') }}</span>
                                     </th>
                                 </tr>
                                 </thead>
@@ -83,17 +83,15 @@
                                         </td>
                                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                             @forelse ($user->roles as $role)
-                                                {{ $role->name }}
-                                                @if (!$loop->last)
-                                                    ,
-                                                @endif
+                                                <span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-500 ring-1 ring-inset ring-gray-600/20">{{ $role->name }}</span>
+
                                             @empty
                                                 <i>no roles</i>
                                             @endforelse
                                         </td>
                                         <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                                             @can('update user')
-                                                <a href="{{ route('admin.users.edit', $user) }}" class="text-indigo-600 hover:text-indigo-900 px-2">Edit<span
+                                                <a href="{{ route('admin.users.edit', $user) }}" class="text-orange-400 hover:text-orange-600 px-2">Edit<span
                                                         class="sr-only">, {{ $user->first_name }} {{ $user->last_name }}</span></a>
                                             @endcan
                                             @can('remove user')

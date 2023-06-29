@@ -13,6 +13,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -28,7 +29,8 @@ class UserController extends Controller
     public function edit(User $user): View
     {
         return view('users.edit', [
-            'user' => $user
+            'user' => $user,
+            'roles' => Role::all()->pluck('name', 'id')
         ]);
     }
 
@@ -56,9 +58,6 @@ class UserController extends Controller
     {
         $request->validated();
         $update = $request->safe();
-        if (isset($update['password'])) {
-            $update['password'] = Hash::make($update['password']);
-        }
         $user->update($update->except('role'));
         if (isset($update['role'])) {
             $user->syncRoles([$update['role']]);
