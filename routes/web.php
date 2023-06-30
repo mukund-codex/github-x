@@ -57,8 +57,8 @@ Route::prefix('/admin')->group(function() {
                     Route::get('/', 'index')
                         ->name('admin.users.index')
                         ->can('view users');
-                    Route::get('/{user}/delete', 'delete')
-                        ->name('admin.users.delete')
+                    Route::delete('/{user}', 'destroy')
+                        ->name('admin.users.destroy')
                         ->can('delete user');
                 });
 

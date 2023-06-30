@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\ForbiddenException;
 use App\Http\Requests\Auth\RegisterUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Http\Resources\UserResource;
@@ -79,8 +80,14 @@ class UserController extends Controller
 
     }
 
-    public function delete(User $user): RedirectResponse
+    /**
+     * @throws \App\Exceptions\ForbiddenException
+     */
+    public function destroy(Request $request, User $user): RedirectResponse
     {
+        if ($user->id === $request->user()->id) {
+            throw new ForbiddenException('You cannot remove yourself');
+        }
         $user->delete();
         return Redirect::route('admin.users.index', $user)->with('status', 'user-deleted');
     }
