@@ -58,7 +58,9 @@
                                     <x-th-sortable title="Last name" field="last_name"></x-th-sortable>
                                     <x-th-sortable title="Email" field="email"></x-th-sortable>
                                     <x-th-sortable title="Status" field="email_verified_at"></x-th-sortable>
-
+                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                        {{ __('Subscription') }}
+                                    </th>
                                     <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                                         {{ __('Roles') }}
                                     </th>
@@ -84,6 +86,9 @@
                                         </td>
                                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                             <x-bullet-boolean :condition="$user->hasVerifiedEmail()" success="Verified" fail="Not Verified"></x-bullet-boolean>
+                                        </td>
+                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                            <x-bullet-boolean :condition="$user->subscribed()" data-tooltip-target="tooltip-default" :success="Str::ucfirst($user->subscription()?->stripe_status)" fail="No"></x-bullet-boolean>
                                         </td>
                                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                             @forelse ($user->roles as $role)

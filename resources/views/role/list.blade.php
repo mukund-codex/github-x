@@ -26,7 +26,7 @@
                         <tbody class="divide-y divide-gray-200 bg-white">
                         @foreach($roles as $role)
                             <tr class="divide-x divide-gray-200">
-                                <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-0">{{$role->name}}</td>
+                                <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-0">{{Str::ucfirst($role->name)}}</td>
                                 <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-0">
                                     @forelse($role->permissions as $permission)
                                         <span
