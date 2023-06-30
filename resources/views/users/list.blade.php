@@ -3,14 +3,14 @@
 {{--        {{ __('Users') }}--}}
     </x-slot>
 
-{{--    @if (session('status') === 'user-updated')--}}
+    @if (session('status') === 'user-updated')
         <x-slot name="notification">
             <x-notification-simple>
                 Successfully updated!
                 <x-slot name="description">User data has been changed</x-slot>
             </x-notification-simple>
         </x-slot>
-{{--    @endif--}}
+    @endif
 
     @if (session('status') === 'user-deleted')
         <x-slot name="notification">
