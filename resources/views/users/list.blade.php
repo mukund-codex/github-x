@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-{{--        {{ __('Users') }}--}}
+        {{ __('Users') }}
     </x-slot>
 
     @if (session('status') === 'user-updated')
