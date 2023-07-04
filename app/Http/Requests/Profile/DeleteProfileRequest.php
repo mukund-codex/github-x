@@ -14,10 +14,4 @@ class DeleteProfileRequest extends FormRequest
             'password' => ['required', 'current_password'],
         ];
     }
-
-    public function authorize(): bool
-    {
-        return true;
-    }
-
 }
