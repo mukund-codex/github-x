@@ -1,37 +1,36 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\UpdateProfileRequest;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Profile\DeleteProfileRequest;
+use App\Http\Requests\Profile\UpdateProfilePasswordRequest;
+use App\Http\Requests\Profile\UpdateProfileRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Validation\Rules\Password;
 use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display the user's profile form.
-     */
     public function edit(Request $request): View
     {
-        return view('profile.edit', [
-            'user' => $request->user(),
-        ]);
+        return view('profile.edit', ['user' => $request->user(),]);
     }
 
-    /**
-     * Update the user's profile information.
-     */
     public function update(UpdateProfileRequest $request): RedirectResponse
     {
         $request->user()->fill($request->validated());
 
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
+            $request->user()->sendEmailVerificationNotification();
+            $request->user()->save();
+            Auth::logout();
+            return Redirect::route('admin.login')
+                ->withErrors(['email' => __('Check your inbox and verify e-mail')]);
         }
 
         $request->user()->save();
@@ -39,13 +38,9 @@ class ProfileController extends Controller
         return Redirect::route('admin.profile.edit')->with('status', 'profile-updated');
     }
 
-    public function updatePassword(Request $request): RedirectResponse
+    public function updatePassword(UpdateProfilePasswordRequest $request): RedirectResponse
     {
-        $validated = $request->validateWithBag('updatePassword', [
-            'current_password' => ['required', 'current_password'],
-            'password' => ['required', Password::defaults(), 'confirmed'],
-        ]);
-
+        $validated = $request->validated();
         $request->user()->update([
             'password' => Hash::make($validated['password']),
         ]);
@@ -53,15 +48,9 @@ class ProfileController extends Controller
         return back()->with('status', 'password-updated');
     }
 
-    /**
-     * Delete the user's account.
-     */
-    public function destroy(Request $request): RedirectResponse
+    public function destroy(DeleteProfileRequest $request): RedirectResponse
     {
-        $request->validateWithBag('userDeletion', [
-            'password' => ['required', 'current_password'],
-        ]);
-
+        $request->validated();
         $user = $request->user();
 
         Auth::logout();
