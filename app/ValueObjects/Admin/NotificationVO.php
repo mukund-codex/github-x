@@ -10,5 +10,6 @@ readonly class NotificationVO
         public NotificationEnum $type,
         public string $title,
         public string $description = ''
-    ) {}
+    ) {
+    }
 }

@@ -22,7 +22,6 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-
     use HttpResponse;
 
     public function index(Request $request): View
@@ -71,10 +70,13 @@ class UserController extends Controller
 
         event(new Registered($user));
 
-        return Redirect::route('admin.users.index', $user)->with('notification',
-            new NotificationVO(NotificationEnum::SUCCESS,
+        return Redirect::route('admin.users.index', $user)->with(
+            'notification',
+            new NotificationVO(
+                NotificationEnum::SUCCESS,
                 __('Successfully created!'),
-                __('User has been created'))
+                __('User has been created')
+            )
         );
     }
 
@@ -89,10 +91,13 @@ class UserController extends Controller
             $user->syncRoles([$update['role']]);
         }
 
-        return Redirect::route('admin.users.index', $user)->with('notification',
-            new NotificationVO(NotificationEnum::SUCCESS,
+        return Redirect::route('admin.users.index', $user)->with(
+            'notification',
+            new NotificationVO(
+                NotificationEnum::SUCCESS,
                 __('Successfully updated!'),
-                __('User data has been changed'))
+                __('User data has been changed')
+            )
         );
 
     }
@@ -107,10 +112,13 @@ class UserController extends Controller
         }
         $user->delete();
 
-        return Redirect::route('admin.users.index', $user)->with('notification',
-            new NotificationVO(NotificationEnum::SUCCESS,
+        return Redirect::route('admin.users.index', $user)->with(
+            'notification',
+            new NotificationVO(
+                NotificationEnum::SUCCESS,
                 __('Successfully deleted!'),
-                __('User has been deleted'))
+                __('User has been deleted')
+            )
         );
     }
 
