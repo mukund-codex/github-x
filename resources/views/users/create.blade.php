@@ -20,21 +20,21 @@
                             <div>
                                 <x-input-label for="first_name" :value="__('First Name')"/>
                                 <x-text-input id="first_name" name="first_name" type="text" class="mt-1 block w-full"
-                                              required autofocus autocomplete="first_name"/>
+                                              :value="old('first_name')" required autofocus autocomplete="first_name"/>
                                 <x-input-error class="mt-2" :messages="$errors->get('first_name')"/>
                             </div>
 
                             <div>
                                 <x-input-label for="last_name" :value="__('Last Name')"/>
                                 <x-text-input id="last_name" name="last_name" type="text" class="mt-1 block w-full"
-                                              required autocomplete="last_name"/>
+                                              :value="old('last_name')" required autocomplete="last_name"/>
                                 <x-input-error class="mt-2" :messages="$errors->get('last_name')"/>
                             </div>
 
                             <div>
                                 <x-input-label for="email" :value="__('Email')"/>
                                 <x-text-input id="email" name="email" type="email" class="mt-1 block w-full"
-                                              required autocomplete="username"/>
+                                              :value="old('email')" required autocomplete="username"/>
                                 <x-input-error class="mt-2" :messages="$errors->get('email')"/>
                             </div>
 
@@ -71,7 +71,8 @@
                                                            class="select-none font-medium text-gray-900 dark:text-gray-300">{{$role}}</label>
                                                 </div>
                                                 <div class="ml-3 flex h-6 items-center">
-                                                    <input id="role-{{$i}}" name="role[]" type="checkbox" value="{{$role}}"
+                                                    <input id="role-{{$i}}" name="role[{{$i}}]" type="checkbox" value="{{$role}}"
+                                                           {{ (is_array(old('role')) and in_array($role, old('role'))) ? ' checked' : '' }}
                                                            class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-orange-600 shadow-sm focus:ring-orange-500 dark:focus:ring-orange-600 dark:focus:ring-offset-gray-800">
                                                 </div>
                                             </div>
