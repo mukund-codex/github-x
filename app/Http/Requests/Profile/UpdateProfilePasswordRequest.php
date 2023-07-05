@@ -16,10 +16,4 @@ class UpdateProfilePasswordRequest extends FormRequest
             'password' => ['required', Password::defaults(), 'confirmed'],
         ];
     }
-
-    public function authorize(): bool
-    {
-        return true;
-    }
-
 }
