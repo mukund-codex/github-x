@@ -3,30 +3,10 @@
         {{ __('Users') }}
     </x-slot>
 
-    @if (session('status') === 'user-updated')
+    @if($notification = session('notification'))
         <x-slot name="notification">
-            <x-notification-simple>
-                Successfully updated!
-                <x-slot name="description">User data has been changed</x-slot>
-            </x-notification-simple>
-        </x-slot>
-    @endif
-
-    @if (session('status') === 'user-deleted')
-        <x-slot name="notification">
-            <x-notification-simple>
-                Successfully deleted!
-                <x-slot name="description">User has been deleted</x-slot>
-            </x-notification-simple>
-        </x-slot>
-    @endif
-
-    @if (session('status') === 'user-created')
-        <x-slot name="notification">
-            <x-notification-simple>
-                Successfully created!
-                <x-slot name="description">User has been created</x-slot>
-            </x-notification-simple>
+            <x-notification-simple :type="$notification->type" :title="$notification->title"
+                                   :description="$notification->description"/>
         </x-slot>
     @endif
 
@@ -60,10 +40,12 @@
                                     <x-th-sortable title="Last name" field="last_name"></x-th-sortable>
                                     <x-th-sortable title="Email" field="email"></x-th-sortable>
                                     <x-th-sortable title="Status" field="email_verified_at"></x-th-sortable>
-                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-300">
+                                    <th scope="col"
+                                        class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-300">
                                         {{ __('Subscription') }}
                                     </th>
-                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-300">
+                                    <th scope="col"
+                                        class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-300">
                                         {{ __('Roles') }}
                                     </th>
                                     <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">

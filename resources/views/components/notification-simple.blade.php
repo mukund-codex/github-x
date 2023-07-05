@@ -7,26 +7,34 @@
     x-transition:leave-end="opacity-0"
     x-data="{ show: true }"
     x-show="show"
-    x-init="setTimeout(() => show = false, 6000)"
-    class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+    x-init="setTimeout(() => show = false, 8000)"
+    class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white dark:bg-gray-600 shadow-lg ring-1 ring-black ring-opacity-5">
     <div class="p-4">
         <div class="flex items-start">
             <div class="flex-shrink-0">
-                <svg class="h-6 w-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                     stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
+            @if($type === 'fail')
+                    <svg class="h-6 w-6 text-rose-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                         stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                @else
+                    <svg class="h-6 w-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                         stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                @endif
             </div>
             <div class="ml-3 w-0 flex-1 pt-0.5">
-                <p class="text-sm font-medium text-gray-900">{{$slot}}</p>
+                <p class="text-sm font-medium text-gray-900 dark:text-gray-100">{{$title}}</p>
                 @if (isset($description))
-                   <p class="mt-1 text-sm text-gray-500">{{$description}}</p>
+                   <p class="mt-1 text-sm text-gray-500 dark:text-gray-200">{{$description}}</p>
                 @endif
             </div>
             <div class="ml-4 flex flex-shrink-0">
                 <button type="button"
-                        class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" @click="show = false">
+                        class="inline-flex rounded-md bg-white dark:bg-gray-500 text-gray-400 dark:text-gray-300 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" @click="show = false">
                     <span class="sr-only">Close</span>
                     <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                         <path

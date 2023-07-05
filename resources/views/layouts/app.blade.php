@@ -189,7 +189,6 @@
     </div>
 </div>
 
-<!-- Global notification live region, render this permanently at the end of the document -->
 <div x-data="{}" aria-live="assertive" class="z-50 pointer-events-none fixed inset-0 flex px-4 py-6 items-end sm:p-6">
     <div class="flex w-full flex-col space-y-4 items-start">
         @if (isset($notification))
