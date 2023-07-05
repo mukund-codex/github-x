@@ -1,5 +1,12 @@
 <!DOCTYPE html>
-<html class="h-full bg-white" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html
+    lang="{{ str_replace('_', '-', app()->getLocale()) }}"
+    x-data="{
+      darkMode: localStorage.getItem('darkMode')
+      || localStorage.setItem('darkMode', 'system')}"
+    x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))"
+    x-bind:class="{'dark': darkMode === 'dark' || (darkMode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)}"
+    class="h-full bg-white dark dark:bg-gray-900">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,9 +24,9 @@
 <!-- Tailwind component URL -->
 <!-- https://tailwindui.com/components/application-ui/application-shells/sidebar#component-5548358cb34897c6b28551f2ad885eec -->
 
-<body class="h-full antialiased">
+<body class="h-full antialiased dark:bg-gray-900">
 
-<div x-data="{ open: false }">
+<div x-data="{ open: false }" class="dark:bg-gray-900">
     <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
     <div class="relative z-50 lg:hidden" role="dialog" aria-modal="true">
         <div
@@ -85,7 +92,7 @@
 
     <div class="lg:pl-72">
         <div
-            class="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
+            class="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white dark:bg-gray-900 dark:border-gray-800 px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
             <button @click="open = !open" type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden">
                 <span class="sr-only">Open sidebar</span>
                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -103,7 +110,7 @@
                     @if (isset($header))
                         <div class="flex items-center gap-x-4 lg:gap-x-6">
                             <div class="pt-2">
-                                <h2 class="font-semibold text-xl text-gray-800 text-gray-200">{{ $header }}</h2>
+                                <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200">{{ $header }}</h2>
                             </div>
                         </div>
                     @endif
@@ -123,14 +130,14 @@
 
                     <!-- Profile dropdown -->
                     <div x-data="{ isOpen: false }" class="relative">
-                        <button type="button" class="-m-1.5 flex items-center p-1.5" id="user-menu-button"
+                        <button type="button" class="-m-1.5 flex items-center p-1.5 text-gray-900 dark:text-gray-200" id="user-menu-button"
                                 aria-expanded="false" aria-haspopup="true" @click="isOpen = !isOpen">
                             <span class="sr-only">Open user menu</span>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                             </svg>
                             <span class="hidden lg:flex lg:items-center">
-                                <span class="ml-4 text-sm font-semibold leading-6 text-gray-900"
+                                <span class="ml-4 text-sm font-semibold leading-6 "
                                       aria-hidden="true">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</span>
                                 <svg class="ml-2 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"
                                      aria-hidden="true">
@@ -149,7 +156,7 @@
                             x-transition:leave="transition ease-in duration-75"
                             x-transition:leave-start="transform opacity-100 scale-100"
                             x-transition:leave-end="transform opacity-0 scale-95"
-                            class="absolute right-0 z-10 mt-2.5 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none"
+                            class="absolute right-0 z-10 mt-2.5 w-32 origin-top-right rounded-md bg-white dark:bg-gray-700 py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none"
                             role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1"
                         >
                             <!-- Active: "bg-gray-50", Not Active: "" -->
@@ -175,7 +182,7 @@
         </div>
 
         <main class="py-5">
-            <div class="px-4 sm:px-6 lg:px-8">
+            <div class="px-4 sm:px-6 lg:px-8 dark:bg-gray-900">
                 {{ $slot }}
             </div>
         </main>

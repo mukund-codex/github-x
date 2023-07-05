@@ -34,8 +34,8 @@
         <div class="px-4 sm:px-6 lg:px-8">
             <div class="sm:flex sm:items-center">
                 <div class="sm:flex-auto">
-                    <h1 class="text-base font-semibold leading-6 text-gray-900">List</h1>
-                    <p class="mt-2 text-sm text-gray-700">A list of all the users.</p>
+                    <h1 class="text-base font-semibold leading-6 text-gray-900 dark:text-gray-100">List</h1>
+                    <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">A list of all the users.</p>
                 </div>
                 <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
                     <a href="{{ route('admin.users.create') }}"
@@ -52,18 +52,18 @@
                 <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
                         <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
-                            <table class="min-w-full divide-y divide-gray-300">
-                                <thead class="bg-gray-50">
+                            <table class="min-w-full divide-y divide-gray-300 dark:divide-gray-700">
+                                <thead class="bg-gray-50 dark:bg-gray-700">
                                 <tr>
                                     <x-th-sortable title="ID" field="id"></x-th-sortable>
                                     <x-th-sortable title="First name" field="first_name"></x-th-sortable>
                                     <x-th-sortable title="Last name" field="last_name"></x-th-sortable>
                                     <x-th-sortable title="Email" field="email"></x-th-sortable>
                                     <x-th-sortable title="Status" field="email_verified_at"></x-th-sortable>
-                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-300">
                                         {{ __('Subscription') }}
                                     </th>
-                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-300">
                                         {{ __('Roles') }}
                                     </th>
                                     <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
@@ -71,35 +71,35 @@
                                     </th>
                                 </tr>
                                 </thead>
-                                <tbody class="divide-y divide-gray-200 bg-white">
+                                <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-800">
                                 @foreach ($users as $user)
-                                    <tr class="even:bg-gray-50">
-                                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                    <tr class="even:bg-gray-50 dark:even:bg-gray-900">
+                                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 dark:text-gray-200 sm:pl-6">
                                             {{ $user->id }}
                                         </td>
-                                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 dark:text-gray-200 sm:pl-6">
                                             {{ $user->first_name }}
                                         </td>
-                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-200">
                                             {{ $user->last_name }}
                                         </td>
-                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-200">
                                             {{ $user->email }}
                                         </td>
-                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-200">
                                             <x-bullet-boolean :condition="$user->hasVerifiedEmail()" success="Verified"
                                                               fail="Not Verified"></x-bullet-boolean>
                                         </td>
-                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-200">
                                             <x-bullet-boolean :condition="$user->subscribed()"
                                                               data-tooltip-target="tooltip-default"
                                                               :success="Str::ucfirst($user->subscription()?->stripe_status)"
                                                               fail="No"></x-bullet-boolean>
                                         </td>
-                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-200">
                                             @forelse ($user->roles as $role)
                                                 <span
-                                                    class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-500 ring-1 ring-inset ring-gray-600/20">{{ $role->name }}</span>
+                                                    class="inline-flex items-center rounded-md bg-gray-50 dark:bg-gray-700 px-2 py-1 text-xs font-medium text-gray-500 dark:text-gray-200 ring-1 ring-inset ring-gray-600/20">{{ $role->name }}</span>
 
                                             @empty
                                                 <i>no roles</i>
@@ -140,13 +140,13 @@
                                                             @csrf
                                                             @method('delete')
 
-                                                            <h2 class="text-lg font-medium text-center text-gray-900 text-gray-100">
+                                                            <h2 class="text-lg font-medium text-center text-gray-900 dark:text-gray-100">
                                                                 {{ __("Are you sure you want to delete this account?") }}
                                                             </h2>
-                                                            <p class="my-5 p-6 text-lg text-center text-gray-600 text-gray-400">
+                                                            <p class="my-5 p-6 text-lg text-center text-gray-600 dark:text-gray-400">
                                                                 {{$user->email}}
                                                             </p>
-                                                            <p class="mt-1 text-sm text-gray-600 text-gray-400">
+                                                            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
                                                                 {{ __('Once account is deleted, all of its resources and data will be permanently deleted.') }}
                                                             </p>
 

@@ -4,11 +4,11 @@
     </x-slot>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white bg-gray-800 shadow sm:rounded-lg">
+            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
                 <div class="max-w-xl">
                     <section>
                         <header>
-                            <h2 class="text-lg font-medium text-gray-900 text-gray-100">
+                            <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
                                 {{ __('Create User') }}
                             </h2>
                         </header>
@@ -62,17 +62,17 @@
 
                             <div>
                                 <fieldset>
-                                    <legend class="text-base font-semibold leading-6 text-gray-900">Roles</legend>
-                                    <div class="mt-4 divide-y divide-gray-200 border-b border-t border-gray-200">
+                                    <legend class="text-base font-semibold leading-6 text-gray-900 dark:text-gray-200">Roles</legend>
+                                    <div class="mt-4 divide-y divide-gray-200 dark:divide-gray-600 border-b border-t border-gray-200 dark:border-gray-600">
                                         @foreach($roles as $i => $role)
                                             <div class="relative flex items-start py-2">
                                                 <div class="min-w-0 flex-1 text-sm leading-6">
                                                     <label for="role-{{$i}}"
-                                                           class="select-none font-medium text-gray-900">{{$role}}</label>
+                                                           class="select-none font-medium text-gray-900 dark:text-gray-300">{{$role}}</label>
                                                 </div>
                                                 <div class="ml-3 flex h-6 items-center">
                                                     <input id="role-{{$i}}" name="role[]" type="checkbox" value="{{$role}}"
-                                                           class="h-4 w-4 rounded border-gray-300 text-orange-600 focus:ring-orange-600">
+                                                           class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-orange-600 shadow-sm focus:ring-orange-500 dark:focus:ring-orange-600 dark:focus:ring-offset-gray-800">
                                                 </div>
                                             </div>
                                         @endforeach
