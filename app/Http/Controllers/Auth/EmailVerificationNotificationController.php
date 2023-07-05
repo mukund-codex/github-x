@@ -12,7 +12,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class EmailVerificationNotificationController extends Controller
 {
-
     use HttpResponse;
 
     /**
@@ -24,14 +23,19 @@ class EmailVerificationNotificationController extends Controller
     ): JsonResponse|RedirectResponse {
         $user = $user ?? $request->user();
         if ($user->hasVerifiedEmail()) {
-            return $this->response([], 'User is already verified',
-                Response::HTTP_UNPROCESSABLE_ENTITY);
+            return $this->response(
+                [],
+                'User is already verified',
+                Response::HTTP_UNPROCESSABLE_ENTITY
+            );
         }
 
         $user->sendEmailVerificationNotification();
 
-        return $this->response(['status' => 'verification-link-sent'],
-            'Verification link sent');
+        return $this->response(
+            ['status' => 'verification-link-sent'],
+            'Verification link sent'
+        );
     }
 
 }
