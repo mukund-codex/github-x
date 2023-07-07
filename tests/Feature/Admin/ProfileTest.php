@@ -145,6 +145,7 @@ class ProfileTest extends TestCase
         $admin->update([
             'password' => Hash::make('Password@123'),
         ]);
+        $id = $admin->id;
 
         $this->actingAs($admin)
             ->delete(route('admin.profile.destroy'), [
@@ -152,6 +153,7 @@ class ProfileTest extends TestCase
             ])
             ->assertRedirect(route('admin.login'));
         $this->assertFalse($this->isAuthenticated());
+        $this->assertDatabaseMissing('users', ['id' => $id]);
     }
 
     public function testSuperAdminCannotDeleteProfileIfWrongPassword()
@@ -165,7 +167,7 @@ class ProfileTest extends TestCase
             ->delete(route('admin.profile.destroy'), [
                 'password' => 'wrong_password',
             ])
-            ->assertInvalid(['password']);
+            ->assertInvalid(['password'], 'userDeletion');
         $this->assertTrue($this->isAuthenticated());
     }
 }

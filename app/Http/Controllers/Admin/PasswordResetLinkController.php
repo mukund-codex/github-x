@@ -5,16 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Enums\NotificationEnum;
 use App\Http\Controllers\Controller;
 use App\ValueObjects\Admin\NotificationVO;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
-use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
 class PasswordResetLinkController extends Controller
 {
-
     public function create(): View
     {
         return view('forgot-password');
@@ -31,7 +28,9 @@ class PasswordResetLinkController extends Controller
         );
 
         return $status === Password::RESET_LINK_SENT
-            ? redirect(route('admin.login'))->with('notification', new NotificationVO(
+            ? redirect(route('admin.login'))->with(
+                'notification',
+                new NotificationVO(
                     NotificationEnum::SUCCESS,
                     __('Success!'),
                     __($status)

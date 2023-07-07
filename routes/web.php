@@ -72,7 +72,9 @@ Route::prefix('/admin')->group(function() {
                         ->can('delete user');
                 });
 
-            Route::get('/roles', RoleListController::class)->name('admin.roles.index');
+            Route::get('/roles', RoleListController::class)
+                ->name('admin.roles.index')
+                ->can('view roles');
         });
 
         Route::post('logout', [LoginController::class, 'destroy'])
