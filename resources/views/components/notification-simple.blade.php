@@ -12,7 +12,7 @@
     <div class="p-4">
         <div class="flex items-start">
             <div class="flex-shrink-0">
-            @if($type === 'fail')
+            @if($type === \App\Enums\NotificationEnum::FAIL)
                     <svg class="h-6 w-6 text-rose-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                          stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round"

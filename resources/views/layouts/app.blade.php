@@ -191,9 +191,15 @@
 
 <div x-data="{}" aria-live="assertive" class="z-50 pointer-events-none fixed inset-0 flex px-4 py-6 items-end sm:p-6">
     <div class="flex w-full flex-col space-y-4 items-start">
-        @if (isset($notification))
-            {{ $notification }}
+        @if($notification = session('notification'))
+{{--            <x-slot name="notification">--}}
+                <x-notification-simple :type="$notification->type" :title="$notification->title"
+                                       :description="$notification->description"/>
+{{--            </x-slot>--}}
         @endif
+{{--        @if (isset($notification))--}}
+{{--            {{ $notification }}--}}
+{{--        @endif--}}
     </div>
 </div>
 
