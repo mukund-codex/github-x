@@ -117,8 +117,10 @@ test('User cannot update users', function () {
     $id = $test_user->id;
     $first_name = $test_user->first_name;
     $this->actingAs($this->user)
-        ->patch(route('admin.users.update', $test_user),
-            ['first_name' => 'test123'])
+        ->patch(
+            route('admin.users.update', $test_user),
+            ['first_name' => 'test123']
+        )
         ->assertForbidden();
     $this->assertDatabaseHas('users', [
         'id' => $id,
@@ -131,8 +133,10 @@ test('User with permissions can update users', function () {
     $test_user = User::factory()->create();
     $id = $test_user->id;
     $this->actingAs($this->user)
-        ->patch(route('admin.users.update', $test_user),
-            ['first_name' => 'test123'])
+        ->patch(
+            route('admin.users.update', $test_user),
+            ['first_name' => 'test123']
+        )
         ->assertValid();
     $this->assertDatabaseHas('users', [
         'id' => $id,

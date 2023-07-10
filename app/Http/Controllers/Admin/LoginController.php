@@ -13,7 +13,6 @@ use Illuminate\View\View;
 
 class LoginController extends Controller
 {
-
     use HttpResponse;
 
     public function index(): View
