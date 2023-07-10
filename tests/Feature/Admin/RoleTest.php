@@ -1,38 +1,30 @@
 <?php
 
-namespace Tests\Feature\Admin;
-
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Spatie\Permission\Models\Role;
-use Tests\TestCase;
 
-class RoleTest extends TestCase
-{
-    use RefreshDatabase;
+uses(RefreshDatabase::class);
 
-    public function testSuperAdminCanSeeRoleTable()
-    {
-        $admin = (User::factory()->create())->assignRole(config('const.roles.super_admin'));
-        $this->actingAs($admin)
-            ->get(route('admin.roles.index'))
-            ->assertOk();
-    }
+beforeEach(function() {
+    $this->seed();
+    $this->admin = createSuperAdmin();
+    $this->user = createUser();
+});
 
-    public function testUserCannotSeeRoleTable()
-    {
-        $user = (User::factory()->create())->assignRole(config('const.roles.user'));
-        $this->actingAs($user)
-            ->get(route('admin.roles.index'))
-            ->assertForbidden();
-    }
+test('Super Admin can see Role table', function() {
+    $this->actingAs($this->admin)
+        ->get(route('admin.roles.index'))
+        ->assertOk();
+});
 
-    public function testUserWithPermissionsCanSeeRoleTable()
-    {
-        $user = (User::factory()->create())->assignRole(config('const.roles.user'));
-        $user->givePermissionTo('view dashboard', 'view roles');
-        $this->actingAs($user)
-            ->get(route('admin.roles.index'))
-            ->assertOk();
-    }
-}
+test('User cannot see role table', function() {
+    $this->actingAs($this->user)
+        ->get(route('admin.roles.index'))
+        ->assertForbidden();
+});
+
+test('User with permissions can see role table', function() {
+    $this->user->givePermissionTo('view dashboard', 'view roles');
+    $this->actingAs($this->user)
+        ->get(route('admin.roles.index'))
+        ->assertOk();
+});

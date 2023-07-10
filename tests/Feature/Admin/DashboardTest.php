@@ -1,49 +1,40 @@
 <?php
 
-namespace Tests\Feature\Admin;
-
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Spatie\Permission\Models\Role;
-use Tests\TestCase;
 
-class DashboardTest extends TestCase
-{
-    use RefreshDatabase;
+uses(RefreshDatabase::class);
 
-    public function testSuperAdminCanSeeDashboard()
-    {
-        $admin = (User::factory()->create())->assignRole(config('const.roles.super_admin'));
-        $this->actingAs($admin)
-            ->get(route('admin.dashboard'))
-            ->assertOk();
-    }
+beforeEach(function () {
+    $this->seed();
+    $this->admin = createSuperAdmin();
+    $this->user = createUser();
+    $this->role_user = getRoleUser();
+});
 
-    public function testUserWithoutPermissionCannotSeeDashboard()
-    {
-        $user = (User::factory()->create())->assignRole(config('const.roles.user'));
-        $this->actingAs($user)
-            ->get(route('admin.dashboard'))
-            ->assertForbidden();
-    }
+test('Super Admin can see Dashboard', function () {
+    $this->actingAs($this->admin)
+        ->get(route('admin.dashboard'))
+        ->assertOk();
+});
 
-    public function testUserWithPermissionCanSeeDashboard()
-    {
-        $user = (User::factory()->create())->assignRole(config('const.roles.user'));
-        $user->givePermissionTo('view dashboard');
-        $this->actingAs($user)
-            ->get(route('admin.dashboard'))
-            ->assertOk();
-    }
+test('User without permissions cannot see Dashboard', function () {
+    $this->actingAs($this->user)
+        ->get(route('admin.dashboard'))
+        ->assertForbidden();
+});
 
-    public function testUserWithRolePermissionCanSeeDashboard()
-    {
-        $user = (User::factory()->create())->assignRole(config('const.roles.user'));
-        Role::where('name', config('const.roles.user'))->first()
-            ->givePermissionTo('view dashboard');
+test('User with permissions can see Dashboard', function () {
+    $this->user->givePermissionTo('view dashboard');
+    $this->actingAs($this->user)
+        ->get(route('admin.dashboard'))
+        ->assertOk();
+});
 
-        $this->actingAs($user)
-            ->get(route('admin.dashboard'))
-            ->assertOk();
-    }
-}
+test('User with role with permission can see Dashboard', function () {
+    $this->role_user->givePermissionTo('view dashboard');
+    $this->actingAs($this->user)
+        ->get(route('admin.dashboard'))
+        ->assertOk();
+});
+

@@ -1,173 +1,154 @@
 <?php
 
-namespace Tests\Feature\Admin;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 
-class ProfileTest extends TestCase
-{
-    use RefreshDatabase;
+uses(RefreshDatabase::class);
 
-    public function testSuperAdminCanSeeProfile()
-    {
-        $admin = (User::factory()->create())->assignRole(config('const.roles.super_admin'));
-        $this->actingAs($admin)
-            ->get(route('admin.profile.edit'))
-            ->assertOk();
-    }
+beforeEach(function() {
+    $this->seed();
+    $this->admin = createSuperAdmin();
+    $this->user = createUser();
+});
 
-    public function testUserCannotSeeProfile()
-    {
-        $user = (User::factory()->create())->assignRole(config('const.roles.user'));
-        $this->actingAs($user)
-            ->get(route('admin.profile.edit'))
-            ->assertForbidden();
-    }
+test('Super admin can see profile', function() {
+    $this->actingAs($this->admin)
+        ->get(route('admin.profile.edit'))
+        ->assertOk();
+});
 
-    public function testSuperAdminCanUpdateProfile()
-    {
-        $admin = (User::factory()->create())->assignRole(config('const.roles.super_admin'));
-        $this->actingAs($admin)
-            ->patch(route('admin.profile.update'), [
-                'first_name' => 'test_first_name',
-                'last_name' => 'test_last_name'
-            ]);
-        $this->assertTrue($admin->first_name === 'test_first_name');
-        $this->assertTrue($admin->last_name === 'test_last_name');
-    }
-
-    public function testUserCannotUpdateProfile()
-    {
-        $user = (User::factory()->create())->assignRole(config('const.roles.user'));
-        $this->actingAs($user)
-            ->patch(route('admin.profile.update'), [
-                'first_name' => 'test123'
-            ])
-            ->assertForbidden();
-        $this->assertFalse($user->first_name === 'test123');
-    }
-
-    public function testSuperAdminCanUpdateProfileEmail()
-    {
-        $admin = (User::factory()->create())->assignRole(config('const.roles.super_admin'));
-        $this->actingAs($admin)
-            ->patch(route('admin.profile.update'), [
-                'email' => 'test@example.com',
-            ]);
-        $this->assertNull($admin->email_verified_at);
-        $this->assertTrue($admin->email === 'test@example.com');
-        $this->assertFalse($this->isAuthenticated());
-    }
-
-    public function testSuperAdminCanUpdateProfilePassword()
-    {
-        $admin = (User::factory()->create())->assignRole(config('const.roles.super_admin'));
-        $admin->update([
-            'password' => Hash::make('Password@123'),
-        ]);
-
-        $response = $this->actingAs($admin)
-            ->put(route('admin.password.update'), [
-                'current_password' => 'Password@123',
-                'password' => 'Password@1234',
-                'password_confirmation' => 'Password@1234'
-            ]);
-        $response->assertValid(['current_password', 'password'], 'updatePassword');
-    }
-
-    public function testUserCannotUpdateProfilePassword()
-    {
-        $user = (User::factory()->create())->assignRole(config('const.roles.user'));
-        $user->update([
-            'password' => Hash::make('Password@123'),
-        ]);
-
-        $this->actingAs($user)
-            ->put(route('admin.password.update'), [
-                'current_password' => 'Password@123',
-                'password' => 'Password@1234',
-                'password_confirmation' => 'Password@1234'
-            ])
+test('User cannot see profile', function() {
+    $this->actingAs($this->user)
+        ->get(route('admin.profile.edit'))
         ->assertForbidden();
-    }
+});
 
-    public function testSuperAdminCannotUpdateProfilePasswordIfNotMatch()
-    {
-        $admin = (User::factory()->create())->assignRole(config('const.roles.super_admin'));
-        $admin->update([
-            'password' => Hash::make('Password@123'),
+test('Super Admin can update profile', function() {
+    $this->actingAs($this->admin)
+        ->patch(route('admin.profile.update'), [
+            'first_name' => 'test_first_name',
+            'last_name' => 'test_last_name'
         ]);
 
-        $this->actingAs($admin)
-            ->put(route('admin.password.update'), [
-                'current_password' => 'Password@123',
-                'password' => 'password',
-                'password_confirmation' => 'password_not_match'
-            ])
-            ->assertInvalid(['password'], 'updatePassword');
-    }
+    expect($this->admin)
+        ->first_name->toBe('test_first_name')
+        ->last_name->toBe('test_last_name');
+});
 
-    public function testSuperAdminCannotUpdateProfilePasswordIfNotPassRequirements()
-    {
-        $admin = (User::factory()->create())->assignRole(config('const.roles.super_admin'));
-        $admin->update([
-            'password' => Hash::make('Password@123'),
+test('User cannot update profile', function() {
+    $this->actingAs($this->user)
+        ->patch(route('admin.profile.update'), [
+            'first_name' => 'test123'
+        ])
+        ->assertForbidden();
+    expect($this->user)->first_name->not->toBe('test123');
+});
+
+test('Super Admin can update profile e-mail', function() {
+    $this->actingAs($this->admin)
+        ->patch(route('admin.profile.update'), [
+            'email' => 'test@example.com',
         ]);
+    expect($this->admin)
+        ->email_verified_at->toBeNull()
+        ->email->toBe('test@example.com')
+        ->not->toBeAuthenticated();
+});
 
-        $this->actingAs($admin)
-            ->put(route('admin.password.update'), [
-                'current_password' => 'Password@123',
-                'password' => 'password',
-                'password_confirmation' => 'password'
-            ])
-            ->assertInvalid(['password'], 'updatePassword');
-    }
+test('Super Admin can update profile password', function() {
+    $this->admin->update([
+        'password' => Hash::make('Password@123'),
+    ]);
 
-    public function testSuperAdminCannotUpdateProfilePasswordIfCurrentPasswordIsIncorrect()
-    {
-        $admin = (User::factory()->create())->assignRole(config('const.roles.super_admin'));
-
-        $this->actingAs($admin)
-            ->put(route('admin.password.update'), [
-                'current_password' => 'wrong_password',
-                'password' => 'Password@123123',
-                'password_confirmation' => 'Password@123123'
-            ])
-            ->assertInvalid(['current_password'], 'updatePassword');
-    }
-
-    public function testSuperAdminCanDeleteProfile()
-    {
-        $admin = (User::factory()->create())->assignRole(config('const.roles.super_admin'));
-        $admin->update([
-            'password' => Hash::make('Password@123'),
+    $response = $this->actingAs($this->admin)
+        ->put(route('admin.password.update'), [
+            'current_password' => 'Password@123',
+            'password' => 'Password@1234',
+            'password_confirmation' => 'Password@1234'
         ]);
-        $id = $admin->id;
+    $response->assertValid(['current_password', 'password'], 'updatePassword');
+});
 
-        $this->actingAs($admin)
-            ->delete(route('admin.profile.destroy'), [
-                'password' => 'Password@123',
-            ])
-            ->assertRedirect(route('admin.login'));
-        $this->assertFalse($this->isAuthenticated());
-        $this->assertDatabaseMissing('users', ['id' => $id]);
-    }
+test('User cannot update profile password', function() {
+    $this->user->update([
+        'password' => Hash::make('Password@123'),
+    ]);
 
-    public function testSuperAdminCannotDeleteProfileIfWrongPassword()
-    {
-        $admin = (User::factory()->create())->assignRole(config('const.roles.super_admin'));
-        $admin->update([
-            'password' => Hash::make('Password@123'),
-        ]);
+    $this->actingAs($this->user)
+        ->put(route('admin.password.update'), [
+            'current_password' => 'Password@123',
+            'password' => 'Password@1234',
+            'password_confirmation' => 'Password@1234'
+        ])
+        ->assertForbidden();
+});
 
-        $this->actingAs($admin)
-            ->delete(route('admin.profile.destroy'), [
-                'password' => 'wrong_password',
-            ])
-            ->assertInvalid(['password'], 'userDeletion');
-        $this->assertTrue($this->isAuthenticated());
-    }
-}
+test('Super Admin cannot update profile password if not match', function() {
+    $this->admin->update([
+        'password' => Hash::make('Password@123'),
+    ]);
+
+    $this->actingAs($this->admin)
+        ->put(route('admin.password.update'), [
+            'current_password' => 'Password@123',
+            'password' => 'password',
+            'password_confirmation' => 'password_not_match'
+        ])
+        ->assertInvalid(['password'], 'updatePassword');
+});
+
+test('Super Admin cannot update profile password if not pass requirements', function() {
+    $this->admin->update([
+        'password' => Hash::make('Password@123'),
+    ]);
+
+    $this->actingAs($this->admin)
+        ->put(route('admin.password.update'), [
+            'current_password' => 'Password@123',
+            'password' => 'password',
+            'password_confirmation' => 'password'
+        ])
+        ->assertInvalid(['password'], 'updatePassword');
+});
+
+test('Super Admin cannot update profile password if current password is incorrect', function() {
+    $this->actingAs($this->admin)
+        ->put(route('admin.password.update'), [
+            'current_password' => 'wrong_password',
+            'password' => 'Password@123123',
+            'password_confirmation' => 'Password@123123'
+        ])
+        ->assertInvalid(['current_password'], 'updatePassword');
+});
+
+test('Super Admin can delete profile', function() {
+    $this->admin->update([
+        'password' => Hash::make('Password@123'),
+    ]);
+    $id = $this->admin->id;
+
+    $this->actingAs($this->admin)
+        ->delete(route('admin.profile.destroy'), [
+            'password' => 'Password@123',
+        ])
+        ->assertRedirect(route('admin.login'));
+    expect($this->isAuthenticated())->toBeFalse();
+    $this->assertDatabaseMissing('users', ['id' => $id]);
+});
+
+test('Super Admin cannot delete profile if wrong password', function() {
+    $this->admin->update([
+        'password' => Hash::make('Password@123'),
+    ]);
+
+    $this->actingAs($this->admin)
+        ->delete(route('admin.profile.destroy'), [
+            'password' => 'wrong_password',
+        ])
+        ->assertInvalid(['password'], 'userDeletion');
+    $this->assertTrue($this->isAuthenticated());
+});
