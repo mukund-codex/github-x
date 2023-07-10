@@ -4,7 +4,6 @@ namespace Tests\Feature\Auth;
 
 use Database\Seeders\PermissionSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Spatie\Permission\Models\Permission;
 use Tests\TestCase;
 
 class RegistrationTest extends TestCase

@@ -42,7 +42,7 @@ Route::prefix('/admin')->group(function() {
         Route::middleware(['auth', 'verified'])->group(function () {
             Route::get('/', function () {
                 return view('dashboard');
-            })->name('admin.dashboard');
+            })->name('admin.dashboard')->can('view dashboard');
 
             Route::get('/profile', [ProfileController::class, 'edit'])->name('admin.profile.edit');
             Route::patch('/profile', [ProfileController::class, 'update'])->name('admin.profile.update');

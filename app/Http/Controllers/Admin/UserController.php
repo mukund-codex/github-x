@@ -108,7 +108,14 @@ class UserController extends Controller
     public function destroy(Request $request, User $user): RedirectResponse
     {
         if ($user->id === $request->user()->id) {
-            throw new ForbiddenException('You cannot remove yourself');
+            return redirect()->back()->with(
+                'notification',
+                new NotificationVO(
+                    NotificationEnum::FAIL,
+                    __('Fail!'),
+                    __('You cannot remove yourself')
+                )
+            );
         }
         $user->delete();
 

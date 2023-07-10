@@ -13,6 +13,7 @@ use Illuminate\View\View;
 
 class LoginController extends Controller
 {
+
     use HttpResponse;
 
     public function index(): View
@@ -23,7 +24,16 @@ class LoginController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
+        $user = Auth::user();
+        $has_permissions = $user->hasPermissionTo('view dashboard');
+        $has_role = $user->hasRole(config('const.roles.super_admin'));
+        if (!$has_permissions && !$has_role) {
+            Auth::logout();
 
+            return redirect()
+                ->back()
+                ->withErrors(['email' => __('You have no rights to login to Dashboard')]);
+        }
         $request->session()->regenerate();
 
         return redirect()->intended(RouteServiceProvider::HOME);
@@ -39,4 +49,5 @@ class LoginController extends Controller
 
         return redirect(route('admin.login'));
     }
+
 }

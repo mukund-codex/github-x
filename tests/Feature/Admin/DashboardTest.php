@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Spatie\Permission\Models\Role;
 
 uses(RefreshDatabase::class);
 
@@ -37,4 +36,3 @@ test('User with role with permission can see Dashboard', function () {
         ->get(route('admin.dashboard'))
         ->assertOk();
 });
-

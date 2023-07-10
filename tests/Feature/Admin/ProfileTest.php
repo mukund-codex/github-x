@@ -1,33 +1,30 @@
 <?php
 
 
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
-use Spatie\Permission\Models\Role;
-use Tests\TestCase;
 
 uses(RefreshDatabase::class);
 
-beforeEach(function() {
+beforeEach(function () {
     $this->seed();
-    $this->admin = createSuperAdmin();
-    $this->user = createUser();
+    $this->admin = createSuperAdmin(password: 'Password@123');
+    $this->user = createUser(password: 'Password@123');
 });
 
-test('Super admin can see profile', function() {
+test('Super admin can see profile', function () {
     $this->actingAs($this->admin)
         ->get(route('admin.profile.edit'))
         ->assertOk();
 });
 
-test('User cannot see profile', function() {
+test('User cannot see profile', function () {
     $this->actingAs($this->user)
         ->get(route('admin.profile.edit'))
         ->assertForbidden();
 });
 
-test('Super Admin can update profile', function() {
+test('Super Admin can update profile', function () {
     $this->actingAs($this->admin)
         ->patch(route('admin.profile.update'), [
             'first_name' => 'test_first_name',
@@ -39,7 +36,7 @@ test('Super Admin can update profile', function() {
         ->last_name->toBe('test_last_name');
 });
 
-test('User cannot update profile', function() {
+test('User cannot update profile', function () {
     $this->actingAs($this->user)
         ->patch(route('admin.profile.update'), [
             'first_name' => 'test123'
@@ -48,7 +45,7 @@ test('User cannot update profile', function() {
     expect($this->user)->first_name->not->toBe('test123');
 });
 
-test('Super Admin can update profile e-mail', function() {
+test('Super Admin can update profile e-mail', function () {
     $this->actingAs($this->admin)
         ->patch(route('admin.profile.update'), [
             'email' => 'test@example.com',
@@ -59,11 +56,7 @@ test('Super Admin can update profile e-mail', function() {
         ->not->toBeAuthenticated();
 });
 
-test('Super Admin can update profile password', function() {
-    $this->admin->update([
-        'password' => Hash::make('Password@123'),
-    ]);
-
+test('Super Admin can update profile password', function () {
     $response = $this->actingAs($this->admin)
         ->put(route('admin.password.update'), [
             'current_password' => 'Password@123',
@@ -73,11 +66,7 @@ test('Super Admin can update profile password', function() {
     $response->assertValid(['current_password', 'password'], 'updatePassword');
 });
 
-test('User cannot update profile password', function() {
-    $this->user->update([
-        'password' => Hash::make('Password@123'),
-    ]);
-
+test('User cannot update profile password', function () {
     $this->actingAs($this->user)
         ->put(route('admin.password.update'), [
             'current_password' => 'Password@123',
@@ -87,11 +76,7 @@ test('User cannot update profile password', function() {
         ->assertForbidden();
 });
 
-test('Super Admin cannot update profile password if not match', function() {
-    $this->admin->update([
-        'password' => Hash::make('Password@123'),
-    ]);
-
+test('Super Admin cannot update profile password if not match', function () {
     $this->actingAs($this->admin)
         ->put(route('admin.password.update'), [
             'current_password' => 'Password@123',
@@ -101,11 +86,7 @@ test('Super Admin cannot update profile password if not match', function() {
         ->assertInvalid(['password'], 'updatePassword');
 });
 
-test('Super Admin cannot update profile password if not pass requirements', function() {
-    $this->admin->update([
-        'password' => Hash::make('Password@123'),
-    ]);
-
+test('Super Admin cannot update profile password if not pass requirements', function () {
     $this->actingAs($this->admin)
         ->put(route('admin.password.update'), [
             'current_password' => 'Password@123',
@@ -115,7 +96,7 @@ test('Super Admin cannot update profile password if not pass requirements', func
         ->assertInvalid(['password'], 'updatePassword');
 });
 
-test('Super Admin cannot update profile password if current password is incorrect', function() {
+test('Super Admin cannot update profile password if current password is incorrect', function () {
     $this->actingAs($this->admin)
         ->put(route('admin.password.update'), [
             'current_password' => 'wrong_password',
@@ -125,12 +106,8 @@ test('Super Admin cannot update profile password if current password is incorrec
         ->assertInvalid(['current_password'], 'updatePassword');
 });
 
-test('Super Admin can delete profile', function() {
-    $this->admin->update([
-        'password' => Hash::make('Password@123'),
-    ]);
+test('Super Admin can delete profile', function () {
     $id = $this->admin->id;
-
     $this->actingAs($this->admin)
         ->delete(route('admin.profile.destroy'), [
             'password' => 'Password@123',
@@ -140,11 +117,7 @@ test('Super Admin can delete profile', function() {
     $this->assertDatabaseMissing('users', ['id' => $id]);
 });
 
-test('Super Admin cannot delete profile if wrong password', function() {
-    $this->admin->update([
-        'password' => Hash::make('Password@123'),
-    ]);
-
+test('Super Admin cannot delete profile if wrong password', function () {
     $this->actingAs($this->admin)
         ->delete(route('admin.profile.destroy'), [
             'password' => 'wrong_password',
