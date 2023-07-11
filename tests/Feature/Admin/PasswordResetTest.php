@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Notification;
@@ -27,6 +28,7 @@ test('Email password reset', function () {
                 'admin.password.reset',
                 ['token' => $notification->token]
             ))->assertOk();
+            Event::fake();
             $this->post(route('admin.password.store'), [
                 'token' => $notification->token,
                 'email' => $admin->email,
@@ -34,8 +36,9 @@ test('Email password reset', function () {
                 'password_confirmation' => 'Password@1234',
             ])
                 ->assertValid()
-                ->assertSessionHasNoErrors();
-
+                ->assertSessionHasNoErrors()
+                ->assertRedirect(route('admin.login'));
+            Event::assertDispatched(PasswordReset::class);
             return true;
         }
     );

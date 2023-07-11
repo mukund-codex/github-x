@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Validation\ValidationException;
 
 uses(RefreshDatabase::class);
 
@@ -52,4 +53,18 @@ test('Users can logout', function () {
     ])->post(route('logout'))
         ->assertOk()
         ->assertSee(__('messages.user.logged_out'));
+});
+
+test('User should be prevented from making too many attempts', function () {
+    for ($i = 0; $i < 5; $i++) {
+        $this->post(route('login'), [
+            'email' => $this->user->email,
+            'password' => 'wrong-password',
+        ]);
+        $this->assertGuest();
+    }
+    $this->post(route('login'), [
+        'email' => $this->user->email,
+        'password' => 'wrong-password',
+    ])->assertSessionHasErrors();
 });

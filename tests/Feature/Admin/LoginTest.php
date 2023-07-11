@@ -1,5 +1,6 @@
 <?php
 
+use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
@@ -21,7 +22,15 @@ test('Super Admin can login to Admin Dashboard', function () {
     ])
         ->assertValid();
     expect($admin)->toBeAuthenticated();
+});
 
+test('Super Admin should be redirected if authenticated', function () {
+    $admin = createSuperAdmin('test@example.com', 'Password@123');
+    $this->actingAs($admin)->post(route('admin.login.store'), [
+        'email' => 'test@example.com',
+        'password' => 'Password@123'
+    ])->assertRedirect(RouteServiceProvider::HOME);
+    expect($admin)->toBeAuthenticated();
 });
 
 test('User cannot login to Admin Dashboard', function () {
