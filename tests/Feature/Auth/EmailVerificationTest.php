@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
 
-test('Email can be verified', function() {
+test('Email can be verified', function () {
     $user = User::factory()->create([
         'email_verified_at' => null,
     ]);
@@ -26,7 +26,7 @@ test('Email can be verified', function() {
     $response->assertRedirect(config('app.frontend_url') . config('frontend.verified_email_redirect'));
 });
 
-test('Email is not verified with invalid hash', function() {
+test('Email is not verified with invalid hash', function () {
     $user = User::factory()->create([
         'email_verified_at' => null,
     ]);

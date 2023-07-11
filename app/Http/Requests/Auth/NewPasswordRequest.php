@@ -7,7 +7,6 @@ use Illuminate\Validation\Rules;
 
 class NewPasswordRequest extends FormRequest
 {
-
     public function rules(): array
     {
         return [

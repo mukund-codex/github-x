@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\User;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Notification;
@@ -20,10 +19,14 @@ test('Email password reset', function () {
     Notification::fake();
     $admin = $this->admin;
     $this->post(route('admin.password.email'), ['email' => $admin->email]);
-    Notification::assertSentTo($admin, ResetPassword::class,
+    Notification::assertSentTo(
+        $admin,
+        ResetPassword::class,
         function (object $notification) use ($admin) {
-            $this->get(route('admin.password.reset',
-                ['token' => $notification->token]))->assertOk();
+            $this->get(route(
+                'admin.password.reset',
+                ['token' => $notification->token]
+            ))->assertOk();
             $this->post(route('admin.password.store'), [
                 'token' => $notification->token,
                 'email' => $admin->email,
@@ -34,14 +37,17 @@ test('Email password reset', function () {
                 ->assertSessionHasNoErrors();
 
             return true;
-        });
+        }
+    );
 });
 
 test('Cannot email password reset if no token', function () {
     Notification::fake();
     $admin = $this->admin;
     $this->post(route('admin.password.email'), ['email' => $admin->email]);
-    Notification::assertSentTo($admin, ResetPassword::class,
+    Notification::assertSentTo(
+        $admin,
+        ResetPassword::class,
         function (object $notification) use ($admin) {
             $this->post(route('admin.password.store'), [
                 'email' => $admin->email,
@@ -50,14 +56,17 @@ test('Cannot email password reset if no token', function () {
             ])
                 ->assertInvalid();
             return true;
-        });
+        }
+    );
 });
 
 test('Cannot email password reset if password not pass requirements', function () {
     Notification::fake();
     $admin = $this->admin;
     $this->post(route('admin.password.email'), ['email' => $admin->email]);
-    Notification::assertSentTo($admin, ResetPassword::class,
+    Notification::assertSentTo(
+        $admin,
+        ResetPassword::class,
         function (object $notification) use ($admin) {
             $this->post(route('admin.password.store'), [
                 'email' => $admin->email,
@@ -66,5 +75,6 @@ test('Cannot email password reset if password not pass requirements', function (
             ])
                 ->assertInvalid();
             return true;
-        });
+        }
+    );
 });

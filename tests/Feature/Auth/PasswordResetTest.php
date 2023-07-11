@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
 
-test('Reset password link can be requested', function() {
+test('Reset password link can be requested', function () {
     Notification::fake();
 
     $user = User::factory()->create();
@@ -16,7 +16,7 @@ test('Reset password link can be requested', function() {
     Notification::assertSentTo($user, ResetPassword::class);
 });
 
-test('Password can be reset with valid token', function() {
+test('Password can be reset with valid token', function () {
     Notification::fake();
 
     $user = User::factory()->create();

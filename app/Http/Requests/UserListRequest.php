@@ -7,7 +7,6 @@ use Illuminate\Validation\Rule;
 
 class UserListRequest extends FormRequest
 {
-
     public function rules(): array
     {
         return [

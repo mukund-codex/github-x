@@ -9,7 +9,6 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Http\Requests\UserListRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
-use App\Traits\HttpResponse;
 use App\ValueObjects\Admin\NotificationVO;
 use Config;
 use Illuminate\Auth\Events\Registered;

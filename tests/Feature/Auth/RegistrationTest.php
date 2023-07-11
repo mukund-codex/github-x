@@ -4,11 +4,11 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
 
-beforeEach(function() {
-   $this->seed();
+beforeEach(function () {
+    $this->seed();
 });
 
-test('New users can register', function() {
+test('New users can register', function () {
     $response = $this->post(route('register'), [
         'first_name' => 'Test',
         'email' => 'test@example.com',
@@ -23,7 +23,7 @@ test('New users can register', function() {
     ]);
 });
 
-test('Password format validations', function() {
+test('Password format validations', function () {
     $response_lower_case_password = $this->post(route('register'), [
         'first_name' => 'Test',
         'email' => 'test@example.com',
