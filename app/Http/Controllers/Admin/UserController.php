@@ -72,7 +72,7 @@ class UserController extends Controller
             new NotificationVO(
                 NotificationEnum::SUCCESS,
                 __('Successfully created!'),
-                __('User has been created')
+                __('messages.user.registered')
             )
         );
     }
@@ -92,7 +92,7 @@ class UserController extends Controller
             new NotificationVO(
                 NotificationEnum::SUCCESS,
                 __('Successfully updated!'),
-                __('User data has been changed')
+                __('messages.user.updated')
             )
         );
 
@@ -120,7 +120,7 @@ class UserController extends Controller
             new NotificationVO(
                 NotificationEnum::SUCCESS,
                 __('Successfully deleted!'),
-                __('User has been deleted')
+                __('messages.user.deleted')
             )
         );
     }
