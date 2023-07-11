@@ -4,7 +4,6 @@ namespace App\Listeners;
 
 use App\Mail\SubscriptionTrialEndingMail;
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use Laravel\Cashier\Cashier;
 use Laravel\Cashier\Events\WebhookReceived;
