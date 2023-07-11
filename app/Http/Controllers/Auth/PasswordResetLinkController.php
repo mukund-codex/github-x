@@ -12,8 +12,6 @@ class PasswordResetLinkController extends Controller
 {
     public function store(PasswordResetLinkRequest $request): JsonResponse
     {
-        $request->validated();
-
         $status = Password::sendResetLink(
             $request->only('email')
         );

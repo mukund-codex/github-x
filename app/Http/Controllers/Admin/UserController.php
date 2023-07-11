@@ -53,7 +53,6 @@ class UserController extends Controller
 
     public function store(RegisterUserRequest $request): RedirectResponse
     {
-        $request->validated();
         $user_info = $request->safe();
         $user = resolve(User::class)->create(
             [
@@ -82,7 +81,6 @@ class UserController extends Controller
         UpdateUserRequest $request,
         User $user
     ): RedirectResponse {
-        $request->validated();
         $update = $request->safe();
         $user->update($update->except('role'));
         if (isset($update['role'])) {
