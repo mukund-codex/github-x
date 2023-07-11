@@ -2,11 +2,10 @@
 
 use App\Mail\SubscriptionTrialEndingMail;
 
-test('', function () {
+test('Subscription trial ending mail', function () {
     $user = createRawUser();
-    $user->update([
-        'trial_ends_at' => now()->addDay()
-    ]);
+    $user->trial_ends_at = now()->addDay();
+    $user->save();
     $data = [
         'name' => $user->first_name,
         'trial_ending_date' => $user->trialEndsAt()->format('d/m/Y')
