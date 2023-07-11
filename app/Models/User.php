@@ -30,7 +30,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'last_name',
         'email',
         'password',
-        'trial_ends_at'
     ];
 
     /**
@@ -52,12 +51,13 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'trial_ends_at' => 'date'
     ];
 
     protected static function booted(): void
     {
         static::updated(queueable(function (User $customer) {
-            if ($customer->hasStripeId()) {
+            if ($customer->hasStripeId() && app()->environment() !== 'testing') {
                 $customer->syncStripeCustomerDetails();
             }
         }));
