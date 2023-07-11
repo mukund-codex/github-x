@@ -4,6 +4,6 @@ WORKDIR /var/www/html
 
 COPY . /var/www/html
 
-RUN composer install
+RUN composer install --no-progress
 RUN npm install
 RUN npm run build
