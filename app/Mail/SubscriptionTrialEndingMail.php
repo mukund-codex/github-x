@@ -12,7 +12,6 @@ use Illuminate\Queue\SerializesModels;
 
 class SubscriptionTrialEndingMail extends Mailable implements ShouldQueue
 {
-
     use Queueable;
     use SerializesModels;
 
@@ -23,8 +22,10 @@ class SubscriptionTrialEndingMail extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address(config('mail.from.address'),
-                config('mail.from.name')),
+            from: new Address(
+                config('mail.from.address'),
+                config('mail.from.name')
+            ),
             subject: __('messages.subscription.trial_ending_subject')
         );
     }
