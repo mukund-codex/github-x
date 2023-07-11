@@ -6,6 +6,7 @@ use App\Enums\NotificationEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Http\Requests\UserListRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Traits\HttpResponse;
@@ -21,12 +22,11 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-    use HttpResponse;
-
-    public function index(Request $request): View
+    public function index(UserListRequest $request): View
     {
-        $sort_by = $request->query('sort_by') ?? 'id';
-        $order_by = $request->query('order_by') ?? 'asc';
+
+        $sort_by = $request->validated('sortBy') ?? 'id';
+        $order_by = $request->validated('orderBy') ?? 'asc';
 
         return view('users.list', [
             'users' => UserResource::collection(

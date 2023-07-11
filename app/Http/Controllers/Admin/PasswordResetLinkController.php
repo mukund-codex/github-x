@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Enums\NotificationEnum;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PasswordResetLinkRequest;
 use App\ValueObjects\Admin\NotificationVO;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -17,12 +18,9 @@ class PasswordResetLinkController extends Controller
         return view('forgot-password');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(PasswordResetLinkRequest $request): RedirectResponse
     {
-        $request->validate([
-            'email' => ['required', 'email'],
-        ]);
-
+        $request->validated();
         $status = Password::sendResetLink(
             $request->only('email')
         );

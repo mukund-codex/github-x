@@ -27,6 +27,6 @@ Route::middleware(['auth:sanctum'])->group(function() {
 
 Route::get('/', function () {
     return ['this-is-laravel-api' => app()->version()];
-});
+})->name('home.api');
 
 require __DIR__.'/auth.php';
