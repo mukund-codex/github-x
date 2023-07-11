@@ -5,6 +5,7 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -21,7 +22,10 @@ class SubscriptionTrialEndingMail extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: config('mail.from'),
+            from: new Address(
+                config('mail.from.address'),
+                config('mail.from.name')
+            ),
             subject: __('messages.subscription.trial_ending_subject')
         );
     }
@@ -31,7 +35,7 @@ class SubscriptionTrialEndingMail extends Mailable implements ShouldQueue
         return new Content(
             view: 'emails.subscription-trial-ending',
             with: [
-                'data' => $this->data
+                'data' => $this->data,
             ]
         );
     }

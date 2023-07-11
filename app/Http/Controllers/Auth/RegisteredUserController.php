@@ -17,7 +17,6 @@ class RegisteredUserController extends Controller
 
     public function store(RegisterUserRequest $request): JsonResponse
     {
-        $request->validated();
         $user_info = $request->safe();
         $user = resolve(User::class)->create(
             [

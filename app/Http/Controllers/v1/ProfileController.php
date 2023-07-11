@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\v1;
 
-use App\Http\Requests\UpdateProfileRequest;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Profile\UpdateProfileRequest;
 use App\Http\Resources\UserResource;
 use App\Traits\HttpResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -25,15 +25,15 @@ class ProfileController extends Controller
 
     public function update(UpdateProfileRequest $request): JsonResponse
     {
-        $request->validated();
-        $update = $request->safe();
-        if (isset($update['password'])) {
-            $update['password'] = Hash::make($update['password']);
-        }
-        $user = Auth::user();
-        $user->update($update->toArray());
+        $request->user()->fill($request->validated());
 
-        return (new UserResource($user))
+        if ($request->user()->isDirty('email')) {
+            $request->user()->email_verified_at = null;
+        }
+
+        $request->user()->save();
+
+        return (new UserResource($request->user()))
             ->additional(['message' => __('messages.profile.updated')])
             ->response();
     }

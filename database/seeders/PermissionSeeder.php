@@ -15,11 +15,13 @@ class PermissionSeeder extends Seeder
         Role::updateOrCreate(['name' => Config::get('const.roles.user')]);
 
         $permissions = [
+            'view dashboard',
             'view user',
             'create user',
             'update user',
             'view users',
-            'delete user'
+            'delete user',
+            'view roles'
         ];
 
         foreach ($permissions as $permission) {

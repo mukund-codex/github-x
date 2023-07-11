@@ -14,9 +14,7 @@ class VerifyEmailController extends Controller
     {
         Auth::loginUsingId(request()->route('id'));
     }
-    /**
-     * Mark the authenticated user's email address as verified.
-     */
+
     public function __invoke(EmailVerificationRequest $request): RedirectResponse
     {
         if ($request->user()->hasVerifiedEmail()) {

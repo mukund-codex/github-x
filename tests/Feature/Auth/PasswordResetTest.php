@@ -1,47 +1,47 @@
 <?php
 
-namespace Tests\Feature\Auth;
-
 use App\Models\User;
+use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Notification;
-use Tests\TestCase;
 
-class PasswordResetTest extends TestCase
-{
-    use RefreshDatabase;
+uses(RefreshDatabase::class);
 
-    public function test_reset_password_link_can_be_requested(): void
-    {
-        Notification::fake();
+test('Reset password link can be requested', function () {
+    Notification::fake();
 
-        $user = User::factory()->create();
+    $user = User::factory()->create();
 
-        $this->post(route('password.email'), ['email' => $user->email]);
+    $this->post(route('password.email'), ['email' => $user->email]);
 
-        Notification::assertSentTo($user, ResetPassword::class);
-    }
+    Notification::assertSentTo($user, ResetPassword::class);
+});
 
-    public function test_password_can_be_reset_with_valid_token(): void
-    {
-        Notification::fake();
+test('Password can be reset with valid token', function () {
+    Notification::fake();
 
-        $user = User::factory()->create();
+    $user = User::factory()->create();
 
-        $this->post(route('password.email'), ['email' => $user->email]);
+    $this->post(route('password.email'), ['email' => $user->email]);
 
-        Notification::assertSentTo($user, ResetPassword::class, function (object $notification) use ($user) {
-            $response = $this->post('/reset-password', [
-                'token' => $notification->token,
-                'email' => $user->email,
-                'password' => 'password',
-                'password_confirmation' => 'password',
-            ]);
+    Notification::assertSentTo($user, ResetPassword::class, function (object $notification) use ($user) {
+        Event::fake();
+        $response = $this->post(route('password.store'), [
+            'token' => $notification->token,
+            'email' => $user->email,
+            'password' => 'Password@123',
+            'password_confirmation' => 'Password@123',
+        ]);
+        Event::assertDispatched(PasswordReset::class);
+        $response->assertSessionHasNoErrors();
 
-            $response->assertSessionHasNoErrors();
+        return true;
+    });
+});
 
-            return true;
-        });
-    }
-}
+test('Password cannot be reset with wrong email', function () {
+    Notification::fake();
+    $this->post(route('password.email'), ['email' => 'wrong-email@example.com'])
+        ->assertSessionHasErrors();
+    Notification::assertNothingSent();
+});

@@ -1,26 +1,20 @@
 <?php
 
-namespace Tests\Feature\Auth;
-
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
 
-class AuthenticationTest extends TestCase
-{
-    use RefreshDatabase;
+uses(RefreshDatabase::class);
 
-    public function test_users_can_authenticate_using_the_login_screen(): void
-    {
-        $user = User::factory()->create();
+beforeEach(function () {
+    $this->seed();
+    $this->user = createUser('user@example.com', 'Password@123');
+});
 
-        $response = $this->post(route('login'), [
-            'email' => $user->email,
-            'password' => 'password',
-        ]);
-
-        $this->assertAuthenticated();
-        $response->assertJsonStructure(
+test('users can authenticate using the login screen', function () {
+    $this->post(route('login'), [
+        'email' => $this->user->email,
+        'password' => 'Password@123',
+    ])
+        ->assertJsonStructure(
             [
                 'data' => [
                     'id',
@@ -30,22 +24,46 @@ class AuthenticationTest extends TestCase
                     'email_verified_at',
                     'created_at',
                     'token',
-                ]
+                ],
             ]
-        );
-        $response->assertOk();
-        $response->assertSee(__('messages.user.logged_in'));
-    }
+        )
+        ->assertOk()
+        ->assertSee(__('messages.user.logged_in'));
+    $this->assertAuthenticated();
+});
 
-    public function test_users_can_not_authenticate_with_invalid_password(): void
-    {
-        $user = User::factory()->create();
+test('Users can not authenticate with invalid password', function () {
+    $this->post(route('login'), [
+        'email' => $this->user->email,
+        'password' => 'wrong-password',
+    ]);
+    $this->assertGuest();
+});
 
-        $this->post('/login', [
-            'email' => $user->email,
+test('Users can logout', function () {
+    $response = $this->post(route('login'), [
+        'email' => $this->user->email,
+        'password' => 'Password@123',
+    ]);
+    $token = json_decode($response->content(), true)['data']['token'];
+    $this->withHeaders([
+        'Accept' => 'application/json',
+        'Authorization' => 'Bearer ' . $token
+    ])->post(route('logout'))
+        ->assertOk()
+        ->assertSee(__('messages.user.logged_out'));
+});
+
+test('User should be prevented from making too many attempts', function () {
+    for ($i = 0; $i < 5; $i++) {
+        $this->post(route('login'), [
+            'email' => $this->user->email,
             'password' => 'wrong-password',
         ]);
-
         $this->assertGuest();
     }
-}
+    $this->post(route('login'), [
+        'email' => $this->user->email,
+        'password' => 'wrong-password',
+    ])->assertSessionHasErrors();
+});
