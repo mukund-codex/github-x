@@ -14,9 +14,6 @@ class EmailVerificationNotificationController extends Controller
 {
     use HttpResponse;
 
-    /**
-     * Send a new email verification notification.
-     */
     public function store(
         Request $request,
         ?User $user
