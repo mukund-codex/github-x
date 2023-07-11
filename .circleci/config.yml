@@ -18,7 +18,7 @@ jobs:
           command: docker-compose -f ci-docker-compose.yml up -d
       - run:
           name: CI checks
-          command: docker-compose -f ci-docker-compose.yml exec ci-lbp-api composer run ci
+          command: docker-compose -f ci-docker-compose.yml exec lbp-api composer run ci
 
   cd:
     machine:
