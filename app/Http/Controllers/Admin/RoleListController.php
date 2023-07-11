@@ -12,5 +12,4 @@ class RoleListController extends Controller
         $roles = Role::all();
         return view('role.list', ['roles' => $roles]);
     }
-
 }

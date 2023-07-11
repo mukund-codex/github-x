@@ -14,5 +14,4 @@ class UserListRequest extends FormRequest
             'orderBy' => ['sometimes', Rule::in(['asc', 'desc'])]
         ];
     }
-
 }

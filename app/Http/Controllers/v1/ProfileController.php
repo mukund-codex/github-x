@@ -44,5 +44,4 @@ class ProfileController extends Controller
         $user->delete();
         return $this->response([], __('messages.profile.deleted'));
     }
-
 }

@@ -31,5 +31,4 @@ class UserResource extends JsonResource
 //            'unread_notifications_count' => $this->unread_notifications_count,
         ];
     }
-
 }

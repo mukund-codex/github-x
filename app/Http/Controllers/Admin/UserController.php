@@ -95,7 +95,6 @@ class UserController extends Controller
                 __('messages.user.updated')
             )
         );
-
     }
 
     /**
@@ -124,5 +123,4 @@ class UserController extends Controller
             )
         );
     }
-
 }

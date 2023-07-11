@@ -44,5 +44,4 @@ class SubscriptionTrialEndingMail extends Mailable implements ShouldQueue
     {
         return [];
     }
-
 }
