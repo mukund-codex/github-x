@@ -2569,6 +2569,24 @@
 					"id": "deef348a-7400-4949-b770-185cb2ac15a8"
 				},
 				{
+					"name": "Roles",
+					"item": [
+						{
+							"name": "New Request",
+							"id": "8be468b3-d99d-4b34-9a29-d840f0078d4f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					],
+					"id": "2bb1d154-fe7c-43ab-ba48-cd5128ec0bbf"
+				},
+				{
 					"name": "Users",
 					"item": [
 						{
@@ -2929,11 +2947,6 @@
 						}
 					],
 					"id": "4d6c2a37-af54-441c-893b-77d4d631627a"
-				},
-				{
-					"name": "Roles",
-					"item": [],
-					"id": "2bb1d154-fe7c-43ab-ba48-cd5128ec0bbf"
 				}
 			],
 			"id": "8a117a32-d1c4-4e5b-b415-472c8d591278",
@@ -2999,19 +3012,19 @@
 	],
 	"variable": [
 		{
-			"id": "010b35d2-c9a3-4114-8b32-e34d8622a87b",
+			"id": "2403bbc5-92b6-4990-b764-7cb786da6619",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "aaf82b18-9a09-49e9-b909-0a5b458601de",
+			"id": "de0a4d0e-bd1d-4a8d-913a-4360cdcf3137",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "24111a16-1213-4a1f-95d6-b8f74ac8ea65",
+			"id": "a7911fcc-c9a6-4f73-a481-d66b26bb229f",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
