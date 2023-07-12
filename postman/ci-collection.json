@@ -2111,7 +2111,43 @@
 								},
 								"url": "{{admin_url}}/login"
 							},
-							"response": []
+							"response": [
+								{
+									"id": "0d171f3d-303e-41ba-9be5-7edd3233c1f2",
+									"name": "Login",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "X-XSRF-TOKEN",
+												"value": "{{xsrf_token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "email",
+													"value": "{{user_email}}",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "{{user_password}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": "{{admin_url}}/login"
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"responseTime": null,
+									"body": null
+								}
+							]
 						},
 						{
 							"name": "Logout",
@@ -2863,19 +2899,19 @@
 	],
 	"variable": [
 		{
-			"id": "a75f25bb-ece0-4891-8b2f-0f34ca396b2b",
+			"id": "41600dfd-d6df-4b63-8a20-8864bf295e2a",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "1bdc6c8d-cb3d-414e-8345-a51894c4cb9b",
+			"id": "6e6591f7-0f6d-4a31-81a1-5d637caa9037",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "737a8f87-5a26-404b-8fd3-c2015113a636",
+			"id": "90f83ef0-969c-403c-988d-a761c5b5062d",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
