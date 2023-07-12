@@ -2370,7 +2370,13 @@
 									}
 								},
 								"method": "POST",
-								"header": [],
+								"header": [
+									{
+										"key": "X-XSRF-TOKEN",
+										"value": "{{xsrf_token}}",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "urlencoded",
 									"urlencoded": [
@@ -2969,19 +2975,19 @@
 	],
 	"variable": [
 		{
-			"id": "2013909b-57a5-4c7f-aea8-4a5d55683f45",
+			"id": "e8368716-689e-4ff4-a8a8-b397500b382a",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "360ddffd-9d66-4fae-899c-f369b10e0356",
+			"id": "c501d364-a194-4d36-b4ac-02fa44b07b50",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "9449c672-c9e8-4472-8263-0a250a3a3c9f",
+			"id": "35f671cc-7937-4355-aa11-f2162bc26435",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
