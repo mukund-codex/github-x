@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Docker Compose
-        run: docker-compose up -d
+        run: docker-compose -f ci-docker-compose.yml up -d
 
       - name: CI checks
-        run: docker-compose exec -T lbp-api composer run ci
+        run: docker-compose -f ci-docker-compose.yml exec -T lbp-api composer run ci

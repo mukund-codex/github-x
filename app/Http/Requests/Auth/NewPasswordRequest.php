@@ -15,5 +15,4 @@ class NewPasswordRequest extends FormRequest
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ];
     }
-
 }

@@ -34,5 +34,4 @@ class EmailVerificationNotificationController extends Controller
             'Verification link sent'
         );
     }
-
 }

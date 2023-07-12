@@ -12,5 +12,4 @@ class PasswordResetLinkRequest extends FormRequest
             'email' => ['required', 'email'],
         ];
     }
-
 }
