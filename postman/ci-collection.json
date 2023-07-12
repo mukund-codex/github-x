@@ -2361,7 +2361,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "e57a0fc7-6107-4aaf-b598-07525cb14116",
+				"id": "f1c4ae52-ca5d-4f0f-af67-33c53167d4d4",
 				"type": "text/javascript",
 				"exec": [
 					"",
@@ -2382,7 +2382,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "c04f8674-93ce-42bf-a57b-56e7e387b7bf",
+				"id": "7197c566-b864-4eef-96d1-ee2c6b9802a9",
 				"type": "text/javascript",
 				"exec": [
 					"// Response time to be within a certain threshold",
@@ -2397,15 +2397,21 @@
 	],
 	"variable": [
 		{
-			"id": "67971db9-d971-466c-b951-130f759496a9",
+			"id": "a3b1ca2b-cb05-4442-8b17-aec759f91c7c",
 			"key": "base_url",
-			"value": "http://10.10.1.1/api",
+			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "517ad1a4-4050-4389-8052-092ef137b03b",
+			"id": "285394bd-2752-4790-8973-d5ae172148c2",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
+			"type": "string"
+		},
+		{
+			"id": "4e048da9-889f-4839-93ce-98262e4d49a8",
+			"key": "admin_url",
+			"value": "http://10.10.1.1/admin",
 			"type": "string"
 		}
 	]
