@@ -2462,12 +2462,6 @@
 								"disableBodyPruning": true
 							},
 							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{user_token}}"
-									}
-								},
 								"method": "PATCH",
 								"header": [
 									{
@@ -3000,19 +2994,19 @@
 	],
 	"variable": [
 		{
-			"id": "a3ddb84d-04c6-4299-9842-49d5ff731e7d",
+			"id": "919fb1de-8bff-466d-b8ec-700aae88e03a",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "af437218-44f7-41f8-97f9-8398c5d03c0d",
+			"id": "1c5d07bc-e94f-43a0-ad6d-3fd1f16a4260",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "878a2bce-8a99-4672-a4c5-13ad219370f4",
+			"id": "66c0217d-60c3-49a7-bca6-4c29812f004c",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
