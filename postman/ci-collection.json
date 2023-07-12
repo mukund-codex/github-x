@@ -2114,7 +2114,7 @@
 							"response": [
 								{
 									"id": "0d171f3d-303e-41ba-9be5-7edd3233c1f2",
-									"name": "Login",
+									"name": "Success",
 									"originalRequest": {
 										"method": "POST",
 										"header": [
@@ -2899,19 +2899,19 @@
 	],
 	"variable": [
 		{
-			"id": "41600dfd-d6df-4b63-8a20-8864bf295e2a",
+			"id": "f6f518b6-b660-469c-83eb-92294f1636bb",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "6e6591f7-0f6d-4a31-81a1-5d637caa9037",
+			"id": "7a9d6821-82b2-4097-8bc5-5f0b635b29f9",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "90f83ef0-969c-403c-988d-a761c5b5062d",
+			"id": "e6d67c2b-7725-4ddc-8c4a-031ff2c23c05",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
