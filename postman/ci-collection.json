@@ -1293,7 +1293,7 @@
 					"name": "Dashboard Users",
 					"item": [
 						{
-							"name": "New Folder",
+							"name": "Users",
 							"item": [],
 							"id": "42a99a42-728c-498f-9d88-ea119265e2fc"
 						},
@@ -2402,19 +2402,19 @@
 	],
 	"variable": [
 		{
-			"id": "a913d752-5cda-452d-ab5e-3cf17746336d",
+			"id": "ab9afd05-4bb7-4d14-8b58-26259d198413",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "35608dbf-5dd4-40df-9d62-0244e1c2baf3",
+			"id": "b1951abc-a259-42de-b598-f660cc50caa3",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "0a215d2d-26eb-4d0b-afc1-bd9bd8e48921",
+			"id": "67248a87-7b98-4540-9ae2-7bb41774e2b6",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
