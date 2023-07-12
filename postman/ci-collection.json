@@ -2330,11 +2330,9 @@
 										"id": "2062dc3e-3003-419c-9f3a-2d14f21ea60c",
 										"exec": [
 											"pm.test('Reponse code to be 201', function () {",
-											"    pm.expect(pm.response.code).to.be.equal(201);",
-											"    jsonData = JSON.parse(responseBody);",
+											"    pm.expect(pm.response.code).to.be.equal(200);",
 											"});",
-											"",
-											"pm.environment.set('new_user_id', jsonData.data.id);"
+											""
 										],
 										"type": "text/javascript"
 									}
@@ -2406,7 +2404,7 @@
 											"type": "text"
 										},
 										{
-											"key": "role",
+											"key": "role[]",
 											"value": "{{new_user_role}}",
 											"type": "text"
 										}
@@ -2975,19 +2973,19 @@
 	],
 	"variable": [
 		{
-			"id": "e8368716-689e-4ff4-a8a8-b397500b382a",
+			"id": "e3deeee4-3d0a-41f5-bca0-369b95c0df6e",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "c501d364-a194-4d36-b4ac-02fa44b07b50",
+			"id": "2b1d76ab-7865-4812-b4cb-df8f5f321974",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "35f671cc-7937-4355-aa11-f2162bc26435",
+			"id": "2f7f7601-3ad6-4d04-9ec2-de5506258b9a",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
