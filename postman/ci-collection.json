@@ -3003,19 +3003,19 @@
 	],
 	"variable": [
 		{
-			"id": "a54a1e2f-949e-4ab8-9b4f-71067311a084",
+			"id": "f4713123-3ba2-455a-8fd5-c930bede9a2d",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "5e0ae59f-5274-4424-92c2-30e38663244f",
+			"id": "dec92a72-9fa9-4779-afcc-dfc09d1de961",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "f04d352a-7a09-4a27-bd2a-264da9520ae2",
+			"id": "a0e1919d-049b-4664-af34-9f24ac841555",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
