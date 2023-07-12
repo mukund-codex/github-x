@@ -1290,7 +1290,7 @@
 					"id": "5cf68894-af9d-4724-a97b-f4d184e5d4cb"
 				},
 				{
-					"name": "Users",
+					"name": "Dashboard Users",
 					"item": [
 						{
 							"name": "User",
@@ -2397,19 +2397,19 @@
 	],
 	"variable": [
 		{
-			"id": "a3b1ca2b-cb05-4442-8b17-aec759f91c7c",
+			"id": "0a97f3ae-2d14-4336-865a-72fc93d889c0",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "285394bd-2752-4790-8973-d5ae172148c2",
+			"id": "2588906c-8e49-4503-a73a-3eaed178edcd",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "4e048da9-889f-4839-93ce-98262e4d49a8",
+			"id": "a2b7311a-5b79-4554-bfdd-850c361438a9",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
