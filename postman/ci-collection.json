@@ -2012,7 +2012,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "1536b5f8-e27a-4a6a-ae7d-3909aa687030",
+						"id": "ba8417d3-a6c7-49b5-8b9d-f42da73cff3f",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -2022,15 +2022,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "7892d020-cb59-4ddd-9d79-c97a9386b421",
+						"id": "bc1ca0cf-b213-4d05-bf1c-5af220c3815f",
 						"type": "text/javascript",
 						"exec": [
 							"// Response time to be within a certain threshold",
 							"pm.test(\"Response time within threshold\", function () {",
 							"    pm.expect(pm.response.responseTime).to.be.lessThan(500);",
-							"});",
-							"",
-							""
+							"});"
 						]
 					}
 				}
@@ -2672,19 +2670,19 @@
 	],
 	"variable": [
 		{
-			"id": "41cb4255-52b1-4177-9173-4a67256927a5",
+			"id": "ae2e7168-39d9-4ff5-a7cd-a0cbd4be6abc",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "bf5d447c-e210-4f93-b43b-9498862959d7",
+			"id": "b09ff627-f122-4f5f-b87f-7a663a786df4",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "f66c1706-4c24-47f1-8bdf-ba7fac86d673",
+			"id": "0a4c8089-30e2-4e9a-b395-8dc1531e680b",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
