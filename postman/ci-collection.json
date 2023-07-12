@@ -2007,7 +2007,34 @@
 					]
 				}
 			],
-			"id": "84f72b1a-c4aa-475e-8730-7302faa3006b"
+			"id": "84f72b1a-c4aa-475e-8730-7302faa3006b",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1536b5f8-e27a-4a6a-ae7d-3909aa687030",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "7892d020-cb59-4ddd-9d79-c97a9386b421",
+						"type": "text/javascript",
+						"exec": [
+							"// Response time to be within a certain threshold",
+							"pm.test(\"Response time within threshold\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.lessThan(500);",
+							"});",
+							"",
+							""
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Admin Dashboard",
@@ -2645,19 +2672,19 @@
 	],
 	"variable": [
 		{
-			"id": "ff945863-f7c2-44ce-ab6f-5be40c662512",
+			"id": "41cb4255-52b1-4177-9173-4a67256927a5",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "0fc9dd90-a6f4-473b-984f-d9f88e44e829",
+			"id": "bf5d447c-e210-4f93-b43b-9498862959d7",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "6cd81b19-522f-4d35-8e4d-59f55bc391bc",
+			"id": "f66c1706-4c24-47f1-8bdf-ba7fac86d673",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
