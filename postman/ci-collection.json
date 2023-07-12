@@ -2010,7 +2010,7 @@
 					"name": "Onboarding",
 					"item": [
 						{
-							"name": "Login",
+							"name": "Login (set token)",
 							"event": [
 								{
 									"listen": "prerequest",
@@ -2962,19 +2962,19 @@
 	],
 	"variable": [
 		{
-			"id": "07b4d1c4-953d-4a63-ae87-ea84127097b8",
+			"id": "83795a8b-4764-4860-a13d-c853c7ebf1f3",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "99dfa021-1fbe-4b1d-a3f6-c6a0e37196fa",
+			"id": "53f53cac-4100-4984-b628-3971fe35cc5c",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "4e1e834c-2379-4bb8-894d-3028d044bcf7",
+			"id": "46f894e0-9bdf-4bdb-90db-75ac5518fbb8",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
