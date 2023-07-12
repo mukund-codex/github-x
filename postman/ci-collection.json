@@ -2456,7 +2456,7 @@
 										"exec": [
 											"pm.environment.set('first_name', 'Updated_John');",
 											"pm.environment.set('last_name', 'Updated_Doe');",
-											"pm.environment.set('user_password', 'Password@123_Updated');"
+											"pm.environment.set('user_password', 'Password@123');"
 										],
 										"type": "text/javascript"
 									}
@@ -3003,19 +3003,19 @@
 	],
 	"variable": [
 		{
-			"id": "11a14a9c-bb1d-4c6b-88fc-2ab983bc2f98",
+			"id": "a54a1e2f-949e-4ab8-9b4f-71067311a084",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "ef08b21a-9bba-4d07-98eb-32e6f25edf6b",
+			"id": "5e0ae59f-5274-4424-92c2-30e38663244f",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "a5e29a7a-4dbc-4581-a2e3-b4a8bf1ddc4c",
+			"id": "f04d352a-7a09-4a27-bd2a-264da9520ae2",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
