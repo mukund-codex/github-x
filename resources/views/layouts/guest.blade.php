@@ -22,7 +22,7 @@
     <body class="text-gray-900 antialiased">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
             <div>
-                <a href="{{route('admin.login')}}" class="dark:text-gray-900">
+                <a href="{{route('admin.login')}}" class="text-gray-700 dark:text-gray-400">
                     <x-main-logo class="w-48 h-20" />
                 </a>
             </div>
