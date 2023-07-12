@@ -3120,7 +3120,33 @@
 					"id": "42a99a42-728c-498f-9d88-ea119265e2fc"
 				}
 			],
-			"id": "8a117a32-d1c4-4e5b-b415-472c8d591278"
+			"id": "8a117a32-d1c4-4e5b-b415-472c8d591278",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "d419ea45-3256-4044-8a98-807f68eb40f0",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "5a2dba71-6302-4d82-b17b-94da096f69bb",
+						"type": "text/javascript",
+						"exec": [
+							"pm.environment.set(\"xsrf_token\", decodeURIComponent(pm.cookies.get(\"XSRF-TOKEN\")));",
+							"",
+							"pm.test(\"Response time within threshold\", function () {",
+							"    console.log(111);",
+							"});"
+						]
+					}
+				}
+			]
 		}
 	],
 	"event": [
@@ -3163,19 +3189,19 @@
 	],
 	"variable": [
 		{
-			"id": "e4e544cd-d64a-454c-a444-cb999e3be24c",
+			"id": "7580c1f8-1a97-4656-afe7-bdd822435795",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "5279a025-c5cd-4cad-8b3b-83c02a429bc8",
+			"id": "eed5a8ce-0c00-45fa-91d6-8fb85d77b990",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "c9f9116b-54c4-4704-b96a-54c695609658",
+			"id": "705eb71a-1188-4219-b1c1-e454b60c70e7",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
