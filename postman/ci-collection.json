@@ -2495,7 +2495,7 @@
 										}
 									]
 								},
-								"url": "{{base_url}}/profile"
+								"url": "{{admin_url}}/profile"
 							},
 							"response": [
 								{
@@ -2994,19 +2994,19 @@
 	],
 	"variable": [
 		{
-			"id": "919fb1de-8bff-466d-b8ec-700aae88e03a",
+			"id": "30531166-4d8d-4135-9364-fdb196120a9c",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "1c5d07bc-e94f-43a0-ad6d-3fd1f16a4260",
+			"id": "4368819b-fedc-4341-bdea-dc8fe06eeb3f",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "66c0217d-60c3-49a7-bca6-4c29812f004c",
+			"id": "1487e14f-78fd-49eb-92f2-176b4677d25f",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
