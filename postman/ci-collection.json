@@ -1294,614 +1294,627 @@
 					"item": [
 						{
 							"name": "Users",
-							"item": [],
+							"item": [
+								{
+									"name": "User",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "2062dc3e-3003-419c-9f3a-2d14f21ea60c",
+												"exec": [
+													"pm.test('Reponse code to be 201', function () {",
+													"    pm.expect(pm.response.code).to.be.equal(201);",
+													"    jsonData = JSON.parse(responseBody);",
+													"});",
+													"",
+													"pm.environment.set('new_user_id', jsonData.data.id);"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "43c481f3-a29f-4637-8747-283a08b53097",
+												"exec": [
+													"",
+													"pm.environment.set('new_user_first_name', 'John');",
+													"pm.environment.set('new_user_last_name', 'Doe');",
+													"pm.environment.set('new_user_email', 'john_doe+' +  Math.floor((Math.random() * 10000) + 1) + '@jdecode.dev' );",
+													"pm.environment.set('new_user_password', 'JohnDoe@123');",
+													"pm.environment.set('new_user_role', 'user');",
+													"",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "5709a92d-35f0-4559-b941-ef8a38507161",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {},
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{user_token}}"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "first_name",
+													"value": "{{new_user_first_name}}",
+													"type": "text"
+												},
+												{
+													"key": "last_name",
+													"value": "{{new_user_last_name}}",
+													"type": "text"
+												},
+												{
+													"key": "email",
+													"value": "{{new_user_email}}",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "{{new_user_password}}",
+													"type": "text"
+												},
+												{
+													"key": "password_confirmation",
+													"value": "{{new_user_password}}",
+													"type": "text"
+												},
+												{
+													"key": "role",
+													"value": "{{new_user_role}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": "{{base_url}}/users"
+									},
+									"response": [
+										{
+											"id": "2b0e9ade-a413-4886-9bf6-40bfd853d8e3",
+											"name": "Home page",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": "{{base_url}}"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Date",
+													"value": "Tue, 02 May 2023 07:58:07 GMT"
+												},
+												{
+													"key": "Server",
+													"value": "Apache/2.4.56 (Debian)"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/8.2.4"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "59"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "http://10.10.1.6:3000"
+												},
+												{
+													"key": "Access-Control-Allow-Credentials",
+													"value": "true"
+												},
+												{
+													"key": "Keep-Alive",
+													"value": "timeout=5, max=100"
+												},
+												{
+													"key": "Connection",
+													"value": "Keep-Alive"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n    \"this-is-laravel-api\": \"10.5.1\"\n}"
+										}
+									]
+								},
+								{
+									"name": "User",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "2062dc3e-3003-419c-9f3a-2d14f21ea60c",
+												"exec": [
+													"pm.test('Reponse code to be 200', function () {",
+													"    pm.expect(pm.response.code).to.be.equal(200);",
+													"});",
+													"",
+													"pm.test(\"Values should be updated\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    var first_name = pm.environment.get('new_user_first_name');",
+													"    var last_name = pm.environment.get('new_user_last_name');",
+													"    var role = pm.environment.get('new_user_role');",
+													"",
+													"    pm.expect(jsonData.data.first_name).to.eql(first_name);",
+													"    pm.expect(jsonData.data.last_name).to.eql(last_name);",
+													"    pm.expect(jsonData.data.roles[0]).to.eql(role);",
+													"});",
+													"",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "ebb2b56c-f29c-45a2-8112-2602a3f35f8a",
+												"exec": [
+													"pm.environment.set('new_user_role', 'super_admin' );",
+													"pm.environment.set('new_user_first_name', 'Updated_John');",
+													"pm.environment.set('new_user_last_name', 'Updated_Doe');"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "14e069f8-56bd-4b75-b603-1c0944505402",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {},
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{user_token}}"
+											}
+										},
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "first_name",
+													"value": "{{new_user_first_name}}",
+													"type": "text"
+												},
+												{
+													"key": "last_name",
+													"value": "{{new_user_last_name}}",
+													"type": "text"
+												},
+												{
+													"key": "role",
+													"value": "{{new_user_role}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": "{{base_url}}/users/{{new_user_id}}"
+									},
+									"response": [
+										{
+											"id": "d7de4cb2-93b8-41a0-8369-e1208eefefff",
+											"name": "Home page",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": "{{base_url}}"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Date",
+													"value": "Tue, 02 May 2023 07:58:07 GMT"
+												},
+												{
+													"key": "Server",
+													"value": "Apache/2.4.56 (Debian)"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/8.2.4"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "59"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "http://10.10.1.6:3000"
+												},
+												{
+													"key": "Access-Control-Allow-Credentials",
+													"value": "true"
+												},
+												{
+													"key": "Keep-Alive",
+													"value": "timeout=5, max=100"
+												},
+												{
+													"key": "Connection",
+													"value": "Keep-Alive"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n    \"this-is-laravel-api\": \"10.5.1\"\n}"
+										}
+									]
+								},
+								{
+									"name": "User",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "2062dc3e-3003-419c-9f3a-2d14f21ea60c",
+												"exec": [
+													"pm.test('Reponse code to be 200', function () {",
+													"    pm.expect(pm.response.code).to.be.equal(200);",
+													"});",
+													"",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "20d75fd8-1118-4d90-a82c-8f019c851f04",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {},
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{user_token}}"
+											}
+										},
+										"method": "GET",
+										"header": [],
+										"url": "{{base_url}}/users/{{new_user_id}}"
+									},
+									"response": [
+										{
+											"id": "72287f8d-8b84-428e-8c0a-5419d7fb6062",
+											"name": "Home page",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": "{{base_url}}"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Date",
+													"value": "Tue, 02 May 2023 07:58:07 GMT"
+												},
+												{
+													"key": "Server",
+													"value": "Apache/2.4.56 (Debian)"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/8.2.4"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "59"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "http://10.10.1.6:3000"
+												},
+												{
+													"key": "Access-Control-Allow-Credentials",
+													"value": "true"
+												},
+												{
+													"key": "Keep-Alive",
+													"value": "timeout=5, max=100"
+												},
+												{
+													"key": "Connection",
+													"value": "Keep-Alive"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n    \"this-is-laravel-api\": \"10.5.1\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Users",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "2062dc3e-3003-419c-9f3a-2d14f21ea60c",
+												"exec": [
+													"pm.test('Reponse code to be 200', function () {",
+													"    pm.expect(pm.response.code).to.be.equal(200);",
+													"});",
+													"",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "0225cfc3-7ca3-4247-b37c-c7bf12447170",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {},
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{user_token}}"
+											}
+										},
+										"method": "GET",
+										"header": [],
+										"url": "{{base_url}}/users"
+									},
+									"response": [
+										{
+											"id": "e67adf6e-8e10-4a7f-b817-dcf5c0746c99",
+											"name": "Home page",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": "{{base_url}}"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Date",
+													"value": "Tue, 02 May 2023 07:58:07 GMT"
+												},
+												{
+													"key": "Server",
+													"value": "Apache/2.4.56 (Debian)"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/8.2.4"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "59"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "http://10.10.1.6:3000"
+												},
+												{
+													"key": "Access-Control-Allow-Credentials",
+													"value": "true"
+												},
+												{
+													"key": "Keep-Alive",
+													"value": "timeout=5, max=100"
+												},
+												{
+													"key": "Connection",
+													"value": "Keep-Alive"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n    \"this-is-laravel-api\": \"10.5.1\"\n}"
+										}
+									]
+								},
+								{
+									"name": "User",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "2062dc3e-3003-419c-9f3a-2d14f21ea60c",
+												"exec": [
+													"pm.test('Reponse code to be 200', function () {",
+													"    pm.expect(pm.response.code).to.be.equal(200);",
+													"});",
+													"",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "55edb2e1-1633-43f8-9a18-2a4afbb6be0b",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {},
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{user_token}}"
+											}
+										},
+										"method": "DELETE",
+										"header": [],
+										"url": "{{base_url}}/users/{{new_user_id}}"
+									},
+									"response": [
+										{
+											"id": "678bb3ce-125f-4a75-8ef0-bec8d367de3d",
+											"name": "Home page",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": "{{base_url}}"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Date",
+													"value": "Tue, 02 May 2023 07:58:07 GMT"
+												},
+												{
+													"key": "Server",
+													"value": "Apache/2.4.56 (Debian)"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/8.2.4"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "59"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "http://10.10.1.6:3000"
+												},
+												{
+													"key": "Access-Control-Allow-Credentials",
+													"value": "true"
+												},
+												{
+													"key": "Keep-Alive",
+													"value": "timeout=5, max=100"
+												},
+												{
+													"key": "Connection",
+													"value": "Keep-Alive"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n    \"this-is-laravel-api\": \"10.5.1\"\n}"
+										}
+									]
+								}
+							],
 							"id": "42a99a42-728c-498f-9d88-ea119265e2fc"
 						},
 						{
-							"name": "User",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "2062dc3e-3003-419c-9f3a-2d14f21ea60c",
-										"exec": [
-											"pm.test('Reponse code to be 201', function () {",
-											"    pm.expect(pm.response.code).to.be.equal(201);",
-											"    jsonData = JSON.parse(responseBody);",
-											"});",
-											"",
-											"pm.environment.set('new_user_id', jsonData.data.id);"
-										],
-										"type": "text/javascript"
-									}
-								},
-								{
-									"listen": "prerequest",
-									"script": {
-										"id": "43c481f3-a29f-4637-8747-283a08b53097",
-										"exec": [
-											"",
-											"pm.environment.set('new_user_first_name', 'John');",
-											"pm.environment.set('new_user_last_name', 'Doe');",
-											"pm.environment.set('new_user_email', 'john_doe+' +  Math.floor((Math.random() * 10000) + 1) + '@jdecode.dev' );",
-											"pm.environment.set('new_user_password', 'JohnDoe@123');",
-											"pm.environment.set('new_user_role', 'user');",
-											"",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"id": "5709a92d-35f0-4559-b941-ef8a38507161",
+							"name": "New Request",
+							"id": "f727c865-12c0-425b-9930-4ac4403091d5",
 							"protocolProfileBehavior": {
-								"disabledSystemHeaders": {},
 								"disableBodyPruning": true
 							},
 							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{user_token}}"
-									}
-								},
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "first_name",
-											"value": "{{new_user_first_name}}",
-											"type": "text"
-										},
-										{
-											"key": "last_name",
-											"value": "{{new_user_last_name}}",
-											"type": "text"
-										},
-										{
-											"key": "email",
-											"value": "{{new_user_email}}",
-											"type": "text"
-										},
-										{
-											"key": "password",
-											"value": "{{new_user_password}}",
-											"type": "text"
-										},
-										{
-											"key": "password_confirmation",
-											"value": "{{new_user_password}}",
-											"type": "text"
-										},
-										{
-											"key": "role",
-											"value": "{{new_user_role}}",
-											"type": "text"
-										}
-									]
-								},
-								"url": "{{base_url}}/users"
-							},
-							"response": [
-								{
-									"id": "2b0e9ade-a413-4886-9bf6-40bfd853d8e3",
-									"name": "Home page",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"url": "{{base_url}}"
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Date",
-											"value": "Tue, 02 May 2023 07:58:07 GMT"
-										},
-										{
-											"key": "Server",
-											"value": "Apache/2.4.56 (Debian)"
-										},
-										{
-											"key": "X-Powered-By",
-											"value": "PHP/8.2.4"
-										},
-										{
-											"key": "Cache-Control",
-											"value": "no-cache, private"
-										},
-										{
-											"key": "X-RateLimit-Limit",
-											"value": "60"
-										},
-										{
-											"key": "X-RateLimit-Remaining",
-											"value": "59"
-										},
-										{
-											"key": "Access-Control-Allow-Origin",
-											"value": "http://10.10.1.6:3000"
-										},
-										{
-											"key": "Access-Control-Allow-Credentials",
-											"value": "true"
-										},
-										{
-											"key": "Keep-Alive",
-											"value": "timeout=5, max=100"
-										},
-										{
-											"key": "Connection",
-											"value": "Keep-Alive"
-										},
-										{
-											"key": "Transfer-Encoding",
-											"value": "chunked"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n    \"this-is-laravel-api\": \"10.5.1\"\n}"
-								}
-							]
-						},
-						{
-							"name": "User",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "2062dc3e-3003-419c-9f3a-2d14f21ea60c",
-										"exec": [
-											"pm.test('Reponse code to be 200', function () {",
-											"    pm.expect(pm.response.code).to.be.equal(200);",
-											"});",
-											"",
-											"pm.test(\"Values should be updated\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    var first_name = pm.environment.get('new_user_first_name');",
-											"    var last_name = pm.environment.get('new_user_last_name');",
-											"    var role = pm.environment.get('new_user_role');",
-											"",
-											"    pm.expect(jsonData.data.first_name).to.eql(first_name);",
-											"    pm.expect(jsonData.data.last_name).to.eql(last_name);",
-											"    pm.expect(jsonData.data.roles[0]).to.eql(role);",
-											"});",
-											"",
-											""
-										],
-										"type": "text/javascript"
-									}
-								},
-								{
-									"listen": "prerequest",
-									"script": {
-										"id": "ebb2b56c-f29c-45a2-8112-2602a3f35f8a",
-										"exec": [
-											"pm.environment.set('new_user_role', 'super_admin' );",
-											"pm.environment.set('new_user_first_name', 'Updated_John');",
-											"pm.environment.set('new_user_last_name', 'Updated_Doe');"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"id": "14e069f8-56bd-4b75-b603-1c0944505402",
-							"protocolProfileBehavior": {
-								"disabledSystemHeaders": {},
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{user_token}}"
-									}
-								},
-								"method": "PATCH",
-								"header": [],
-								"body": {
-									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"key": "first_name",
-											"value": "{{new_user_first_name}}",
-											"type": "text"
-										},
-										{
-											"key": "last_name",
-											"value": "{{new_user_last_name}}",
-											"type": "text"
-										},
-										{
-											"key": "role",
-											"value": "{{new_user_role}}",
-											"type": "text"
-										}
-									]
-								},
-								"url": "{{base_url}}/users/{{new_user_id}}"
-							},
-							"response": [
-								{
-									"id": "d7de4cb2-93b8-41a0-8369-e1208eefefff",
-									"name": "Home page",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"url": "{{base_url}}"
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Date",
-											"value": "Tue, 02 May 2023 07:58:07 GMT"
-										},
-										{
-											"key": "Server",
-											"value": "Apache/2.4.56 (Debian)"
-										},
-										{
-											"key": "X-Powered-By",
-											"value": "PHP/8.2.4"
-										},
-										{
-											"key": "Cache-Control",
-											"value": "no-cache, private"
-										},
-										{
-											"key": "X-RateLimit-Limit",
-											"value": "60"
-										},
-										{
-											"key": "X-RateLimit-Remaining",
-											"value": "59"
-										},
-										{
-											"key": "Access-Control-Allow-Origin",
-											"value": "http://10.10.1.6:3000"
-										},
-										{
-											"key": "Access-Control-Allow-Credentials",
-											"value": "true"
-										},
-										{
-											"key": "Keep-Alive",
-											"value": "timeout=5, max=100"
-										},
-										{
-											"key": "Connection",
-											"value": "Keep-Alive"
-										},
-										{
-											"key": "Transfer-Encoding",
-											"value": "chunked"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n    \"this-is-laravel-api\": \"10.5.1\"\n}"
-								}
-							]
-						},
-						{
-							"name": "User",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "2062dc3e-3003-419c-9f3a-2d14f21ea60c",
-										"exec": [
-											"pm.test('Reponse code to be 200', function () {",
-											"    pm.expect(pm.response.code).to.be.equal(200);",
-											"});",
-											"",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"id": "20d75fd8-1118-4d90-a82c-8f019c851f04",
-							"protocolProfileBehavior": {
-								"disabledSystemHeaders": {},
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{user_token}}"
-									}
-								},
 								"method": "GET",
-								"header": [],
-								"url": "{{base_url}}/users/{{new_user_id}}"
+								"header": []
 							},
-							"response": [
-								{
-									"id": "72287f8d-8b84-428e-8c0a-5419d7fb6062",
-									"name": "Home page",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"url": "{{base_url}}"
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Date",
-											"value": "Tue, 02 May 2023 07:58:07 GMT"
-										},
-										{
-											"key": "Server",
-											"value": "Apache/2.4.56 (Debian)"
-										},
-										{
-											"key": "X-Powered-By",
-											"value": "PHP/8.2.4"
-										},
-										{
-											"key": "Cache-Control",
-											"value": "no-cache, private"
-										},
-										{
-											"key": "X-RateLimit-Limit",
-											"value": "60"
-										},
-										{
-											"key": "X-RateLimit-Remaining",
-											"value": "59"
-										},
-										{
-											"key": "Access-Control-Allow-Origin",
-											"value": "http://10.10.1.6:3000"
-										},
-										{
-											"key": "Access-Control-Allow-Credentials",
-											"value": "true"
-										},
-										{
-											"key": "Keep-Alive",
-											"value": "timeout=5, max=100"
-										},
-										{
-											"key": "Connection",
-											"value": "Keep-Alive"
-										},
-										{
-											"key": "Transfer-Encoding",
-											"value": "chunked"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n    \"this-is-laravel-api\": \"10.5.1\"\n}"
-								}
-							]
-						},
-						{
-							"name": "Users",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "2062dc3e-3003-419c-9f3a-2d14f21ea60c",
-										"exec": [
-											"pm.test('Reponse code to be 200', function () {",
-											"    pm.expect(pm.response.code).to.be.equal(200);",
-											"});",
-											"",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"id": "0225cfc3-7ca3-4247-b37c-c7bf12447170",
-							"protocolProfileBehavior": {
-								"disabledSystemHeaders": {},
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{user_token}}"
-									}
-								},
-								"method": "GET",
-								"header": [],
-								"url": "{{base_url}}/users"
-							},
-							"response": [
-								{
-									"id": "e67adf6e-8e10-4a7f-b817-dcf5c0746c99",
-									"name": "Home page",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"url": "{{base_url}}"
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Date",
-											"value": "Tue, 02 May 2023 07:58:07 GMT"
-										},
-										{
-											"key": "Server",
-											"value": "Apache/2.4.56 (Debian)"
-										},
-										{
-											"key": "X-Powered-By",
-											"value": "PHP/8.2.4"
-										},
-										{
-											"key": "Cache-Control",
-											"value": "no-cache, private"
-										},
-										{
-											"key": "X-RateLimit-Limit",
-											"value": "60"
-										},
-										{
-											"key": "X-RateLimit-Remaining",
-											"value": "59"
-										},
-										{
-											"key": "Access-Control-Allow-Origin",
-											"value": "http://10.10.1.6:3000"
-										},
-										{
-											"key": "Access-Control-Allow-Credentials",
-											"value": "true"
-										},
-										{
-											"key": "Keep-Alive",
-											"value": "timeout=5, max=100"
-										},
-										{
-											"key": "Connection",
-											"value": "Keep-Alive"
-										},
-										{
-											"key": "Transfer-Encoding",
-											"value": "chunked"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n    \"this-is-laravel-api\": \"10.5.1\"\n}"
-								}
-							]
-						},
-						{
-							"name": "User",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "2062dc3e-3003-419c-9f3a-2d14f21ea60c",
-										"exec": [
-											"pm.test('Reponse code to be 200', function () {",
-											"    pm.expect(pm.response.code).to.be.equal(200);",
-											"});",
-											"",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"id": "55edb2e1-1633-43f8-9a18-2a4afbb6be0b",
-							"protocolProfileBehavior": {
-								"disabledSystemHeaders": {},
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{user_token}}"
-									}
-								},
-								"method": "DELETE",
-								"header": [],
-								"url": "{{base_url}}/users/{{new_user_id}}"
-							},
-							"response": [
-								{
-									"id": "678bb3ce-125f-4a75-8ef0-bec8d367de3d",
-									"name": "Home page",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"url": "{{base_url}}"
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Date",
-											"value": "Tue, 02 May 2023 07:58:07 GMT"
-										},
-										{
-											"key": "Server",
-											"value": "Apache/2.4.56 (Debian)"
-										},
-										{
-											"key": "X-Powered-By",
-											"value": "PHP/8.2.4"
-										},
-										{
-											"key": "Cache-Control",
-											"value": "no-cache, private"
-										},
-										{
-											"key": "X-RateLimit-Limit",
-											"value": "60"
-										},
-										{
-											"key": "X-RateLimit-Remaining",
-											"value": "59"
-										},
-										{
-											"key": "Access-Control-Allow-Origin",
-											"value": "http://10.10.1.6:3000"
-										},
-										{
-											"key": "Access-Control-Allow-Credentials",
-											"value": "true"
-										},
-										{
-											"key": "Keep-Alive",
-											"value": "timeout=5, max=100"
-										},
-										{
-											"key": "Connection",
-											"value": "Keep-Alive"
-										},
-										{
-											"key": "Transfer-Encoding",
-											"value": "chunked"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n    \"this-is-laravel-api\": \"10.5.1\"\n}"
-								}
-							]
+							"response": []
 						}
 					],
 					"id": "8a117a32-d1c4-4e5b-b415-472c8d591278"
@@ -2402,19 +2415,19 @@
 	],
 	"variable": [
 		{
-			"id": "35e56b96-9f75-4d25-a676-a471631277c5",
+			"id": "f6a77dab-37cb-4c26-96a7-e82371b3568e",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "58136bcb-718a-46a8-b471-000cfc2dcc74",
+			"id": "5d14baf8-d22b-49b2-a25b-60949ed58ecc",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "36a870d4-201d-444f-ba1e-af99705990e2",
+			"id": "0e7b37c9-c82c-4fce-abf2-2b1c251f2f03",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
