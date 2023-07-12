@@ -2579,7 +2579,8 @@
 							},
 							"request": {
 								"method": "GET",
-								"header": []
+								"header": [],
+								"url": "{{admin_url}}/roles"
 							},
 							"response": []
 						}
@@ -3012,19 +3013,19 @@
 	],
 	"variable": [
 		{
-			"id": "747ee1fd-c881-474d-b00f-084a5cdc1c00",
+			"id": "1bd8b74e-784f-47ff-952a-1a7bf9583e4a",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "0c71de0e-6086-4083-be89-c4fb3ab5e7d0",
+			"id": "fad28e5a-39b7-4066-b785-3bac9e87db44",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "36973e47-0374-4bd8-bfdf-846991411f7a",
+			"id": "b1ab3f2a-5440-4afe-9b01-f75ae326fa99",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
