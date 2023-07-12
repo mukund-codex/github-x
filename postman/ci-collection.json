@@ -1293,8 +1293,21 @@
 					"name": "Dashboard",
 					"item": [
 						{
-							"name": "Homepage",
-							"item": [],
+							"name": "Onboarding",
+							"item": [
+								{
+									"name": "New Request",
+									"id": "f727c865-12c0-425b-9930-4ac4403091d5",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": []
+									},
+									"response": []
+								}
+							],
 							"id": "9d9a1339-79d5-4376-b15c-d40b65b5a41d"
 						},
 						{
@@ -1908,18 +1921,6 @@
 								}
 							],
 							"id": "42a99a42-728c-498f-9d88-ea119265e2fc"
-						},
-						{
-							"name": "New Request",
-							"id": "f727c865-12c0-425b-9930-4ac4403091d5",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": []
-							},
-							"response": []
 						}
 					],
 					"id": "8a117a32-d1c4-4e5b-b415-472c8d591278"
@@ -2420,19 +2421,19 @@
 	],
 	"variable": [
 		{
-			"id": "128350d7-32cf-4a1f-a61e-39575e6adf68",
+			"id": "2e954658-8b4b-46f1-aa9c-13c960d01913",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "c2fdef64-36a6-4e0f-bf88-8f41ef9a0852",
+			"id": "5c2f4fb4-1ea1-4287-b781-2e649c2cc1a2",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "e9d7a2e0-7a49-4a1d-8cfc-b8f802465d12",
+			"id": "ac5ccffb-a889-48a0-9470-0e969e74b7e9",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
