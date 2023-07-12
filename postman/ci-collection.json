@@ -2010,7 +2010,7 @@
 					"name": "Onboarding",
 					"item": [
 						{
-							"name": "Login (set token)",
+							"name": "Login (CSRF)",
 							"event": [
 								{
 									"listen": "prerequest",
@@ -2962,19 +2962,19 @@
 	],
 	"variable": [
 		{
-			"id": "83795a8b-4764-4860-a13d-c853c7ebf1f3",
+			"id": "fa90b91a-eff5-45a4-968e-3878b52fef84",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "53f53cac-4100-4984-b628-3971fe35cc5c",
+			"id": "f32a260b-5fa0-433d-8458-fbf1e0b65e74",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "46f894e0-9bdf-4bdb-90db-75ac5518fbb8",
+			"id": "a2949ba9-553c-4aa1-86ea-524fd8dcaaeb",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
