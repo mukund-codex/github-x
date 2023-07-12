@@ -2572,7 +2572,7 @@
 					"name": "Roles",
 					"item": [
 						{
-							"name": "New Request",
+							"name": "Roles",
 							"id": "8be468b3-d99d-4b34-9a29-d840f0078d4f",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -3012,19 +3012,19 @@
 	],
 	"variable": [
 		{
-			"id": "2403bbc5-92b6-4990-b764-7cb786da6619",
+			"id": "747ee1fd-c881-474d-b00f-084a5cdc1c00",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "de0a4d0e-bd1d-4a8d-913a-4360cdcf3137",
+			"id": "0c71de0e-6086-4083-be89-c4fb3ab5e7d0",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "a7911fcc-c9a6-4f73-a481-d66b26bb229f",
+			"id": "36973e47-0374-4bd8-bfdf-846991411f7a",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
