@@ -1290,7 +1290,7 @@
 									]
 								},
 								{
-									"name": "New Request",
+									"name": "Login",
 									"event": [
 										{
 											"listen": "prerequest",
@@ -2439,19 +2439,19 @@
 	],
 	"variable": [
 		{
-			"id": "3f1fcee0-90ef-4b0a-900e-d045aae13dac",
+			"id": "9b91bdf8-33de-4715-b3d5-25537dfbf05e",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "0b488551-a7cc-44ac-a51e-cde007214be6",
+			"id": "bb74b25d-1671-48f7-b10c-f6c7135a8b1f",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "d8a41428-3cee-45db-8f2b-c0dce55b23ad",
+			"id": "a2280af5-2a11-4d6e-bf9f-a1e79c05f650",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
