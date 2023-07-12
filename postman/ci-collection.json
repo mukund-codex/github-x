@@ -2253,6 +2253,18 @@
 								"url": "{{admin_url}}/logout"
 							},
 							"response": []
+						},
+						{
+							"name": "New Request",
+							"id": "bf3c4049-a8dd-47f8-85d8-b123e46f8a3e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
 						}
 					],
 					"id": "9d9a1339-79d5-4376-b15c-d40b65b5a41d"
@@ -2935,19 +2947,19 @@
 	],
 	"variable": [
 		{
-			"id": "d3adcc55-e856-4612-805a-848c2a223234",
+			"id": "d65f290e-84d0-4667-b60e-cb79e8b0e568",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "725dedfc-24e3-4804-afed-ccc4b96e4210",
+			"id": "d45b7d04-3d49-4f34-ae4c-b9e0ab6b083e",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "fd97e271-9cfd-4371-acc6-22b25e9c3fb3",
+			"id": "158d2a55-c44b-4d15-80d6-10b78258f480",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
