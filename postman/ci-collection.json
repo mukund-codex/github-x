@@ -2058,7 +2058,9 @@
 									"script": {
 										"id": "7151f38a-23a4-4dd9-9cc4-e2fee1dad893",
 										"exec": [
-											"pm.environment.set(\"xsrf_token\", decodeURIComponent(pm.cookies.get(\"XSRF-TOKEN\")));"
+											"pm.test('Reponse code to be 200', function () {",
+											"    pm.expect(pm.response.code).to.be.equal(200);",
+											"});"
 										],
 										"type": "text/javascript"
 									}
@@ -2670,19 +2672,19 @@
 	],
 	"variable": [
 		{
-			"id": "ae2e7168-39d9-4ff5-a7cd-a0cbd4be6abc",
+			"id": "44efc84c-c63f-4b24-b41a-d2de458addfa",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "b09ff627-f122-4f5f-b87f-7a663a786df4",
+			"id": "88d0cb7b-ed85-4c9d-b186-07b70b364b77",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "0a4c8089-30e2-4e9a-b395-8dc1531e680b",
+			"id": "30dddbc3-b33d-49e1-b6e1-5ec8125cab0b",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
