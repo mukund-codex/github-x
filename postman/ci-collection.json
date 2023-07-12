@@ -2925,7 +2925,7 @@
 					"id": "42a99a42-728c-498f-9d88-ea119265e2fc"
 				},
 				{
-					"name": "New Folder",
+					"name": "Off-boarding",
 					"item": [],
 					"id": "4d6c2a37-af54-441c-893b-77d4d631627a"
 				}
@@ -2995,19 +2995,19 @@
 	],
 	"variable": [
 		{
-			"id": "ee9c1c8a-9344-4bef-b93b-d2a7dbf39566",
+			"id": "d837a3a0-8604-4381-ab82-de61c0a6f354",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "f9a94275-15ea-4963-97ca-0e4a19b45ba2",
+			"id": "3da9993c-fdf6-4caf-9ad5-0fd5561095fa",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "5929d72a-8768-4113-b8de-10dbb41f553b",
+			"id": "90c0890f-fc3f-4b12-ad66-29896e1e0571",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
