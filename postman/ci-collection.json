@@ -2214,6 +2214,33 @@
 							"response": []
 						},
 						{
+							"name": "Users",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "b08f0c64-ed28-4183-86ae-ae41f178ea88",
+										"exec": [
+											"pm.test('Reponse code to be 200', function () {",
+											"    pm.expect(pm.response.code).to.be.equal(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "7c201daa-65cb-4e0b-98b3-959923f909b5",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "{{admin_url}}"
+							},
+							"response": []
+						},
+						{
 							"name": "Logout",
 							"event": [
 								{
@@ -2963,19 +2990,19 @@
 	],
 	"variable": [
 		{
-			"id": "5e4cd009-58e3-4a47-9f27-c5256b916379",
+			"id": "206cecc9-d057-440b-a4c0-27a1b0efd7fe",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "d7ab30a9-b7b1-4f48-8786-0444fddfa21c",
+			"id": "c35b0ee2-f0f7-487c-8021-db7f2058ca6c",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "a5aeb664-76be-4aa5-86bd-d6750a8694c8",
+			"id": "b58b51dc-e7e6-4310-973f-ba1c73e8db07",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
