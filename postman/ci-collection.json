@@ -2651,7 +2651,8 @@
 											"pm.test('Reponse code to be 200', function () {",
 											"    pm.expect(pm.response.code).to.be.equal(200);",
 											"});",
-											""
+											"",
+											"pm.environment.set(\"new_user_id\", decodeURIComponent(pm.cookies.get(\"new_user_id\")));"
 										],
 										"type": "text/javascript"
 									}
@@ -3027,19 +3028,19 @@
 	],
 	"variable": [
 		{
-			"id": "42a80ffe-f18b-4386-8134-55d21d8bc566",
+			"id": "46ea180b-1892-4535-b259-62ae1df16211",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "f888a42a-6e03-44bc-87a4-b054cdd28c6f",
+			"id": "5c4b4263-bf1d-4854-b091-49c40d774226",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "89a63229-30e8-46cf-9df4-78b8dfc24536",
+			"id": "4bdf3c12-9280-4251-b6e7-689327849b37",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
