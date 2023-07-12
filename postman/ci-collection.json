@@ -2534,7 +2534,13 @@
 									}
 								},
 								"method": "PATCH",
-								"header": [],
+								"header": [
+									{
+										"key": "X-XSRF-TOKEN",
+										"value": "{{xsrf_token}}",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "urlencoded",
 									"urlencoded": [
@@ -2973,19 +2979,19 @@
 	],
 	"variable": [
 		{
-			"id": "e3deeee4-3d0a-41f5-bca0-369b95c0df6e",
+			"id": "8c49dcfb-f1fc-4f58-b795-9f44fdee5bb6",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "2b1d76ab-7865-4812-b4cb-df8f5f321974",
+			"id": "bb66f024-f619-4d60-9362-c34047afefc0",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "2f7f7601-3ad6-4d04-9ec2-de5506258b9a",
+			"id": "52f156d2-0b64-4fe4-958d-a837a5fa370a",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
