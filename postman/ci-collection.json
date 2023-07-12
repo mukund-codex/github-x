@@ -2187,13 +2187,28 @@
 						},
 						{
 							"name": "Homepage",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "b08f0c64-ed28-4183-86ae-ae41f178ea88",
+										"exec": [
+											"pm.test('Reponse code to be 200', function () {",
+											"    pm.expect(pm.response.code).to.be.equal(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "bf3c4049-a8dd-47f8-85d8-b123e46f8a3e",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
 								"method": "GET",
-								"header": []
+								"header": [],
+								"url": "{{admin_url}}"
 							},
 							"response": []
 						},
@@ -2947,19 +2962,19 @@
 	],
 	"variable": [
 		{
-			"id": "7811bd38-b07e-4749-b587-009de8431b2c",
+			"id": "07b4d1c4-953d-4a63-ae87-ea84127097b8",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "8e48b3ce-d513-405c-9c23-d35e661925ed",
+			"id": "99dfa021-1fbe-4b1d-a3f6-c6a0e37196fa",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "5a11c69f-9373-4261-8821-306fd928a758",
+			"id": "4e1e834c-2379-4bb8-894d-3028d044bcf7",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
