@@ -2764,7 +2764,13 @@
 									}
 								},
 								"method": "DELETE",
-								"header": [],
+								"header": [
+									{
+										"key": "X-XSRF-TOKEN",
+										"value": "{{xsrf_token}}",
+										"type": "text"
+									}
+								],
 								"url": "{{base_url}}/users/{{new_user_id}}"
 							},
 							"response": [
@@ -2979,19 +2985,19 @@
 	],
 	"variable": [
 		{
-			"id": "8c49dcfb-f1fc-4f58-b795-9f44fdee5bb6",
+			"id": "ab7e177d-d564-4b90-8010-7fb0bc1cd046",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "bb66f024-f619-4d60-9362-c34047afefc0",
+			"id": "45a223d3-e92e-463e-8e7a-f5b30b4bbfb9",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "52f156d2-0b64-4fe4-958d-a837a5fa370a",
+			"id": "0963511f-f2c1-4217-bc17-0191ef5c4ad8",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
