@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use Spatie\Permission\Models\Role;
+use Symfony\Component\HttpFoundation\Cookie;
 
 class UserController extends Controller
 {
@@ -74,7 +75,7 @@ class UserController extends Controller
                 __('Successfully created!'),
                 __('messages.user.registered')
             )
-        );
+        )->withCookie(new Cookie('new_user_id', $user->id));
     }
 
     public function update(
