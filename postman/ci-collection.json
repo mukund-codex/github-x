@@ -2372,8 +2372,8 @@
 								"method": "POST",
 								"header": [],
 								"body": {
-									"mode": "formdata",
-									"formdata": [
+									"mode": "urlencoded",
+									"urlencoded": [
 										{
 											"key": "first_name",
 											"value": "{{new_user_first_name}}",
@@ -2406,7 +2406,7 @@
 										}
 									]
 								},
-								"url": "{{base_url}}/users"
+								"url": "{{admin_url}}/users"
 							},
 							"response": [
 								{
@@ -2969,19 +2969,19 @@
 	],
 	"variable": [
 		{
-			"id": "58d1c057-a40c-4f71-b715-52efb069a985",
+			"id": "2013909b-57a5-4c7f-aea8-4a5d55683f45",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "d859233d-b918-49e5-9fa2-952ccdebf810",
+			"id": "360ddffd-9d66-4fae-899c-f369b10e0356",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "6ba36312-f661-4ea1-92b6-d46a0f9275b5",
+			"id": "9449c672-c9e8-4472-8263-0a250a3a3c9f",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
