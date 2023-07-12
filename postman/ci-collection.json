@@ -2579,6 +2579,16 @@
 									"script": {
 										"id": "7eeec98c-5ca5-4fb6-852a-4b95645b6b98",
 										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "dcb55e38-78c9-49ba-a02e-4c0dceaf59d8",
+										"exec": [
 											"pm.test('Reponse code to be 200', function () {",
 											"    pm.expect(pm.response.code).to.be.equal(200);",
 											"});"
@@ -3028,19 +3038,19 @@
 	],
 	"variable": [
 		{
-			"id": "46ea180b-1892-4535-b259-62ae1df16211",
+			"id": "ae1c9663-f6f6-4e82-bd1b-3a9541716d27",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "5c4b4263-bf1d-4854-b091-49c40d774226",
+			"id": "8a9efb31-5284-466c-a5bd-3a285ac1a253",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "4bdf3c12-9280-4251-b6e7-689327849b37",
+			"id": "95049d2d-516c-44d3-991b-76cba08c8228",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
