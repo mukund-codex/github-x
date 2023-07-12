@@ -1069,18 +1069,6 @@
 							"name": "Onboarding",
 							"item": [
 								{
-									"name": "New Request",
-									"id": "f727c865-12c0-425b-9930-4ac4403091d5",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"method": "GET",
-										"header": []
-									},
-									"response": []
-								},
-								{
 									"name": "Login",
 									"event": [
 										{
@@ -1300,6 +1288,42 @@
 											"body": "{\n    \"message\": \"These credentials do not match our records.\",\n    \"errors\": {\n        \"email\": [\n            \"These credentials do not match our records.\"\n        ]\n    }\n}"
 										}
 									]
+								},
+								{
+									"name": "New Request",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "20a335a8-b13d-43e5-93fe-3674fe032349",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"id": "7151f38a-23a4-4dd9-9cc4-e2fee1dad893",
+												"exec": [
+													"var xsrfToken = postman.getResponseCookie('XSRF-TOKEN').value;",
+													"pm.environment.set('xsrf_token', xsrfToken);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "f727c865-12c0-425b-9930-4ac4403091d5",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": "{{admin_url}}/login"
+									},
+									"response": []
 								}
 							],
 							"id": "9d9a1339-79d5-4376-b15c-d40b65b5a41d"
@@ -2415,19 +2439,19 @@
 	],
 	"variable": [
 		{
-			"id": "7dc0f336-e354-4ef0-8542-d9f98e880ca6",
+			"id": "3f1fcee0-90ef-4b0a-900e-d045aae13dac",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "9663d541-8fec-4611-ae03-90953853f845",
+			"id": "0b488551-a7cc-44ac-a51e-cde007214be6",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "b29feded-4e16-464f-ad18-7fee5b916a68",
+			"id": "d8a41428-3cee-45db-8f2b-c0dce55b23ad",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
