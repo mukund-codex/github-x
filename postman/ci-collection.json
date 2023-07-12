@@ -2652,7 +2652,7 @@
 								},
 								"method": "GET",
 								"header": [],
-								"url": "{{base_url}}/users/{{new_user_id}}"
+								"url": "{{admin_url}}/users/{{new_user_id}}"
 							},
 							"response": [
 								{
@@ -2974,19 +2974,19 @@
 	],
 	"variable": [
 		{
-			"id": "9f2f5892-e8f0-42a0-855a-8d52dee4767a",
+			"id": "874b30d6-3f9b-4999-ab9a-edb31ef161cc",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "2f770085-876e-431e-bdbb-041f42f6db53",
+			"id": "66b190d5-d1fd-4313-b4cc-a66dd3a5d87e",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "eab6f874-3724-45db-a60b-5bb330f61bb9",
+			"id": "cba759d6-f92b-4143-8a8b-9264bf886a99",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
