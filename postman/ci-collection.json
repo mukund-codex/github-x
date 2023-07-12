@@ -2760,7 +2760,7 @@
 										"type": "text"
 									}
 								],
-								"url": "{{base_url}}/users/{{new_user_id}}"
+								"url": "{{admin_url}}/users/{{new_user_id}}"
 							},
 							"response": [
 								{
@@ -2974,19 +2974,19 @@
 	],
 	"variable": [
 		{
-			"id": "874b30d6-3f9b-4999-ab9a-edb31ef161cc",
+			"id": "25a03f98-184b-4f92-a99d-91c03e36d922",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "66b190d5-d1fd-4313-b4cc-a66dd3a5d87e",
+			"id": "16d7aae6-2d6e-40f5-854c-c495ce16e218",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "cba759d6-f92b-4143-8a8b-9264bf886a99",
+			"id": "66b4e4b9-bf9c-41cf-842e-14be9cd192f7",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
