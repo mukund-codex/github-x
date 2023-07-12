@@ -2573,6 +2573,20 @@
 					"item": [
 						{
 							"name": "Roles",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "7eeec98c-5ca5-4fb6-852a-4b95645b6b98",
+										"exec": [
+											"pm.test('Reponse code to be 200', function () {",
+											"    pm.expect(pm.response.code).to.be.equal(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "8be468b3-d99d-4b34-9a29-d840f0078d4f",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -3013,19 +3027,19 @@
 	],
 	"variable": [
 		{
-			"id": "1bd8b74e-784f-47ff-952a-1a7bf9583e4a",
+			"id": "3784b6f8-9d74-401f-9bd1-1afbaf3d478d",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "fad28e5a-39b7-4066-b785-3bac9e87db44",
+			"id": "362da29d-ad5c-4dec-9785-a0e3bf773429",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "b1ab3f2a-5440-4afe-9b01-f75ae326fa99",
+			"id": "1e140497-0dd8-46e4-905e-e95fba80ee5c",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
