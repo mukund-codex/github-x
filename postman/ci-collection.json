@@ -2063,16 +2063,11 @@
 									"script": {
 										"id": "499f1b89-e947-42ce-aac9-b66d77b941cf",
 										"exec": [
-											"// pm.test('Reponse code to be 200', function () {",
-											"//     pm.expect(pm.response.code).to.be.equal(200);",
-											"// });",
+											"pm.test('Reponse code to be 200', function () {",
+											"    pm.expect(pm.response.code).to.be.equal(200);",
+											"});",
 											"",
-											"// pm.test(\"Body is present\", function () {",
-											"//     ((responseBody) !== undefined && (responseBody.length > 1));",
-											"//     jsonData = JSON.parse(responseBody);",
-											"// });",
-											"",
-											"// pm.environment.set('user_token', jsonData.data.token);"
+											""
 										],
 										"type": "text/javascript"
 									}
@@ -2106,6 +2101,12 @@
 											"key": "password",
 											"value": "{{user_password}}",
 											"type": "text"
+										},
+										{
+											"key": "",
+											"value": "",
+											"type": "text",
+											"disabled": true
 										}
 									]
 								},
@@ -2962,19 +2963,19 @@
 	],
 	"variable": [
 		{
-			"id": "fa90b91a-eff5-45a4-968e-3878b52fef84",
+			"id": "5e4cd009-58e3-4a47-9f27-c5256b916379",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "f32a260b-5fa0-433d-8458-fbf1e0b65e74",
+			"id": "d7ab30a9-b7b1-4f48-8786-0444fddfa21c",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "a2949ba9-553c-4aa1-86ea-524fd8dcaaeb",
+			"id": "a5aeb664-76be-4aa5-86bd-d6750a8694c8",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
