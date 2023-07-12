@@ -2604,7 +2604,7 @@
 			]
 		},
 		{
-			"name": "New Folder",
+			"name": "API",
 			"item": [],
 			"id": "84f72b1a-c4aa-475e-8730-7302faa3006b"
 		}
@@ -2649,19 +2649,19 @@
 	],
 	"variable": [
 		{
-			"id": "0b47a090-2aaa-4a28-9df2-1d66bc251382",
+			"id": "7463de86-719d-4157-8320-c79ab1b57a99",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "cffb3000-d514-49ab-9a8b-69ff14cc4ec8",
+			"id": "5925935a-868e-4b6e-8422-04b2de3a23a4",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "515d0107-4374-4fee-8116-a5c95a4dc496",
+			"id": "8f549f7f-b5de-418e-91c5-e98370e4776f",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
