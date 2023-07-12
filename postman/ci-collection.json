@@ -2929,6 +2929,11 @@
 						}
 					],
 					"id": "4d6c2a37-af54-441c-893b-77d4d631627a"
+				},
+				{
+					"name": "New Folder",
+					"item": [],
+					"id": "2bb1d154-fe7c-43ab-ba48-cd5128ec0bbf"
 				}
 			],
 			"id": "8a117a32-d1c4-4e5b-b415-472c8d591278",
@@ -2994,19 +2999,19 @@
 	],
 	"variable": [
 		{
-			"id": "30531166-4d8d-4135-9364-fdb196120a9c",
+			"id": "a3277240-43ed-4d3d-9cc6-47a52a15247d",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "4368819b-fedc-4341-bdea-dc8fe06eeb3f",
+			"id": "f1acfaf3-0958-4d58-afa9-17cbfdfb6ad9",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "1487e14f-78fd-49eb-92f2-176b4677d25f",
+			"id": "d257cca2-7c4d-4e82-a097-2dfb04381247",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
