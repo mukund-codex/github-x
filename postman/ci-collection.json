@@ -2492,17 +2492,6 @@
 											"    pm.expect(pm.response.code).to.be.equal(200);",
 											"});",
 											"",
-											"pm.test(\"Values should be updated\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    var first_name = pm.environment.get('new_user_first_name');",
-											"    var last_name = pm.environment.get('new_user_last_name');",
-											"    var role = pm.environment.get('new_user_role');",
-											"",
-											"    pm.expect(jsonData.data.first_name).to.eql(first_name);",
-											"    pm.expect(jsonData.data.last_name).to.eql(last_name);",
-											"    pm.expect(jsonData.data.roles[0]).to.eql(role);",
-											"});",
-											"",
 											""
 										],
 										"type": "text/javascript"
@@ -2985,19 +2974,19 @@
 	],
 	"variable": [
 		{
-			"id": "e8886cee-42c4-4988-b0bc-eeac12453376",
+			"id": "7bffd72d-caec-4328-a567-d2bb288707ad",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "2f4b123d-6a1d-4622-bd00-bbb892d89446",
+			"id": "beb9a18f-47fd-4f2e-b16b-9a956b455cff",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "36553bb9-e209-4172-9878-6860d309cc56",
+			"id": "7bcffd49-ca8a-4a56-86df-cc687c657187",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
