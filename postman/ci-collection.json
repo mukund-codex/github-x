@@ -2186,6 +2186,18 @@
 							]
 						},
 						{
+							"name": "Homepage",
+							"id": "bf3c4049-a8dd-47f8-85d8-b123e46f8a3e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
 							"name": "Logout",
 							"event": [
 								{
@@ -2251,18 +2263,6 @@
 									]
 								},
 								"url": "{{admin_url}}/logout"
-							},
-							"response": []
-						},
-						{
-							"name": "New Request",
-							"id": "bf3c4049-a8dd-47f8-85d8-b123e46f8a3e",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": []
 							},
 							"response": []
 						}
@@ -2947,19 +2947,19 @@
 	],
 	"variable": [
 		{
-			"id": "d65f290e-84d0-4667-b60e-cb79e8b0e568",
+			"id": "7811bd38-b07e-4749-b587-009de8431b2c",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "d45b7d04-3d49-4f34-ae4c-b9e0ab6b083e",
+			"id": "8e48b3ce-d513-405c-9c23-d35e661925ed",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "158d2a55-c44b-4d15-80d6-10b78258f480",
+			"id": "5a11c69f-9373-4261-8821-306fd928a758",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
