@@ -1086,8 +1086,7 @@
 											"script": {
 												"id": "7151f38a-23a4-4dd9-9cc4-e2fee1dad893",
 												"exec": [
-													"var xsrfToken = postman.getResponseCookie('XSRF-TOKEN').value;",
-													"pm.environment.set('xsrf_token', xsrfToken);"
+													"pm.environment.set(\"xsrf_token\", decodeURIComponent(pm.cookies.get(\"XSRF-TOKEN\")));"
 												],
 												"type": "text/javascript"
 											}
@@ -2448,19 +2447,19 @@
 	],
 	"variable": [
 		{
-			"id": "d31f13db-3170-4fa0-8d24-7f223a82c441",
+			"id": "b96c71a8-5f96-4d0e-9ba5-3da865173f52",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "8b81bccc-6b2a-4173-af49-5b85a0ab0f34",
+			"id": "6449422d-6396-49cf-909c-676da6e95d4a",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "662335d6-35c2-4fd7-8dbe-5dd26ce3dc70",
+			"id": "a3e0b2bd-3da4-406c-b5fe-6a6b7ca7f0b1",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
