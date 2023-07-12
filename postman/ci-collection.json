@@ -1905,6 +1905,11 @@
 							"id": "42a99a42-728c-498f-9d88-ea119265e2fc"
 						},
 						{
+							"name": "New Folder",
+							"item": [],
+							"id": "9d9a1339-79d5-4376-b15c-d40b65b5a41d"
+						},
+						{
 							"name": "New Request",
 							"id": "f727c865-12c0-425b-9930-4ac4403091d5",
 							"protocolProfileBehavior": {
@@ -2415,19 +2420,19 @@
 	],
 	"variable": [
 		{
-			"id": "f6a77dab-37cb-4c26-96a7-e82371b3568e",
+			"id": "dc57acdf-a659-4615-ba50-0ae96eb4ea4b",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "5d14baf8-d22b-49b2-a25b-60949ed58ecc",
+			"id": "2716e84b-bf27-4f0d-b340-bb4e73af0aad",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "0e7b37c9-c82c-4fce-abf2-2b1c251f2f03",
+			"id": "4aab8f2c-e20c-428c-a1f7-2db4301eb505",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
