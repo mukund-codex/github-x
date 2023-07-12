@@ -2149,7 +2149,7 @@
 								},
 								{
 									"id": "64b4c03e-7189-4805-b400-312d87bc7044",
-									"name": "Login",
+									"name": "Missing token",
 									"originalRequest": {
 										"method": "POST",
 										"header": [
@@ -2934,19 +2934,19 @@
 	],
 	"variable": [
 		{
-			"id": "322f3c02-987f-464c-b2a9-6968f7741e53",
+			"id": "adbe7c36-cf4f-4303-80b6-36fbf041deab",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "96213df3-393c-4c5f-aef9-930489e1fc8a",
+			"id": "f03f32dd-fea2-4de8-b7b7-b77979b3eb23",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "3e684d39-cde9-41ec-9761-1510724dba26",
+			"id": "32f8bf05-0093-4125-b9b9-e9d6bc22a814",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
