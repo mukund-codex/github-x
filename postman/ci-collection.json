@@ -1334,7 +1334,7 @@
 									]
 								},
 								{
-									"name": "Login Copy",
+									"name": "Logout",
 									"event": [
 										{
 											"listen": "prerequest",
@@ -2677,19 +2677,19 @@
 	],
 	"variable": [
 		{
-			"id": "fb538e62-bfaf-454b-b799-0cbb9f380316",
+			"id": "91f58ac2-fa13-488f-a91d-8c24b3d53a05",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "9e4d7447-aa5f-414c-b29f-a1f5c8f2a5a1",
+			"id": "f103f1d2-a81c-4fb5-b56b-7e698bafd9c4",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "d0d82913-c64d-4de1-8aab-a1cdaba7324f",
+			"id": "a46518b3-f6d7-48ae-953e-9af7580b8747",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
