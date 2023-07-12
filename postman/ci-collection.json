@@ -2111,88 +2111,7 @@
 								},
 								"url": "{{admin_url}}/login"
 							},
-							"response": [
-								{
-									"id": "fc466945-9255-4605-ad7d-c3cb356492b0",
-									"name": "Failure | Invalid credentials",
-									"originalRequest": {
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "formdata",
-											"formdata": [
-												{
-													"key": "email",
-													"value": "{{user_email}}",
-													"type": "text"
-												},
-												{
-													"key": "password",
-													"value": "{{user_password}}1",
-													"type": "text"
-												}
-											]
-										},
-										"url": "{{base_url}}/login"
-									},
-									"status": "Unprocessable Content",
-									"code": 422,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Date",
-											"value": "Tue, 02 May 2023 08:00:56 GMT"
-										},
-										{
-											"key": "Server",
-											"value": "Apache/2.4.56 (Debian)"
-										},
-										{
-											"key": "X-Powered-By",
-											"value": "PHP/8.2.4"
-										},
-										{
-											"key": "Cache-Control",
-											"value": "no-cache, private"
-										},
-										{
-											"key": "X-RateLimit-Limit",
-											"value": "60"
-										},
-										{
-											"key": "X-RateLimit-Remaining",
-											"value": "58"
-										},
-										{
-											"key": "Access-Control-Allow-Origin",
-											"value": "http://10.10.1.6:3000"
-										},
-										{
-											"key": "Access-Control-Allow-Credentials",
-											"value": "true"
-										},
-										{
-											"key": "Keep-Alive",
-											"value": "timeout=5, max=100"
-										},
-										{
-											"key": "Connection",
-											"value": "Keep-Alive"
-										},
-										{
-											"key": "Transfer-Encoding",
-											"value": "chunked"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n    \"message\": \"These credentials do not match our records.\",\n    \"errors\": {\n        \"email\": [\n            \"These credentials do not match our records.\"\n        ]\n    }\n}"
-								}
-							]
+							"response": []
 						},
 						{
 							"name": "Logout",
@@ -3105,19 +3024,19 @@
 	],
 	"variable": [
 		{
-			"id": "c9788980-6bd4-4e88-85dc-122192aa2369",
+			"id": "7b401088-3a02-4049-b7d0-53098c627e85",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "dc9a699b-6534-49e3-88e4-b8c13d8f1edc",
+			"id": "1de63178-462b-48b5-959b-fe379e126d0c",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "fdfa6a17-f485-4971-92f9-e0f0f123009c",
+			"id": "afd469e8-caed-41a5-9bb5-609bd0ad89fb",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
