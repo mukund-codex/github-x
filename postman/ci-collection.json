@@ -2555,7 +2555,7 @@
 											"type": "text"
 										},
 										{
-											"key": "role",
+											"key": "role[]",
 											"value": "{{new_user_role}}",
 											"type": "text"
 										}
@@ -2985,19 +2985,19 @@
 	],
 	"variable": [
 		{
-			"id": "ab7e177d-d564-4b90-8010-7fb0bc1cd046",
+			"id": "e8886cee-42c4-4988-b0bc-eeac12453376",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "45a223d3-e92e-463e-8e7a-f5b30b4bbfb9",
+			"id": "2f4b123d-6a1d-4622-bd00-bbb892d89446",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "0963511f-f2c1-4217-bc17-0191ef5c4ad8",
+			"id": "36553bb9-e209-4172-9878-6860d309cc56",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
