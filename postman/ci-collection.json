@@ -2297,7 +2297,7 @@
 									"mode": "formdata",
 									"formdata": []
 								},
-								"url": "{{base_url}}/profile"
+								"url": "{{admin_url}}/profile"
 							},
 							"response": [
 								{
@@ -3003,19 +3003,19 @@
 	],
 	"variable": [
 		{
-			"id": "4a205712-5445-4ae4-8547-09c16325f9fe",
+			"id": "11a14a9c-bb1d-4c6b-88fc-2ab983bc2f98",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "eea343d2-1001-4d24-b618-30b9ee42df93",
+			"id": "ef08b21a-9bba-4d07-98eb-32e6f25edf6b",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "b40719cc-1680-469a-b668-9f0c3dd11c7d",
+			"id": "a5e29a7a-4dbc-4581-a2e3-b4a8bf1ddc4c",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
