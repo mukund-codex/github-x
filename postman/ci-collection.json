@@ -3125,7 +3125,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "d419ea45-3256-4044-8a98-807f68eb40f0",
+						"id": "855f1634-e8ed-4a62-bfce-bf7114c71388",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -3135,14 +3135,10 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "5a2dba71-6302-4d82-b17b-94da096f69bb",
+						"id": "5a46a9db-0375-4e6c-a75f-e4f0cb8b312d",
 						"type": "text/javascript",
 						"exec": [
-							"pm.environment.set(\"xsrf_token\", decodeURIComponent(pm.cookies.get(\"XSRF-TOKEN\")));",
-							"",
-							"pm.test(\"Response time within threshold\", function () {",
-							"    console.log(111);",
-							"});"
+							"pm.environment.set(\"xsrf_token\", decodeURIComponent(pm.cookies.get(\"XSRF-TOKEN\")));"
 						]
 					}
 				}
@@ -3189,19 +3185,19 @@
 	],
 	"variable": [
 		{
-			"id": "7580c1f8-1a97-4656-afe7-bdd822435795",
+			"id": "687b9802-5a53-4dc3-9311-b66f8b73b280",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "eed5a8ce-0c00-45fa-91d6-8fb85d77b990",
+			"id": "7f17c8b0-ebb3-4f7e-b893-bc29a65b8646",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "705eb71a-1188-4219-b1c1-e454b60c70e7",
+			"id": "18534fbb-a5a9-4c00-89c2-693937a028b8",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
