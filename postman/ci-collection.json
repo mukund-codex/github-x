@@ -2420,73 +2420,7 @@
 								},
 								"url": "{{admin_url}}/users/{{new_user_id}}"
 							},
-							"response": [
-								{
-									"id": "d7de4cb2-93b8-41a0-8369-e1208eefefff",
-									"name": "Home page",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"url": "{{base_url}}"
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Date",
-											"value": "Tue, 02 May 2023 07:58:07 GMT"
-										},
-										{
-											"key": "Server",
-											"value": "Apache/2.4.56 (Debian)"
-										},
-										{
-											"key": "X-Powered-By",
-											"value": "PHP/8.2.4"
-										},
-										{
-											"key": "Cache-Control",
-											"value": "no-cache, private"
-										},
-										{
-											"key": "X-RateLimit-Limit",
-											"value": "60"
-										},
-										{
-											"key": "X-RateLimit-Remaining",
-											"value": "59"
-										},
-										{
-											"key": "Access-Control-Allow-Origin",
-											"value": "http://10.10.1.6:3000"
-										},
-										{
-											"key": "Access-Control-Allow-Credentials",
-											"value": "true"
-										},
-										{
-											"key": "Keep-Alive",
-											"value": "timeout=5, max=100"
-										},
-										{
-											"key": "Connection",
-											"value": "Keep-Alive"
-										},
-										{
-											"key": "Transfer-Encoding",
-											"value": "chunked"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n    \"this-is-laravel-api\": \"10.5.1\"\n}"
-								}
-							]
+							"response": []
 						},
 						{
 							"name": "User",
@@ -2842,19 +2776,19 @@
 	],
 	"variable": [
 		{
-			"id": "d38ec738-8120-4153-97e6-dc46ec8226a0",
+			"id": "b32b1076-0fa1-4912-8ae8-ae0d77dc781c",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "b81feb08-31e8-45d2-aa94-a54d7383fb41",
+			"id": "ebaf3745-b1ed-43a1-88f4-094bb96f0f44",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "3d13ba15-7665-4033-bdf3-b1422e011c2f",
+			"id": "5b55c706-d701-4442-b622-f38771a54fc6",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
