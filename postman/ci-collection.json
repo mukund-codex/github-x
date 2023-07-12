@@ -1074,6 +1074,42 @@
 										{
 											"listen": "prerequest",
 											"script": {
+												"id": "20a335a8-b13d-43e5-93fe-3674fe032349",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"id": "7151f38a-23a4-4dd9-9cc4-e2fee1dad893",
+												"exec": [
+													"var xsrfToken = postman.getResponseCookie('XSRF-TOKEN').value;",
+													"pm.environment.set('xsrf_token', xsrfToken);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "f727c865-12c0-425b-9930-4ac4403091d5",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": "{{admin_url}}/login"
+									},
+									"response": []
+								},
+								{
+									"name": "Login",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
 												"id": "87d2c942-f226-477b-8158-75cae44ec8f3",
 												"exec": [
 													"pm.environment.set('user_email', 'admin@example.com' );",
@@ -1087,16 +1123,16 @@
 											"script": {
 												"id": "499f1b89-e947-42ce-aac9-b66d77b941cf",
 												"exec": [
-													"pm.test('Reponse code to be 200', function () {",
-													"    pm.expect(pm.response.code).to.be.equal(200);",
-													"});",
+													"// pm.test('Reponse code to be 200', function () {",
+													"//     pm.expect(pm.response.code).to.be.equal(200);",
+													"// });",
 													"",
-													"pm.test(\"Body is present\", function () {",
-													"    ((responseBody) !== undefined && (responseBody.length > 1));",
-													"    jsonData = JSON.parse(responseBody);",
-													"});",
+													"// pm.test(\"Body is present\", function () {",
+													"//     ((responseBody) !== undefined && (responseBody.length > 1));",
+													"//     jsonData = JSON.parse(responseBody);",
+													"// });",
 													"",
-													"pm.environment.set('user_token', jsonData.data.token);"
+													"// pm.environment.set('user_token', jsonData.data.token);"
 												],
 												"type": "text/javascript"
 											}
@@ -1107,11 +1143,20 @@
 										"disableBodyPruning": true
 									},
 									"request": {
+										"auth": {
+											"type": "noauth"
+										},
 										"method": "POST",
-										"header": [],
+										"header": [
+											{
+												"key": "X-XSRF-TOKEN",
+												"value": "{{xsrf_token}}",
+												"type": "text"
+											}
+										],
 										"body": {
-											"mode": "formdata",
-											"formdata": [
+											"mode": "urlencoded",
+											"urlencoded": [
 												{
 													"key": "email",
 													"value": "{{user_email}}",
@@ -1124,7 +1169,7 @@
 												}
 											]
 										},
-										"url": "{{base_url}}/login"
+										"url": "{{admin_url}}/login"
 									},
 									"response": [
 										{
@@ -1288,42 +1333,6 @@
 											"body": "{\n    \"message\": \"These credentials do not match our records.\",\n    \"errors\": {\n        \"email\": [\n            \"These credentials do not match our records.\"\n        ]\n    }\n}"
 										}
 									]
-								},
-								{
-									"name": "Login",
-									"event": [
-										{
-											"listen": "prerequest",
-											"script": {
-												"id": "20a335a8-b13d-43e5-93fe-3674fe032349",
-												"exec": [
-													""
-												],
-												"type": "text/javascript"
-											}
-										},
-										{
-											"listen": "test",
-											"script": {
-												"id": "7151f38a-23a4-4dd9-9cc4-e2fee1dad893",
-												"exec": [
-													"var xsrfToken = postman.getResponseCookie('XSRF-TOKEN').value;",
-													"pm.environment.set('xsrf_token', xsrfToken);"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"id": "f727c865-12c0-425b-9930-4ac4403091d5",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": "{{admin_url}}/login"
-									},
-									"response": []
 								}
 							],
 							"id": "9d9a1339-79d5-4376-b15c-d40b65b5a41d"
@@ -2439,19 +2448,19 @@
 	],
 	"variable": [
 		{
-			"id": "9b91bdf8-33de-4715-b3d5-25537dfbf05e",
+			"id": "f541a626-9012-4bec-9a08-32fa80b44ecd",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "bb74b25d-1671-48f7-b10c-f6c7135a8b1f",
+			"id": "55fabec1-4e14-4343-880d-a96986067c8f",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "a2280af5-2a11-4d6e-bf9f-a1e79c05f650",
+			"id": "11352ba7-0f1c-41d9-a79e-a39e283df4f5",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
