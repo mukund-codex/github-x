@@ -2819,6 +2819,64 @@
 							"response": []
 						},
 						{
+							"name": "User verify e-mail",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "2062dc3e-3003-419c-9f3a-2d14f21ea60c",
+										"exec": [
+											"pm.test('Reponse code to be 200', function () {",
+											"    pm.expect(pm.response.code).to.be.equal(200);",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "ebb2b56c-f29c-45a2-8112-2602a3f35f8a",
+										"exec": [
+											"pm.environment.set('new_user_role', 'super_admin' );",
+											"pm.environment.set('new_user_first_name', 'Updated_John');",
+											"pm.environment.set('new_user_last_name', 'Updated_Doe');"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "810b5519-2e6c-4057-9e50-3484712bfa50",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {},
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{user_token}}"
+									}
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "X-XSRF-TOKEN",
+										"value": "{{xsrf_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": "{{admin_url}}/users/{{new_user_id}}/verify-email"
+							},
+							"response": []
+						},
+						{
 							"name": "User",
 							"event": [
 								{
@@ -3038,19 +3096,19 @@
 	],
 	"variable": [
 		{
-			"id": "355af8a8-9b99-453b-9d38-59d14b725b15",
+			"id": "4543e409-294f-4507-9f19-aaa56f307335",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "11fba012-4239-4c8f-af10-17c38ac55e30",
+			"id": "08d06dfd-9c71-4c0d-9b62-9ad1b5665926",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "55411d18-9bf7-41f4-8d5e-d3b566dbfddf",
+			"id": "5d8b0daa-5b00-4162-ba0c-c49e9eea7405",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"

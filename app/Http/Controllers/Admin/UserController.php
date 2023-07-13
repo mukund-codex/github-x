@@ -25,12 +25,12 @@ class UserController extends Controller
     public function index(UserListRequest $request): View
     {
 
-        $sort_by = $request->validated('sortBy') ?? 'id';
-        $order_by = $request->validated('orderBy') ?? 'asc';
+        $sortBy = $request->validated('sortBy') ?? 'id';
+        $orderBy = $request->validated('orderBy') ?? 'asc';
 
         return view('users.list', [
             'users' => UserResource::collection(
-                User::orderBy($sort_by, $order_by)
+                User::orderBy($sortBy, $orderBy)
                     ->paginate(10)
                     ->withQueryString()
             ),
@@ -54,16 +54,16 @@ class UserController extends Controller
 
     public function store(RegisterUserRequest $request): RedirectResponse
     {
-        $user_info = $request->safe();
+        $userInfo = $request->safe();
         $user = resolve(User::class)->create(
             [
-                'first_name' => $user_info['first_name'],
-                'last_name' => $user_info['last_name'] ?? null,
-                'email' => $user_info['email'],
-                'password' => Hash::make($user_info['password']),
+                'first_name' => $userInfo['first_name'],
+                'last_name' => $userInfo['last_name'] ?? null,
+                'email' => $userInfo['email'],
+                'password' => Hash::make($userInfo['password']),
             ]
         );
-        $role = $user_info['role'] ?? Config::get('const.roles.user');
+        $role = $userInfo['role'] ?? Config::get('const.roles.user');
         $user->assignRole($role);
 
         event(new Registered($user));
