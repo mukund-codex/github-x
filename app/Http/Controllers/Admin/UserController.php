@@ -85,9 +85,8 @@ class UserController extends Controller
     ): RedirectResponse {
         $update = $request->safe();
         $user->update($update->except('role'));
-        if (isset($update['role'])) {
-            $user->syncRoles([$update['role']]);
-        }
+        $role = $update['role'] ?? [];
+        $user->syncRoles($role);
 
         return Redirect::route('admin.users.index', $user)->with(
             'notification',
