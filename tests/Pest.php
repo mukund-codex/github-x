@@ -37,14 +37,14 @@ function createRawUser(string $email = '', string $password = ''): User
 
 function createUser(string $email = '', string $password = ''): User
 {
-    $user_role = config('const.roles.user');
-    return createRawUser($email, $password)->assignRole($user_role);
+    $userRole = config('const.roles.user');
+    return createRawUser($email, $password)->assignRole($userRole);
 }
 
 function createSuperAdmin(string $email = '', string $password = ''): User
 {
-    $super_admin_role = config('const.roles.super_admin');
-    return createRawUser($email, $password)->assignRole($super_admin_role);
+    $superAdminRole = config('const.roles.super_admin');
+    return createRawUser($email, $password)->assignRole($superAdminRole);
 }
 
 function getRoleUser(): Role

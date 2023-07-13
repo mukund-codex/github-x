@@ -9,7 +9,7 @@ beforeEach(function () {
     $this->seed();
     $this->admin = createSuperAdmin();
     $this->user = createUser();
-    $this->role_user = getRoleUser();
+    $this->roleUser = getRoleUser();
 });
 
 test('Super Admin can see Users', function () {
@@ -32,18 +32,18 @@ test('User without permission cannot see users', function () {
 });
 
 test('User with role with permissions can see users', function () {
-    $this->role_user->givePermissionTo('view dashboard', 'view users');
+    $this->roleUser->givePermissionTo('view dashboard', 'view users');
     $this->actingAs($this->user)
         ->get(route('admin.users.index'))
         ->assertOk();
 });
 
 test('Super Admin can delete users', function () {
-    $test_user = User::factory()->create();
-    $id = $test_user->id;
+    $testUser = User::factory()->create();
+    $id = $testUser->id;
     $this->assertDatabaseHas('users', ['id' => $id]);
     $this->actingAs($this->admin)
-        ->delete(route('admin.users.destroy', $test_user));
+        ->delete(route('admin.users.destroy', $testUser));
     $this->assertDatabaseMissing('users', ['id' => $id]);
 });
 
@@ -55,52 +55,52 @@ test('Super Admin cannot delete himself', function () {
 });
 
 test('User cannot delete users', function () {
-    $test_user = User::factory()->create();
-    $id = $test_user->id;
+    $testUser = User::factory()->create();
+    $id = $testUser->id;
     $this->assertDatabaseHas('users', ['id' => $id]);
     $this->actingAs($this->user)
-        ->delete(route('admin.users.destroy', $test_user))
+        ->delete(route('admin.users.destroy', $testUser))
         ->assertForbidden();
     $this->assertDatabaseHas('users', ['id' => $id]);
 });
 
 test('User with permissions can delete users', function () {
     $this->user->givePermissionTo('view dashboard', 'delete user');
-    $test_user = User::factory()->create();
-    $id = $test_user->id;
+    $testUser = User::factory()->create();
+    $id = $testUser->id;
     $this->assertDatabaseHas('users', ['id' => $id]);
     $this->actingAs($this->user)
-        ->delete(route('admin.users.destroy', $test_user));
+        ->delete(route('admin.users.destroy', $testUser));
     $this->assertDatabaseMissing('users', ['id' => $id]);
 });
 
 test('Super Admin can edit users', function () {
-    $test_user = User::factory()->create();
+    $testUser = User::factory()->create();
     $this->actingAs($this->admin)
-        ->get(route('admin.users.edit', $test_user))
+        ->get(route('admin.users.edit', $testUser))
         ->assertOk();
 });
 
 test('User cannot edit users', function () {
-    $test_user = User::factory()->create();
+    $testUser = User::factory()->create();
     $this->actingAs($this->user)
-        ->get(route('admin.users.edit', $test_user))
+        ->get(route('admin.users.edit', $testUser))
         ->assertForbidden();
 });
 
 test('User with permissions can edit users', function () {
     $this->user->givePermissionTo('view dashboard', 'update user');
-    $test_user = User::factory()->create();
+    $testUser = User::factory()->create();
     $this->actingAs($this->user)
-        ->get(route('admin.users.edit', $test_user))
+        ->get(route('admin.users.edit', $testUser))
         ->assertOk();
 });
 
 test('Super Admin can update users', function () {
-    $test_user = User::factory()->create();
-    $id = $test_user->id;
+    $testUser = User::factory()->create();
+    $id = $testUser->id;
     $this->actingAs($this->admin)
-        ->patch(route('admin.users.update', $test_user), [
+        ->patch(route('admin.users.update', $testUser), [
             'first_name' => 'test123',
             'role' => [config('const.roles.super_admin')],
         ])
@@ -109,16 +109,16 @@ test('Super Admin can update users', function () {
         'id' => $id,
         'first_name' => 'test123',
     ]);
-    expect($test_user)->hasRole(config('const.roles.super_admin'));
+    expect($testUser)->hasRole(config('const.roles.super_admin'));
 });
 
 test('User cannot update users', function () {
-    $test_user = User::factory()->create();
-    $id = $test_user->id;
-    $first_name = $test_user->first_name;
+    $testUser = User::factory()->create();
+    $id = $testUser->id;
+    $first_name = $testUser->first_name;
     $this->actingAs($this->user)
         ->patch(
-            route('admin.users.update', $test_user),
+            route('admin.users.update', $testUser),
             ['first_name' => 'test123']
         )
         ->assertForbidden();
@@ -130,11 +130,11 @@ test('User cannot update users', function () {
 
 test('User with permissions can update users', function () {
     $this->user->givePermissionTo('view dashboard', 'update user');
-    $test_user = User::factory()->create();
-    $id = $test_user->id;
+    $testUser = User::factory()->create();
+    $id = $testUser->id;
     $this->actingAs($this->user)
         ->patch(
-            route('admin.users.update', $test_user),
+            route('admin.users.update', $testUser),
             ['first_name' => 'test123']
         )
         ->assertValid();
@@ -200,11 +200,11 @@ test('User cannot store user', function () {
 });
 
 test('Super Admin can mark user email as verified', function () {
-    $new_user = createRawUser();
-    $new_user->email_verified_at = null;
-    $new_user->save();
+    $newUser = createRawUser();
+    $newUser->email_verified_at = null;
+    $newUser->save();
     $this->actingAs($this->admin)
-        ->patch(route('admin.users.verify_email', $new_user));
-    $new_user->refresh();
-    expect($new_user)->email_verified_at->not->toBeNull();
+        ->patch(route('admin.users.verify_email', $newUser));
+    $newUser->refresh();
+    expect($newUser)->email_verified_at->not->toBeNull();
 });

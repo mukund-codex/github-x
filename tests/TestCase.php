@@ -19,6 +19,6 @@ abstract class TestCase extends BaseTestCase
 
     public User $user;
 
-    public Role $role_user;
+    public Role $roleUser;
 
 }

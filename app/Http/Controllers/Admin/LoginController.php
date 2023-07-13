@@ -21,9 +21,9 @@ class LoginController extends Controller
     {
         $request->authenticate();
         $user = Auth::user();
-        $has_permissions = $user->hasPermissionTo('view dashboard');
-        $has_role = $user->hasRole(config('const.roles.super_admin'));
-        if (!$has_permissions && !$has_role) {
+        $hasPermissions = $user->hasPermissionTo('view dashboard');
+        $hasRole = $user->hasRole(config('const.roles.super_admin'));
+        if (!$hasPermissions && !$hasRole) {
             Auth::logout();
 
             return redirect()

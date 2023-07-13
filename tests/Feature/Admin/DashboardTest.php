@@ -8,7 +8,7 @@ beforeEach(function () {
     $this->seed();
     $this->admin = createSuperAdmin();
     $this->user = createUser();
-    $this->role_user = getRoleUser();
+    $this->roleUser = getRoleUser();
 });
 
 test('Super Admin can see Dashboard', function () {
@@ -31,7 +31,7 @@ test('User with permissions can see Dashboard', function () {
 });
 
 test('User with role with permission can see Dashboard', function () {
-    $this->role_user->givePermissionTo('view dashboard');
+    $this->roleUser->givePermissionTo('view dashboard');
     $this->actingAs($this->user)
         ->get(route('admin.dashboard'))
         ->assertOk();

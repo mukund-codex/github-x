@@ -17,13 +17,13 @@ class RegisteredUserController extends Controller
 
     public function store(RegisterUserRequest $request): JsonResponse
     {
-        $user_info = $request->safe();
+        $userInfo = $request->safe();
         $user = resolve(User::class)->create(
             [
-                'first_name' => $user_info['first_name'],
-                'last_name' => $user_info['last_name'] ?? null,
-                'email' => $user_info['email'],
-                'password' => Hash::make($user_info['password']),
+                'first_name' => $userInfo['first_name'],
+                'last_name' => $userInfo['last_name'] ?? null,
+                'email' => $userInfo['email'],
+                'password' => Hash::make($userInfo['password']),
             ]
         );
         $user->assignRole(Config::get('const.roles.user'));

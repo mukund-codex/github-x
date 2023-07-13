@@ -14,11 +14,11 @@ class StripeEventListener
     {
         $data = $event->payload['data']['object'];
         if ($event->payload['type'] === 'customer.created') {
-            $customer_id = $data['id'];
+            $customerId = $data['id'];
             $email = $data['email'];
             $user = User::where(['email' => $email])->first();
             if ($user) {
-                $user->stripe_id = $customer_id;
+                $user->stripe_id = $customerId;
                 $user->save();
             }
         }
