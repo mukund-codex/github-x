@@ -64,6 +64,9 @@ Route::prefix('/admin')->group(function() {
                     Route::patch('/{user}', 'update')
                         ->name('admin.users.update')
                         ->can('update user');
+                    Route::patch('/{user}/verify-email', 'verifyEmail')
+                        ->name('admin.users.verify_email')
+                        ->can('update user');
                     Route::get('/', 'index')
                         ->name('admin.users.index')
                         ->can('view users');

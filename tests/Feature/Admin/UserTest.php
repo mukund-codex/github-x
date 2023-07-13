@@ -198,3 +198,13 @@ test('User cannot store user', function () {
         'email' => 'example_test@example.com',
     ]);
 });
+
+test('Super Admin can mark user email as verified', function () {
+    $new_user = createRawUser();
+    $new_user->email_verified_at = null;
+    $new_user->save();
+    $this->actingAs($this->admin)
+        ->patch(route('admin.users.verify_email', $new_user));
+    $new_user->refresh();
+    expect($new_user)->email_verified_at->not->toBeNull();
+});

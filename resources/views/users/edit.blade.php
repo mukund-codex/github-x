@@ -5,18 +5,31 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
             <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
+
                 <div class="max-w-xl">
                     <section>
                         <header>
-                            <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-                                {{ __('User Information') }}
-                            </h2>
+                            <div class="sm:flex sm:items-center">
+                                <div class="sm:flex-auto">
+                                    <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                                        {{ __('User Information') }}
+                                    </h2>
 
-                            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                                {{ __("Update user information and email address.") }}
-                            </p>
+                                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                                        {{ __("Update user information and email address.") }}
+                                    </p>
+                                </div>
+                                <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
+                                    @if(!$user->hasVerifiedEmail())
+                                        <form method="post" action="{{ route('admin.users.verify_email', $user) }}">
+                                            @csrf
+                                            @method('patch')
+                                            <x-secondary-button type="submit">{{ __('Mark e-mail as verified') }}</x-secondary-button>
+                                        </form>
+                                    @endif
+                                </div>
+                            </div>
                         </header>
-
                         <form method="post" action="{{ route('admin.users.update', $user) }}" class="mt-6 space-y-6">
                             @csrf
                             @method('patch')
@@ -45,9 +58,12 @@
                             </div>
 
                             <div>
-                                <fieldset>
-                                    <legend class="text-base font-semibold leading-6 text-gray-900 dark:text-gray-200">Roles</legend>
-                                    <div class="mt-4 divide-y divide-gray-200 dark:divide-gray-600 border-b border-t border-gray-200 dark:border-gray-600">
+                                <fieldset class="mt-1">
+                                    <legend class="text-base font-semibold leading-6 text-gray-900 dark:text-gray-200">
+                                        Roles
+                                    </legend>
+                                    <div
+                                        class="mt-4 divide-y divide-gray-200 dark:divide-gray-600 border-b border-t border-gray-200 dark:border-gray-600">
                                         @foreach($roles as $i => $role)
                                             <div class="relative flex items-start py-2">
                                                 <div class="min-w-0 flex-1 text-sm leading-6">
@@ -55,7 +71,8 @@
                                                            class="select-none font-medium text-gray-900 dark:text-gray-300">{{$role}}</label>
                                                 </div>
                                                 <div class="ml-3 flex h-6 items-center">
-                                                    <input id="role-{{$i}}" name="role[]" type="checkbox" value="{{$role}}"
+                                                    <input id="role-{{$i}}" name="role[]" type="checkbox"
+                                                           value="{{$role}}"
                                                            @if($user->hasRole($role)) checked="checked" @endif
                                                            class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-orange-600 shadow-sm focus:ring-orange-500 dark:focus:ring-orange-600 dark:focus:ring-offset-gray-800">
                                                 </div>
@@ -63,7 +80,7 @@
                                         @endforeach
                                     </div>
                                     @error('role.*')
-                                        <x-input-error class="mt-2" :messages="$message"/>
+                                    <x-input-error class="mt-2" :messages="$message"/>
                                     @enderror
                                 </fieldset>
                             </div>

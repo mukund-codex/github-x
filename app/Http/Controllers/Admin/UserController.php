@@ -98,6 +98,20 @@ class UserController extends Controller
         );
     }
 
+    public function verifyEmail(User $user)
+    {
+        $user->email_verified_at = now();
+        $user->save();
+        return Redirect::route('admin.users.index', $user)->with(
+            'notification',
+            new NotificationVO(
+                NotificationEnum::SUCCESS,
+                __('Successfully updated!'),
+                __('User e-mail marked as verified')
+            )
+        );
+    }
+
     /**
      * @throws \App\Exceptions\ForbiddenException
      */
