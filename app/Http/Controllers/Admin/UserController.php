@@ -10,7 +10,6 @@ use App\Http\Requests\UserListRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\ValueObjects\Admin\NotificationVO;
-use Config;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -25,12 +24,12 @@ class UserController extends Controller
     public function index(UserListRequest $request): View
     {
 
-        $sortBy = $request->validated('sortBy') ?? 'id';
-        $orderBy = $request->validated('orderBy') ?? 'asc';
+        $sort_by = $request->validated('sortBy') ?? 'id';
+        $order_by = $request->validated('orderBy') ?? 'asc';
 
         return view('users.list', [
             'users' => UserResource::collection(
-                User::orderBy($sortBy, $orderBy)
+                User::orderBy($sort_by, $order_by)
                     ->paginate(10)
                     ->withQueryString()
             ),
@@ -54,17 +53,19 @@ class UserController extends Controller
 
     public function store(RegisterUserRequest $request): RedirectResponse
     {
-        $userInfo = $request->safe();
+        $user_info = $request->safe();
         $user = resolve(User::class)->create(
             [
-                'first_name' => $userInfo['first_name'],
-                'last_name' => $userInfo['last_name'] ?? null,
-                'email' => $userInfo['email'],
-                'password' => Hash::make($userInfo['password']),
+                'first_name' => $user_info['first_name'],
+                'last_name' => $user_info['last_name'] ?? null,
+                'email' => $user_info['email'],
+                'password' => Hash::make($user_info['password']),
             ]
         );
-        $role = $userInfo['role'] ?? Config::get('const.roles.user');
-        $user->assignRole($role);
+        $role = $user_info['role'] ?? null;
+        if ($role) {
+            $user->assignRole($role);
+        }
 
         event(new Registered($user));
 
