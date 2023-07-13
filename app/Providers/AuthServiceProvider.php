@@ -31,9 +31,6 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         ResetPassword::createUrlUsing(function (User $notifiable, string $token) {
-            if ($notifiable->hasPermissionTo('view dashboard') || $notifiable->hasRole(config('const.roles.super_admin'))) {
-                return url(route('admin.password.reset', ['token' => $token, 'email' => $notifiable->getEmailForPasswordReset()]));
-            }
             return config('app.frontend_url') . "/account/password-reset/$token?email={$notifiable->getEmailForPasswordReset()}";
         });
 

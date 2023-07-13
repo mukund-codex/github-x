@@ -5,10 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Enums\NotificationEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PasswordResetLinkRequest;
+use App\Models\User;
 use App\ValueObjects\Admin\NotificationVO;
+use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Password;
 use Illuminate\View\View;
+use Mockery\Generator\StringManipulation\Pass\Pass;
 
 class PasswordResetLinkController extends Controller
 {
@@ -19,6 +22,10 @@ class PasswordResetLinkController extends Controller
 
     public function store(PasswordResetLinkRequest $request): RedirectResponse
     {
+        ResetPassword::createUrlUsing(function (User $notifiable, string $token) {
+            return url(route('admin.password.reset', ['token' => $token, 'email' => $notifiable->getEmailForPasswordReset()]));
+        });
+
         $status = Password::sendResetLink(
             $request->only('email')
         );
