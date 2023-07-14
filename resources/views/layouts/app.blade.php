@@ -139,7 +139,7 @@
                             </svg>
                             <span class="hidden lg:flex lg:items-center">
                                 <span class="ml-4 text-sm font-semibold leading-6 "
-                                      aria-hidden="true">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</span>
+                                      aria-hidden="true">{{ Str::limit(Auth::user()->first_name, 40) }} </span>
                                 <svg class="ml-2 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"
                                      aria-hidden="true">
                                     <path fill-rule="evenodd"
