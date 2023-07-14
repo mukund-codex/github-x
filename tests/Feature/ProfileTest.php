@@ -55,7 +55,7 @@ test('Update profile', function () {
 test('Update profile email', function () {
     $user = User::factory()->create();
     $this->actingAs($user)
-        ->patch(route('profile.update'), ['email' => 'test123@example.com'])
+        ->patch(route('profile.update'), ['email' => 'test123@founderandlightning.com'])
         ->assertOk()
         ->assertSee(__('messages.profile.updated'))
         ->assertJsonStructure(
@@ -73,7 +73,7 @@ test('Update profile email', function () {
         );
 
     $this->assertDatabaseHas('users', [
-        'email' => 'test123@example.com',
+        'email' => 'test123@founderandlightning.com',
         'email_verified_at' => null
     ]);
 });

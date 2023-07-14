@@ -11,7 +11,7 @@ beforeEach(function () {
 test('New users can register', function () {
     $response = $this->post(route('register'), [
         'first_name' => 'Test',
-        'email' => 'test@example.com',
+        'email' => 'test@founderandlightning.com',
         'password' => 'Admin@123',
         'password_confirmation' => 'Admin@123',
     ]);
@@ -26,7 +26,7 @@ test('New users can register', function () {
 test('Password format validations', function () {
     $response_lower_case_password = $this->post(route('register'), [
         'first_name' => 'Test',
-        'email' => 'test@example.com',
+        'email' => 'test@founderandlightning.com',
         'password' => 'password',
         'password_confirmation' => 'password',
     ]);
@@ -35,7 +35,7 @@ test('Password format validations', function () {
 
     $response_upper_case_password = $this->post(route('register'), [
         'first_name' => 'Test',
-        'email' => 'test@example.com',
+        'email' => 'test@founderandlightning.com',
         'password' => 'PASSWORD',
         'password_confirmation' => 'PASSWORD',
     ]);
@@ -44,7 +44,7 @@ test('Password format validations', function () {
 
     $response_mixed_case_password = $this->post(route('register'), [
         'first_name' => 'Test',
-        'email' => 'test@example.com',
+        'email' => 'test@founderandlightning.com',
         'password' => 'PASSword',
         'password_confirmation' => 'PASSword',
     ]);
@@ -53,7 +53,7 @@ test('Password format validations', function () {
 
     $response_mixed_case_and_number_password = $this->post(route('register'), [
         'first_name' => 'Test',
-        'email' => 'test@example.com',
+        'email' => 'test@founderandlightning.com',
         'password' => 'PASSword1',
         'password_confirmation' => 'PASSword1',
     ]);
@@ -62,7 +62,7 @@ test('Password format validations', function () {
 
     $response_small_password = $this->post(route('register'), [
         'first_name' => 'Test',
-        'email' => 'test@example.com',
+        'email' => 'test@founderandlightning.com',
         'password' => 'Sword1@',
         'password_confirmation' => 'Sword1@',
     ]);
@@ -71,7 +71,7 @@ test('Password format validations', function () {
 
     $response_valid_password = $this->post(route('register'), [
         'first_name' => 'Test',
-        'email' => 'test@example.com',
+        'email' => 'test@founderandlightning.com',
         'password' => 'PASSword@123',
         'password_confirmation' => 'PASSword@123',
     ]);

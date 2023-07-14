@@ -168,7 +168,7 @@ test('Super Admin can store users', function () {
         ->post(route('admin.users.store'), [
             'first_name' => 'example',
             'last_name' => 'test',
-            'email' => 'example_test@example.com',
+            'email' => 'example_test@founderandlightning.com',
             'password' => 'Password@123',
             'password_confirmation' => 'Password@123',
             'role' => ['user'],
@@ -177,7 +177,7 @@ test('Super Admin can store users', function () {
     $this->assertDatabaseHas('users', [
         'first_name' => 'example',
         'last_name' => 'test',
-        'email' => 'example_test@example.com',
+        'email' => 'example_test@founderandlightning.com',
     ]);
 });
 
@@ -186,7 +186,7 @@ test('User cannot store user', function () {
         ->post(route('admin.users.store'), [
             'first_name' => 'example',
             'last_name' => 'test',
-            'email' => 'example_test@example.com',
+            'email' => 'example_test@founderandlightning.com',
             'password' => 'Password@123',
             'password_confirmation' => 'Password@123',
             'role' => ['user'],
@@ -195,7 +195,7 @@ test('User cannot store user', function () {
     $this->assertDatabaseMissing('users', [
         'first_name' => 'example',
         'last_name' => 'test',
-        'email' => 'example_test@example.com',
+        'email' => 'example_test@founderandlightning.com',
     ]);
 });
 

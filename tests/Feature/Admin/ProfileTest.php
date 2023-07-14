@@ -47,11 +47,11 @@ test('User cannot update profile', function () {
 test('Super Admin can update profile e-mail', function () {
     $this->actingAs($this->admin)
         ->patch(route('admin.profile.update'), [
-            'email' => 'test@example.com',
+            'email' => 'test@founderandlightning.com',
         ]);
     expect($this->admin)
         ->email_verified_at->toBeNull()
-        ->email->toBe('test@example.com')
+        ->email->toBe('test@founderandlightning.com')
         ->not->toBeAuthenticated();
 });
 
