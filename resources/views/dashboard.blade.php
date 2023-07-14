@@ -6,7 +6,7 @@
 {{--    <div class="py-12 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">--}}
 {{--        {{ __("You're logged in!") }}--}}
 {{--    </div>--}}
-    <div class="bg-white dark:bg-gray-900 py-12 sm:py-12">
+    <div class="py-12 sm:py-12">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <div class="mx-auto max-w-2xl lg:mx-0">
                 <h2 class="text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100 sm:text-6xl">Welcome!</h2>

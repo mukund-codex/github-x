@@ -6,7 +6,7 @@
       || localStorage.setItem('darkMode', 'system')}"
     x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))"
     x-bind:class="{'dark': darkMode === 'dark' || (darkMode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)}"
-    class="h-full bg-white dark dark:bg-gray-900">
+    class="h-full bg-gray-100 dark dark:bg-gray-900">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,7 +17,6 @@
     <link rel="apple-touch-icon-precomposed" href="{{ asset('images/apple-touch-icon-precomposed.png') }}">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
-
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -25,7 +24,7 @@
 <!-- Tailwind component URL -->
 <!-- https://tailwindui.com/components/application-ui/application-shells/sidebar#component-5548358cb34897c6b28551f2ad885eec -->
 
-<body class="h-full antialiased dark:bg-gray-900">
+<body class="h-full antialiased bg-gray-100 dark:bg-gray-900">
 
 <div x-data="{ open: false }" class="dark:bg-gray-900">
     <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
