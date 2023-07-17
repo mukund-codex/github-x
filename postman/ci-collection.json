@@ -155,6 +155,7 @@
 										{
 											"listen": "prerequest",
 											"script": {
+												"id": "9c780194-c36b-4f2c-94eb-34b593a27308",
 												"exec": [
 													"",
 													"pm.environment.set('first_name', 'John');",
@@ -163,22 +164,22 @@
 													"pm.environment.set('user_password', 'JohnDoe@123');",
 													""
 												],
-												"type": "text/javascript",
-												"id": "9c780194-c36b-4f2c-94eb-34b593a27308"
+												"type": "text/javascript"
 											}
 										},
 										{
 											"listen": "test",
 											"script": {
+												"id": "584dd471-5590-47f7-891d-925413768e69",
 												"exec": [
 													"pm.test('Reponse code to be 201', function () {",
 													"    pm.expect(pm.response.code).to.be.equal(201);",
+													"    pm.environment.set(\"verification_url\", encodeURI(pm.cookies.get(\"verification_url\")));",
 													"});",
 													"",
 													""
 												],
-												"type": "text/javascript",
-												"id": "584dd471-5590-47f7-891d-925413768e69"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -3125,19 +3126,19 @@
 	],
 	"variable": [
 		{
-			"id": "c183cf29-f95c-4c8d-ad2e-710964986632",
+			"id": "beeb1a11-cb3f-4933-a071-cbab94a60fa6",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "320f3d99-3e10-4654-968f-73a382205d89",
+			"id": "e07ea759-8baf-4807-ae5b-0c106f7ebace",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "55e746ca-a0ca-44e8-84b9-d1d10b8065fc",
+			"id": "824505e5-5acf-4324-a9c7-fdf403ab1e63",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
