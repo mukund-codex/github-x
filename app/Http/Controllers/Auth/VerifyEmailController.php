@@ -10,18 +10,22 @@ use Illuminate\Http\RedirectResponse;
 
 class VerifyEmailController extends Controller
 {
+
     public function __construct()
     {
         Auth::loginUsingId(request()->route('id'));
     }
 
-    public function __invoke(EmailVerificationRequest $request): RedirectResponse
-    {
+    public function __invoke(EmailVerificationRequest $request
+    ): RedirectResponse {
+        $redirect = redirect()->intended(config('app.frontend_url').config('frontend.verified_email_redirect'));
+        if ($request->query('no-redirect')) {
+            $redirect = redirect()->back();
+        }
         if ($request->user()->hasVerifiedEmail()) {
             Auth::logout();
-            return redirect()->intended(
-                config('app.frontend_url') . config('frontend.verified_email_redirect')
-            );
+
+            return $redirect;
         }
 
         if ($request->user()->markEmailAsVerified()) {
@@ -29,8 +33,8 @@ class VerifyEmailController extends Controller
         }
 
         Auth::logout();
-        return redirect()->intended(
-            config('app.frontend_url') . config('frontend.verified_email_redirect')
-        );
+
+        return $redirect;
     }
+
 }

@@ -69,14 +69,18 @@ class UserController extends Controller
 
         event(new Registered($user));
 
-        return Redirect::route('admin.users.index', $user)->with(
+        $redirect = Redirect::route('admin.users.index', $user)->with(
             'notification',
             new NotificationVO(
                 NotificationEnum::SUCCESS,
                 __('Successfully created!'),
                 __('messages.user.registered')
             )
-        )->withCookie(new Cookie('new_user_id', $user->id));
+        );
+        if (app()->environment() === 'testing') {
+            $redirect->withCookie(new Cookie('new_user_id', $user->id));
+        }
+        return $redirect;
     }
 
     public function update(

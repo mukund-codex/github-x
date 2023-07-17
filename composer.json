@@ -15,6 +15,7 @@
         "laravel/telescope": "^4.14",
         "laravel/tinker": "^2.8",
         "rollbar/rollbar-laravel": "^8.0",
+        "spatie/laravel-activitylog": "^4.7",
         "spatie/laravel-permission": "^5.10",
         "symfony/http-client": "^6.1",
         "symfony/postmark-mailer": "^6.1",

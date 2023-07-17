@@ -8,17 +8,21 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Cashier\Billable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Permission\Traits\HasRoles;
 
 use function Illuminate\Events\queueable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
+
     use HasApiTokens;
     use HasFactory;
     use Notifiable;
     use HasRoles;
     use Billable;
+    use LogsActivity;
 
     /**
      * The attributes that are mass assignable.
@@ -41,8 +45,20 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'remember_token',
         'updated_at',
-        'roles'
+        'roles',
     ];
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logAll()
+            ->logExcept([
+                'password',
+                'remember_token',
+                'created_at',
+                'updated_at',
+            ]);
+    }
 
     /**
      * The attributes that should be cast.
@@ -51,7 +67,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'trial_ends_at' => 'date'
+        'trial_ends_at' => 'date',
     ];
 
     protected static function booted(): void
@@ -62,4 +78,5 @@ class User extends Authenticatable implements MustVerifyEmail
             }
         }));
     }
+
 }
