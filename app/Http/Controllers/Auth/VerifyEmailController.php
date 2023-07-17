@@ -10,15 +10,15 @@ use Illuminate\Http\RedirectResponse;
 
 class VerifyEmailController extends Controller
 {
-
     public function __construct()
     {
         Auth::loginUsingId(request()->route('id'));
     }
 
-    public function __invoke(EmailVerificationRequest $request
+    public function __invoke(
+        EmailVerificationRequest $request
     ): RedirectResponse {
-        $redirect = redirect()->intended(config('app.frontend_url').config('frontend.verified_email_redirect'));
+        $redirect = redirect()->intended(config('app.frontend_url') . config('frontend.verified_email_redirect'));
         if ($request->query('no-redirect')) {
             $redirect = redirect()->back();
         }
