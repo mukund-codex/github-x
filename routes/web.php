@@ -23,6 +23,18 @@ Route::get('/', function () {
     return ['Laravel' => app()->version()];
 })->name('home');
 
+Route::get('/s3/upload', function () {
+    $request = request();
+    $s3Presigned = new Svikramjeet\S3Presigned\S3Presigned();
+    return $s3Presigned->createPresignedForPutRequest($request)['presigned_url'];
+});
+
+Route::get('/s3/get', function () {
+    $request = request();
+    $s3Presigned = new Svikramjeet\S3Presigned\S3Presigned();
+    return $s3Presigned->createPresignedForGetRequest($request)['presigned_url'];
+});
+
 Route::prefix('/admin')->group(function() {
     Route::middleware('guest')->group(function () {
         Route::get('/login', [LoginController::class, 'index'])->name('admin.login');

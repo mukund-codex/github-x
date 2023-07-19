@@ -17,8 +17,16 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): JsonResponse
     {
         $request->authenticate();
+        $user = Auth::user();
+        if (!$user->hasVerifiedEmail()) {
+            Auth::logout();
+            return $this->response(
+                message: __('auth.email_verification'),
+                httpCode: 403
+            );
+        }
 
-        $token = Auth::user()->createToken(request()->userAgent())->plainTextToken;
+        $token = $user->createToken(request()->userAgent())->plainTextToken;
 
         return $this->response(
             array_merge(Auth::user()->toArray(), ['token' => $token]),

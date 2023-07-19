@@ -20,9 +20,12 @@ class EnsureEmailIsVerified
         if (! $request->user() ||
             ($request->user() instanceof MustVerifyEmail &&
             ! $request->user()->hasVerifiedEmail())) {
-            Auth::logout();
-            return response()->redirectToRoute('admin.login')
-                ->withErrors(['email' => __('Your email address is not verified.')]);
+            if ($request->hasSession()) {
+                Auth::logout();
+                return response()->redirectToRoute('admin.login')
+                    ->withErrors(['email' => __('Your email address is not verified.')]);
+            }
+            return response()->json(['message' => __('Your email address is not verified.')], 403);
         }
 
         return $next($request);
