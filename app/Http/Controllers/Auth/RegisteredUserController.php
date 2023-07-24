@@ -36,7 +36,7 @@ class RegisteredUserController extends Controller
         if (in_array(app()->environment(), ['testing', 'local'])) {
             $verificationUrl = URL::temporarySignedRoute(
                 'verification.verify',
-                now()->addMinutes(60),
+                now()->addHour(),
                 ['id' => $user->id, 'hash' => sha1($user->email), 'no-redirect' => true],
             );
             $response->withCookie(new Cookie('verification_url', $verificationUrl));
