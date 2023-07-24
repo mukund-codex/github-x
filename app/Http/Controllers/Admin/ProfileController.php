@@ -29,7 +29,7 @@ class ProfileController extends Controller
             $request->user()->save();
             Auth::logout();
             return Redirect::route('admin.login')
-                ->withErrors(['email' => __('Check your inbox and verify e-mail')]);
+                ->withErrors(['email' => __('messages.errors.check_inbox_and_verify')]);
         }
 
         $request->user()->save();

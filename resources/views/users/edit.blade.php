@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        {{ __('User') }}
+        {{ __('misc.user') }}
     </x-slot>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
@@ -12,11 +12,11 @@
                             <div class="sm:flex sm:items-center">
                                 <div class="sm:flex-auto">
                                     <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-                                        {{ __('User Information') }}
+                                        {{ __('misc.user_info') }}
                                     </h2>
 
                                     <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                                        {{ __("Update user information and email address.") }}
+                                        {{ __("misc.update_user_info") }}
                                     </p>
                                 </div>
                                 <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
@@ -24,7 +24,7 @@
                                         <form method="post" action="{{ route('admin.users.verify_email', $user) }}">
                                             @csrf
                                             @method('patch')
-                                            <x-secondary-button type="submit">{{ __('Mark e-mail as verified') }}</x-secondary-button>
+                                            <x-secondary-button type="submit">{{ __('misc.mark_email_verified') }}</x-secondary-button>
                                         </form>
                                     @endif
                                 </div>
@@ -35,7 +35,7 @@
                             @method('patch')
 
                             <div>
-                                <x-input-label for="first_name" :value="__('First Name')"/>
+                                <x-input-label for="first_name" :value="__('misc.first_name')"/>
                                 <x-text-input id="first_name" name="first_name" type="text" class="mt-1 block w-full"
                                               :value="old('first_name', $user->first_name)" required autofocus
                                               autocomplete="first_name"/>
@@ -43,7 +43,7 @@
                             </div>
 
                             <div>
-                                <x-input-label for="last_name" :value="__('Last Name')"/>
+                                <x-input-label for="last_name" :value="__('misc.last_name')"/>
                                 <x-text-input id="last_name" name="last_name" type="text" class="mt-1 block w-full"
                                               :value="old('last_name', $user->last_name)" required
                                               autocomplete="last_name"/>
@@ -51,7 +51,7 @@
                             </div>
 
                             <div>
-                                <x-input-label for="email" :value="__('Email')"/>
+                                <x-input-label for="email" :value="__('auth.email_field')"/>
                                 <x-text-input id="email" name="email" type="email" class="mt-1 block w-full"
                                               :value="old('email', $user->email)" required autocomplete="username"/>
                                 <x-input-error class="mt-2" :messages="$errors->get('email')"/>
@@ -86,7 +86,7 @@
                             </div>
 
                             <div class="flex items-center gap-4">
-                                <x-primary-button>{{ __('Save') }}</x-primary-button>
+                                <x-primary-button>{{ __('misc.save') }}</x-primary-button>
                             </div>
                         </form>
                     </section>

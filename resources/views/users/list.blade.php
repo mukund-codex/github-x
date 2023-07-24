@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        {{ __('Users') }}
+        {{ __('misc.users') }}
     </x-slot>
 
     @if($notification = session('notification'))
@@ -42,14 +42,14 @@
                                     <x-th-sortable title="Status" field="email_verified_at"></x-th-sortable>
                                     <th scope="col"
                                         class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-300">
-                                        {{ __('Subscription') }}
+                                        {{ __('misc.subscription') }}
                                     </th>
                                     <th scope="col"
                                         class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-300">
-                                        {{ __('Roles') }}
+                                        {{ __('misc.roles') }}
                                     </th>
                                     <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                                        <span class="sr-only">{{ __('Actions') }}</span>
+                                        <span class="sr-only">{{ __('misc.actions') }}</span>
                                     </th>
                                 </tr>
                                 </thead>
@@ -123,22 +123,22 @@
                                                             @method('delete')
 
                                                             <h2 class="text-lg font-medium text-center text-gray-900 dark:text-gray-100">
-                                                                {{ __("Are you sure you want to delete this account?") }}
+                                                                {{ __("messages.user.remove_account_confirmation") }}
                                                             </h2>
                                                             <p class="my-5 p-6 text-lg text-center text-gray-600 dark:text-gray-400">
                                                                 {{$user->email}}
                                                             </p>
                                                             <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                                                                {{ __('Once account is deleted, all of its resources and data will be permanently deleted.') }}
+                                                                {{ __('messages.user.remove_account_consequences') }}
                                                             </p>
 
                                                             <div class="mt-6 flex justify-end">
                                                                 <x-secondary-button x-on:click="$dispatch('close')">
-                                                                    {{ __('Cancel') }}
+                                                                    {{ __('misc.cancel') }}
                                                                 </x-secondary-button>
 
                                                                 <x-danger-button class="ml-3">
-                                                                    {{ __('Delete Account') }}
+                                                                    {{ __('misc.delete_account') }}
                                                                 </x-danger-button>
                                                             </div>
                                                         </form>

@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        {{ __('Roles') }}
+        {{ __('misc.roles') }}
     </x-slot>
     <div class="px-4 sm:px-6 lg:px-8">
         <div class="mt-4 flow-root">

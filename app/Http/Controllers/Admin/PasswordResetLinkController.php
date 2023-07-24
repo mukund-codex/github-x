@@ -34,7 +34,7 @@ class PasswordResetLinkController extends Controller
                 'notification',
                 new NotificationVO(
                     NotificationEnum::SUCCESS,
-                    __('Success!'),
+                    __('messages.notification.success'),
                     __($status)
                 )
             )

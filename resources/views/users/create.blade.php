@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        {{ __('User') }}
+        {{ __('misc.user') }}
     </x-slot>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
@@ -9,7 +9,7 @@
                     <section>
                         <header>
                             <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-                                {{ __('Create User') }}
+                                {{ __('misc.create_user') }}
                             </h2>
                         </header>
 
@@ -18,28 +18,28 @@
                             @method('post')
 
                             <div>
-                                <x-input-label for="first_name" :value="__('First Name')"/>
+                                <x-input-label for="first_name" :value="__('misc.first_name')"/>
                                 <x-text-input id="first_name" name="first_name" type="text" class="mt-1 block w-full"
                                               :value="old('first_name')" required autofocus autocomplete="first_name"/>
                                 <x-input-error class="mt-2" :messages="$errors->get('first_name')"/>
                             </div>
 
                             <div>
-                                <x-input-label for="last_name" :value="__('Last Name')"/>
+                                <x-input-label for="last_name" :value="__('misc.last_name')"/>
                                 <x-text-input id="last_name" name="last_name" type="text" class="mt-1 block w-full"
                                               :value="old('last_name')" required autocomplete="last_name"/>
                                 <x-input-error class="mt-2" :messages="$errors->get('last_name')"/>
                             </div>
 
                             <div>
-                                <x-input-label for="email" :value="__('Email')"/>
+                                <x-input-label for="email" :value="__('auth.email_field')"/>
                                 <x-text-input id="email" name="email" type="email" class="mt-1 block w-full"
                                               :value="old('email')" required autocomplete="username"/>
                                 <x-input-error class="mt-2" :messages="$errors->get('email')"/>
                             </div>
 
                             <div>
-                                <x-input-label for="password" :value="__('Password')" />
+                                <x-input-label for="password" :value="__('auth.password_field')" />
 
                                 <x-text-input id="password" class="block mt-1 w-full"
                                               type="password"
@@ -51,7 +51,7 @@
 
                             <!-- Confirm Password -->
                             <div>
-                                <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+                                <x-input-label for="password_confirmation" :value="__('auth.confirm_password_field')" />
 
                                 <x-text-input id="password_confirmation" class="block mt-1 w-full"
                                               type="password"
@@ -85,7 +85,7 @@
                             </div>
 
                             <div class="flex items-center gap-4">
-                                <x-primary-button>{{ __('Save') }}</x-primary-button>
+                                <x-primary-button>{{ __('misc.save') }}</x-primary-button>
                             </div>
                         </form>
                     </section>

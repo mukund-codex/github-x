@@ -161,7 +161,7 @@
                         >
                             <!-- Active: "bg-gray-50", Not Active: "" -->
                                 <x-dropdown-link :href="route('admin.profile.edit')" role="menuitem" tabindex="-1" id="user-menu-item-0">
-                                    {{ __('Profile') }}
+                                    {{ __('misc.profile') }}
                                 </x-dropdown-link>
 
                                 <!-- Authentication -->
@@ -172,7 +172,7 @@
                                                      id="user-menu-item-1" onclick="event.preventDefault();
                                                      this.closest('form').submit();"
                                     >
-                                        {{ __('Log Out') }}
+                                        {{ __('auth.log_out') }}
                                     </x-dropdown-link>
                                 </form>
                         </div>

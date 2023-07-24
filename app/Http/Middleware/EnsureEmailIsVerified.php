@@ -23,9 +23,9 @@ class EnsureEmailIsVerified
             if ($request->hasSession()) {
                 Auth::logout();
                 return response()->redirectToRoute('admin.login')
-                    ->withErrors(['email' => __('Your email address is not verified.')]);
+                    ->withErrors(['email' => __('messages.user.email_not_verified')]);
             }
-            return response()->json(['message' => __('Your email address is not verified.')], 403);
+            return response()->json(['message' => __('messages.user.email_not_verified')], 403);
         }
 
         return $next($request);

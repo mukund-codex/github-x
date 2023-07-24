@@ -73,7 +73,7 @@ class UserController extends Controller
             'notification',
             new NotificationVO(
                 NotificationEnum::SUCCESS,
-                __('Successfully created!'),
+                __('messages.notification.successfully_created'),
                 __('messages.user.registered')
             )
         );
@@ -96,7 +96,7 @@ class UserController extends Controller
             'notification',
             new NotificationVO(
                 NotificationEnum::SUCCESS,
-                __('Successfully updated!'),
+                __('messages.notification.successfully_updated'),
                 __('messages.user.updated')
             )
         );
@@ -110,8 +110,8 @@ class UserController extends Controller
             'notification',
             new NotificationVO(
                 NotificationEnum::SUCCESS,
-                __('Successfully updated!'),
-                __('User e-mail marked as verified')
+                __('messages.notification.successfully_updated'),
+                __('messages.user.email_verified')
             )
         );
     }
@@ -126,8 +126,8 @@ class UserController extends Controller
                 'notification',
                 new NotificationVO(
                     NotificationEnum::FAIL,
-                    __('Fail!'),
-                    __('You cannot remove yourself')
+                    __('messages.notification.fail'),
+                    __('messages.user.cannot_remove_yourself')
                 )
             );
         }
@@ -137,7 +137,7 @@ class UserController extends Controller
             'notification',
             new NotificationVO(
                 NotificationEnum::SUCCESS,
-                __('Successfully deleted!'),
+                __('messages.notification.successfully_deleted'),
                 __('messages.user.deleted')
             )
         );

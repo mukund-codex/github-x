@@ -1,5 +1,5 @@
 @if ($paginator->hasPages())
-    <nav role="navigation" aria-label="{{ __('Pagination Navigation') }}" class="flex items-center justify-between py-2 sm:px-6 lg:px-8">
+    <nav role="navigation" aria-label="{{ __('misc.pagination_navigation') }}" class="flex items-center justify-between py-2 sm:px-6 lg:px-8">
         <div class="flex justify-between flex-1 sm:hidden">
             @if ($paginator->onFirstPage())
                 <span class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-500 dark:text-gray-200 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 cursor-default leading-5 rounded-md">
@@ -25,17 +25,17 @@
         <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
             <div>
                 <p class="text-sm text-gray-700 dark:text-gray-400 leading-5">
-                    {!! __('Showing') !!}
+                    {!! __('misc.showing') !!}
                     @if ($paginator->firstItem())
                         <span class="font-medium">{{ $paginator->firstItem() }}</span>
-                        {!! __('to') !!}
+                        {!! __('misc.to') !!}
                         <span class="font-medium">{{ $paginator->lastItem() }}</span>
                     @else
                         {{ $paginator->count() }}
                     @endif
-                    {!! __('of') !!}
+                    {!! __('misc.of') !!}
                     <span class="font-medium">{{ $paginator->total() }}</span>
-                    {!! __('results') !!}
+                    {!! __('misc.results') !!}
                 </p>
             </div>
 
@@ -75,7 +75,7 @@
                                         <span class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-white bg-orange-500 border border-orange-400 cursor-default leading-5">{{ $page }}</span>
                                     </span>
                                 @else
-                                    <a href="{{ $url }}" class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 dark:text-gray-400 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 leading-5 hover:bg-orange-100 focus:z-10 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 dark:text-gray-400 transition ease-in-out duration-150" aria-label="{{ __('Go to page :page', ['page' => $page]) }}">
+                                    <a href="{{ $url }}" class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 dark:text-gray-400 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 leading-5 hover:bg-orange-100 focus:z-10 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 dark:text-gray-400 transition ease-in-out duration-150" aria-label="{{ __('misc.go_to_page', ['page' => $page]) }}">
                                         {{ $page }}
                                     </a>
                                 @endif
