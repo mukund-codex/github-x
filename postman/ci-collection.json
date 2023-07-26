@@ -1391,6 +1391,35 @@
 							]
 						},
 						{
+							"name": "Verify e-mail",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "de305964-5d99-4053-a964-bd5f659262fa",
+										"exec": [
+											"pm.test('Reponse code to be 200', function () {",
+											"    pm.expect(pm.response.code).to.be.equal(200);",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "173d3838-7a5a-4d1b-80c0-55c7a0d43119",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "{{verification_url}}"
+							},
+							"response": []
+						},
+						{
 							"name": "Login",
 							"event": [
 								{
@@ -3127,19 +3156,19 @@
 	],
 	"variable": [
 		{
-			"id": "09645d1d-5360-447d-bc23-93046fbf74a6",
+			"id": "95a4224a-a2c4-4473-a671-c54b2a004a44",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "c56f19ee-ed2b-4774-8dba-102d0326e3d0",
+			"id": "9a6342a1-3511-4bb2-ad0e-a587a9d6468e",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "6da82df5-cff1-45d8-ab35-ac0c28f7ab6b",
+			"id": "789d2039-38e0-4496-8471-e2b0918dda6a",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
