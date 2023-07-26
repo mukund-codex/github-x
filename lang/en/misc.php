@@ -25,5 +25,13 @@ return [
     'results' => 'results',
     'pagination_navigation' => 'Pagination Navigation',
     'go_to_page' => 'Go to page :page',
-    'update_password' => 'Update Password'
+    'update_password' => 'Update Password',
+    'activity_log' => 'Activity Logs',
+    'description' => 'Description',
+    'causer_type' => 'Causer type',
+    'causer' => 'Causer',
+    'subject' => 'Subject',
+    'subject_type' => 'Subject type',
+    'properties' => 'Properties',
+    'when' => 'When'
 ];

@@ -31,18 +31,25 @@ class LoginController extends Controller
                 ->withErrors(['email' => __('messages.errors.no_rights_to_dashboard')]);
         }
         $request->session()->regenerate();
-
+        activity()
+            ->causedBy($user)
+            ->performedOn($user)
+            ->log('Dashboard Log in');
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
     public function destroy(Request $request): RedirectResponse
     {
+        $user = Auth::user();
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
-
+        activity()
+            ->causedBy($user)
+            ->performedOn($user)
+            ->log('Dashboard Log out');
         return redirect(route('admin.login'));
     }
 }

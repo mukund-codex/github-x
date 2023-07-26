@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ActivityLogController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\NewPasswordController;
 use App\Http\Controllers\Admin\ProfileController;
@@ -78,6 +79,10 @@ Route::prefix('/admin')->group(function() {
             Route::get('/roles', RoleListController::class)
                 ->name('admin.roles.index')
                 ->can('view roles');
+
+            Route::get('/activity-logs', ActivityLogController::class)
+                ->name('admin.logs.index')
+                ->can('view logs');
         });
 
         Route::post('logout', [LoginController::class, 'destroy'])

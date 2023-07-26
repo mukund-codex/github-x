@@ -22,7 +22,8 @@ class VerifyEmailController extends Controller
         if ($request->query('no-redirect')) {
             $redirect = redirect()->back();
         }
-        if ($request->user()->hasVerifiedEmail()) {
+        $user = $request->user();
+        if ($user->hasVerifiedEmail()) {
             Auth::logout();
 
             return $redirect;

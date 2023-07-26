@@ -21,7 +21,8 @@ class PermissionSeeder extends Seeder
             'update user',
             'view users',
             'delete user',
-            'view roles'
+            'view roles',
+            'view logs'
         ];
 
         foreach ($permissions as $permission) {

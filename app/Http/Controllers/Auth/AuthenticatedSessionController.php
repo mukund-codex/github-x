@@ -25,8 +25,11 @@ class AuthenticatedSessionController extends Controller
                 httpCode: 403
             );
         }
-
         $token = $user->createToken(request()->userAgent())->plainTextToken;
+        activity()
+            ->causedBy($user)
+            ->performedOn($user)
+            ->log('Log in');
 
         return $this->response(
             array_merge(Auth::user()->toArray(), ['token' => $token]),
@@ -36,12 +39,17 @@ class AuthenticatedSessionController extends Controller
 
     public function destroy(Request $request): JsonResponse
     {
-        $token = $request->user()->tokens()->where(
+        $user = $request->user();
+        $token = $user->tokens()->where(
             'id',
             Str::before($request->bearerToken(), '|')
         )->first();
         $token->expires_at = now();
         $token->save();
+        activity()
+            ->causedBy($user)
+            ->performedOn($user)
+            ->log('Log out');
         return $this->response(['token' => ''], __('messages.user.logged_out'));
     }
 }
