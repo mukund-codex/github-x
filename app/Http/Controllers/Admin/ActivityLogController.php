@@ -8,7 +8,6 @@ use Spatie\Activitylog\Models\Activity;
 
 class ActivityLogController extends Controller
 {
-
     public function __invoke(ActivityLogListRequest $request)
     {
         $sortBy = $request->validated('sortBy') ?? 'id';
