@@ -24,6 +24,10 @@ Route::get('/', function () {
     return ['Laravel' => app()->version()];
 })->name('home');
 
+Route::get('/api', function () {
+    return redirect()->route('home.api');
+})->name('api');
+
 Route::prefix('/admin')->group(function() {
     Route::middleware('guest')->group(function () {
         Route::get('/login', [LoginController::class, 'index'])->name('admin.login');
