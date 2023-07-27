@@ -14,5 +14,6 @@ return [
     'roles' => [
         'super_admin' => 'super_admin',
         'user' => 'user'
-    ]
+    ],
+    'api_rate_limit' => env('API_RATE_LIMIT', 60),
 ];
