@@ -27,7 +27,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::before(function ($user) {
-            return $user->hasRole(Config::get('const.roles.super_admin')) ? true : null;
+            return $user->hasRole(Config::get('constants.roles.super_admin')) ? true : null;
         });
 
         ResetPassword::createUrlUsing(function (User $notifiable, string $token) {

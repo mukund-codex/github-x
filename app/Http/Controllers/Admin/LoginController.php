@@ -22,7 +22,7 @@ class LoginController extends Controller
         $request->authenticate();
         $user = Auth::user();
         $hasPermissions = $user->hasPermissionTo('view dashboard');
-        $hasRole = $user->hasRole(config('const.roles.super_admin'));
+        $hasRole = $user->hasRole(config('constants.roles.super_admin'));
         if (!$hasPermissions && !$hasRole) {
             Auth::logout();
 

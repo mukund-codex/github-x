@@ -28,7 +28,7 @@ class RegisteredUserController extends Controller
                 'password' => Hash::make($userInfo['password']),
             ]
         );
-        $user->assignRole(Config::get('const.roles.user'));
+        $user->assignRole(Config::get('constants.roles.user'));
 
         event(new Registered($user));
 

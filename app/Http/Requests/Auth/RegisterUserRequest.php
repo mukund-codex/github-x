@@ -18,7 +18,7 @@ class RegisterUserRequest extends FormRequest
             'email' => ['required', 'string', 'email:rfc,dns', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'role' => ['nullable', 'array'],
-            'role.*' => ['string', Rule::in(Config::get('const.roles'))],
+            'role.*' => ['string', Rule::in(Config::get('constants.roles'))],
         ];
     }
 }

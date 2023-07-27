@@ -17,7 +17,7 @@ class UpdateUserRequest extends FormRequest
             'last_name' => ['nullable', 'string', 'max:255'],
             'email' => ['email:rfc,dns', 'max:255', Rule::unique(User::class)->ignore($user->id)],
             'role' => ['nullable', 'array'],
-            'role.*' => ['string', Rule::in(Config::get('const.roles'))],
+            'role.*' => ['string', Rule::in(Config::get('constants.roles'))],
         ];
     }
 }

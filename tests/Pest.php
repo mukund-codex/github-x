@@ -37,17 +37,17 @@ function createRawUser(string $email = '', string $password = ''): User
 
 function createUser(string $email = '', string $password = ''): User
 {
-    $userRole = config('const.roles.user');
+    $userRole = config('constants.roles.user');
     return createRawUser($email, $password)->assignRole($userRole);
 }
 
 function createSuperAdmin(string $email = '', string $password = ''): User
 {
-    $superAdminRole = config('const.roles.super_admin');
+    $superAdminRole = config('constants.roles.super_admin');
     return createRawUser($email, $password)->assignRole($superAdminRole);
 }
 
 function getRoleUser(): Role
 {
-    return Role::where('name', config('const.roles.user'))->first();
+    return Role::where('name', config('constants.roles.user'))->first();
 }

@@ -102,14 +102,14 @@ test('Super Admin can update users', function () {
     $this->actingAs($this->admin)
         ->patch(route('admin.users.update', $testUser), [
             'first_name' => 'test123',
-            'role' => [config('const.roles.super_admin')],
+            'role' => [config('constants.roles.super_admin')],
         ])
         ->assertValid();
     $this->assertDatabaseHas('users', [
         'id' => $id,
         'first_name' => 'test123',
     ]);
-    expect($testUser)->hasRole(config('const.roles.super_admin'));
+    expect($testUser)->hasRole(config('constants.roles.super_admin'));
 });
 
 test('User cannot update users', function () {

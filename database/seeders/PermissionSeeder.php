@@ -11,8 +11,8 @@ class PermissionSeeder extends Seeder
 {
     public function run(): void
     {
-        Role::updateOrCreate(['name' => Config::get('const.roles.super_admin')]);
-        Role::updateOrCreate(['name' => Config::get('const.roles.user')]);
+        Role::updateOrCreate(['name' => Config::get('constants.roles.super_admin')]);
+        Role::updateOrCreate(['name' => Config::get('constants.roles.user')]);
 
         $permissions = [
             'view dashboard',
