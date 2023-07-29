@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Jobs\VerifyEmailJob;
+use Config;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Cashier\Billable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Activitylog\LogOptions;
@@ -80,4 +83,18 @@ class User extends Authenticatable implements MustVerifyEmail
         }));
     }
 
+    public function register(array $userInfo = []): array
+    {
+        $user = $this->create(
+            [
+                'first_name' => $userInfo['first_name'],
+                'last_name' => $userInfo['last_name'] ?? null,
+                'email' => $userInfo['email'],
+                'password' => Hash::make($userInfo['password']),
+            ]
+        );
+        $user->assignRole(Config::get('constants.roles.user'));
+        dispatch(new VerifyEmailJob($user))->onQueue('default');
+        return $user->toArray();
+    }
 }
