@@ -34,5 +34,4 @@ class AppServiceProvider extends ServiceProvider
                 ->symbols();
         });
     }
-
 }

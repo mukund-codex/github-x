@@ -19,5 +19,4 @@ class ActivityLogController extends Controller
                 ->paginate(15),
         ]);
     }
-
 }

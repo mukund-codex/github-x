@@ -37,5 +37,4 @@ class VerifyEmailController extends Controller
 
         return $redirect;
     }
-
 }

@@ -38,7 +38,8 @@
         "pestphp/pest-plugin-laravel": "^2.0",
         "phpmd/phpmd": "^2.13",
         "phpunit/phpunit": "^10.0",
-        "spatie/laravel-ignition": "^2.0"
+        "spatie/laravel-ignition": "^2.0",
+        "squizlabs/php_codesniffer": "^3.7"
     },
     "autoload": {
         "psr-4": {
@@ -84,6 +85,8 @@
         "phpmd": "vendor/bin/phpmd app text phpmd_ruleset.xml",
         "security-checker": "vendor/bin/security-checker security:check",
         "pint": "vendor/bin/pint app tests",
+        "phpcs": "vendor/bin/phpcs app --standard=PSR12",
+        "phpcbf": "vendor/bin/phpcbf app --standard=PSR12",
         "pest": "vendor/bin/pest --stop-on-error --stop-on-failure --parallel --compact",
         "coverage": "vendor/bin/pest --stop-on-error --stop-on-failure --parallel --compact --coverage",
         "postman": "postman collection run postman/ci-collection.json",

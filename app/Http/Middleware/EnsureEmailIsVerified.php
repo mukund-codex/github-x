@@ -17,9 +17,11 @@ class EnsureEmailIsVerified
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (! $request->user() ||
+        if (
+            ! $request->user() ||
             ($request->user() instanceof MustVerifyEmail &&
-            ! $request->user()->hasVerifiedEmail())) {
+            ! $request->user()->hasVerifiedEmail())
+        ) {
             if ($request->hasSession()) {
                 Auth::logout();
                 return response()->redirectToRoute('admin.login')
