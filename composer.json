@@ -85,7 +85,7 @@
         "phpmd": "vendor/bin/phpmd app text phpmd_ruleset.xml",
         "security-checker": "vendor/bin/security-checker security:check",
         "pint": "vendor/bin/pint app tests",
-        "phpcs": "vendor/bin/phpcs app --standard=PSR12",
+        "phpcs": "vendor/bin/phpcs app -n --standard=PSR12",
         "phpcbf": "vendor/bin/phpcbf app --standard=PSR12",
         "pest": "vendor/bin/pest --stop-on-error --stop-on-failure --parallel --compact",
         "coverage": "vendor/bin/pest --stop-on-error --stop-on-failure --parallel --compact --coverage",

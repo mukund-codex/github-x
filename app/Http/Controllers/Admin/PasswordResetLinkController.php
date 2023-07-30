@@ -22,7 +22,12 @@ class PasswordResetLinkController extends Controller
     public function store(PasswordResetLinkRequest $request): RedirectResponse
     {
         ResetPassword::createUrlUsing(function (User $notifiable, string $token) {
-            return url(route('admin.password.reset', ['token' => $token, 'email' => $notifiable->getEmailForPasswordReset()]));
+            return url(
+                route(
+                    'admin.password.reset',
+                    ['token' => $token, 'email' => $notifiable->getEmailForPasswordReset()]
+                )
+            );
         });
 
         $status = Password::sendResetLink(
