@@ -13,6 +13,9 @@
         "no_unused_imports": true,
         "method_argument_space": {
             "on_multiline": "ensure_fully_multiline"
+        },
+        "operator_linebreak": {
+            "position": "beginning"
         }
     }
 }

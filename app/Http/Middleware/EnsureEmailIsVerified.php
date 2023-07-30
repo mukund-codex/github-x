@@ -18,9 +18,9 @@ class EnsureEmailIsVerified
     public function handle(Request $request, Closure $next): Response
     {
         if (
-            ! $request->user() ||
-            ($request->user() instanceof MustVerifyEmail &&
-            ! $request->user()->hasVerifiedEmail())
+            ! $request->user()
+            || ($request->user() instanceof MustVerifyEmail
+            && ! $request->user()->hasVerifiedEmail())
         ) {
             if ($request->hasSession()) {
                 Auth::logout();
