@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PasswordResetLinkRequest;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Validation\ValidationException;
 
@@ -17,11 +19,15 @@ class PasswordResetLinkController extends Controller
         );
 
         if ($status != Password::RESET_LINK_SENT) {
-            throw ValidationException::withMessages([
-                'email' => [__($status)],
-            ]);
+            activity()
+                ->causedByAnonymous()
+                ->withProperties([
+                    'message' => __($status),
+                    'email' => $request->email
+                ])
+                ->log('Password reset fail');
         }
 
-        return response()->json(['status' => __($status)]);
+        return response()->json(['status' => __('passwords.sent')]);
     }
 }

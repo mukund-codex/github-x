@@ -90,7 +90,7 @@
                                                 @endforeach
                                             @elseif($collection1->isEmpty() and $collection2->isEmpty() and $activity->properties)
                                                 @foreach($activity->properties as $key => $value)
-                                                    <b>{{$key}}:</b> @json($value) <br>
+                                                    <b>{{$key}}:</b> {!! json_encode($value) !!} <br>
                                                 @endforeach
                                             @endif
                                         </td>
