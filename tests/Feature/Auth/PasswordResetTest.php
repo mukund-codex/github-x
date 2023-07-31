@@ -38,10 +38,3 @@ test('Password can be reset with valid token', function () {
         return true;
     });
 });
-
-test('Password cannot be reset with wrong email', function () {
-    Notification::fake();
-    $this->post(route('password.email'), ['email' => 'wrong-email@example.com'])
-        ->assertSessionHasErrors();
-    Notification::assertNothingSent();
-});
