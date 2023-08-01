@@ -50,5 +50,4 @@ class AuthenticatedSessionController extends Controller
 
         return $this->response(['token' => ''], __('messages.user.logged_out'));
     }
-
 }

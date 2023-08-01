@@ -92,6 +92,8 @@
         "postman": "postman collection run postman/ci-collection.json",
         "pre-commit": [
             "@pint",
+            "@phpcbf",
+            "@phpcs",
             "@phpmd",
             "@security-checker"
         ],

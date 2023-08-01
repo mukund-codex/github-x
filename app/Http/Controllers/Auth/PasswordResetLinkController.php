@@ -27,5 +27,4 @@ class PasswordResetLinkController extends Controller
 
         return response()->json(['status' => __('passwords.sent')]);
     }
-
 }

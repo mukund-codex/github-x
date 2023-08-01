@@ -19,5 +19,4 @@ trait ActivityLog
             ->withProperties($properties)
             ->log($log);
     }
-
 }
