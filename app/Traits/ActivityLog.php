@@ -7,7 +7,6 @@ use Illuminate\Support\Collection;
 
 trait ActivityLog
 {
-
     public function activity(
         string $log,
         Model|int|string|null $causer = null,

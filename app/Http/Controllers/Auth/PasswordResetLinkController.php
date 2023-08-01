@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Password;
 
 class PasswordResetLinkController extends Controller
 {
-
     use ActivityLog;
 
     public function store(PasswordResetLinkRequest $request): JsonResponse

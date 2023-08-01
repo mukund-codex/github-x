@@ -13,7 +13,6 @@ use Str;
 
 class AuthenticatedSessionController extends Controller
 {
-
     use ActivityLog;
     use HttpResponse;
 
