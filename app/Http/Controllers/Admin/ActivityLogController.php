@@ -7,6 +7,7 @@ use App\Http\Requests\ActivityLogListRequest;
 use Spatie\Activitylog\Models\Activity;
 
 class ActivityLogController extends Controller
+
 {
     public function __invoke(ActivityLogListRequest $request)
     {

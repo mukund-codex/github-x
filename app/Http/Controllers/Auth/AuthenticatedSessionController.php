@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Traits\ActivityLog;
 use App\Traits\HttpResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -12,6 +13,8 @@ use Str;
 
 class AuthenticatedSessionController extends Controller
 {
+
+    use ActivityLog;
     use HttpResponse;
 
     public function store(LoginRequest $request): JsonResponse
@@ -20,16 +23,14 @@ class AuthenticatedSessionController extends Controller
         $user = Auth::user();
         if (!$user->hasVerifiedEmail()) {
             Auth::logout();
+
             return $this->response(
                 message: __('auth.email_verification'),
                 httpCode: 403
             );
         }
         $token = $user->createToken(request()->userAgent())->plainTextToken;
-        activity()
-            ->causedBy($user)
-            ->performedOn($user)
-            ->log('Log in');
+        $this->activity('Log in', $user, $user);
 
         return $this->response(
             array_merge(Auth::user()->toArray(), ['token' => $token]),
@@ -46,10 +47,9 @@ class AuthenticatedSessionController extends Controller
         )->first();
         $token->expires_at = now();
         $token->save();
-        activity()
-            ->causedBy($user)
-            ->performedOn($user)
-            ->log('Log out');
+        $this->activity('Log out', $user, $user);
+
         return $this->response(['token' => ''], __('messages.user.logged_out'));
     }
+
 }
