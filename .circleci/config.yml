@@ -42,6 +42,6 @@ workflows:
   ci-cd:
     jobs:
       - ci
-#      - cd:
-#          requires:
-#            - ci
+      - cd:
+          requires:
+            - ci
