@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterUserRequest;
-use App\Models\User;
+use App\Services\UserService;
 use App\Traits\HttpResponse;
 use Symfony\Component\HttpFoundation\Cookie;
 use Illuminate\Http\JsonResponse;
@@ -15,9 +15,13 @@ class RegisteredUserController extends Controller
 {
     use HttpResponse;
 
+    public function __construct(protected UserService $userService)
+    {
+    }
+
     public function store(RegisterUserRequest $request): JsonResponse
     {
-        $user = resolve(User::class)->register($request->safe()->toArray());
+        $user = $this->userService->register($request->safe()->toArray());
 
         $response = $this->response($user, __('messages.user.registered'), Response::HTTP_CREATED);
         if (app()->environment(['testing', 'local'])) {

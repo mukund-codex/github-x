@@ -9,11 +9,11 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Http\Requests\UserListRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use App\Services\UserService;
 use App\ValueObjects\Admin\NotificationVO;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use Spatie\Permission\Models\Role;
@@ -21,6 +21,10 @@ use Symfony\Component\HttpFoundation\Cookie;
 
 class UserController extends Controller
 {
+    public function __construct(protected UserService $userService)
+    {
+    }
+
     public function index(UserListRequest $request): View
     {
 
@@ -54,14 +58,7 @@ class UserController extends Controller
     public function store(RegisterUserRequest $request): RedirectResponse
     {
         $userInfo = $request->safe();
-        $user = resolve(User::class)->create(
-            [
-                'first_name' => $userInfo['first_name'],
-                'last_name' => $userInfo['last_name'] ?? null,
-                'email' => $userInfo['email'],
-                'password' => Hash::make($userInfo['password']),
-            ]
-        );
+        $user = $this->userService->create($userInfo->toArray());
         $role = $userInfo['role'] ?? null;
         if ($role) {
             $user->assignRole($role);

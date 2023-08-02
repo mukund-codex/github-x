@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Profile\DeleteProfileRequest;
 use App\Http\Requests\Profile\UpdateProfilePasswordRequest;
 use App\Http\Requests\Profile\UpdateProfileRequest;
+use App\Services\UserService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,6 +16,10 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
+    public function __construct(protected UserService $userService)
+    {
+    }
+
     public function edit(Request $request): View
     {
         return view('profile.edit', ['user' => $request->user(),]);
@@ -22,18 +27,15 @@ class ProfileController extends Controller
 
     public function update(UpdateProfileRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $user = $request->user();
+        $user->fill($request->validated());
         if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
-            $request->user()->sendEmailVerificationNotification();
-            $request->user()->save();
+            $this->userService->emailReVerification($user);
             Auth::logout();
             return Redirect::route('admin.login')
                 ->withErrors(['email' => __('messages.errors.check_inbox_and_verify')]);
         }
-
-        $request->user()->save();
-
+        $user->save();
         return Redirect::route('admin.profile.edit')->with('status', 'profile-updated');
     }
 
