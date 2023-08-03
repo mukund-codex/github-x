@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\v1\ProfileController;
+use App\Http\Controllers\v1\ProfileSubscriptionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
             Route::patch('/', 'update')->name('profile.update');
             Route::delete('/', 'destroy')->name('profile.destroy');
         });
+    Route::get('/profile/subscription', ProfileSubscriptionController::class)
+        ->name('profile.subscription');
 });
 
 Route::get('/', function () {
