@@ -852,6 +852,55 @@
 									]
 								},
 								{
+									"name": "Profile Subscription",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "d8991982-8770-42a9-bc47-50b722a50903",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"id": "6a1dad77-4483-451b-8b14-18c1f9f015d9",
+												"exec": [
+													"pm.test('Reponse code to be 200', function () {",
+													"    pm.expect(pm.response.code).to.be.equal(200);",
+													"});",
+													"",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "9dde589d-78bb-4003-895c-3e9cecb3bedf",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{user_token}}"
+											}
+										},
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": "{{base_url}}/profile/subscription"
+									},
+									"response": []
+								},
+								{
 									"name": "Profile",
 									"event": [
 										{
@@ -3156,19 +3205,19 @@
 	],
 	"variable": [
 		{
-			"id": "95a4224a-a2c4-4473-a671-c54b2a004a44",
+			"id": "e8f64acb-5d39-46a3-a4af-701d4ad8e0ee",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "9a6342a1-3511-4bb2-ad0e-a587a9d6468e",
+			"id": "8258e380-f513-42fe-9e6b-5519e81a1971",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "789d2039-38e0-4496-8471-e2b0918dda6a",
+			"id": "e8890836-4ff9-4bcd-a0c3-4519fd0111ad",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
