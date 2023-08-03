@@ -20,6 +20,7 @@ class UserService
             ]
         );
     }
+
     public function register(array $userInfo): array
     {
         $user = $this->create($userInfo);
