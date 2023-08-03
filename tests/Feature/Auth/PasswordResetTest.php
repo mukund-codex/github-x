@@ -12,9 +12,29 @@ test('Reset password link can be requested', function () {
 
     $user = User::factory()->create();
 
-    $this->post(route('password.email'), ['email' => $user->email]);
+    $response = $this->post(route('password.email'), ['email' => $user->email]);
+    expect($response)->status()->toBe(200);
+
 
     Notification::assertSentTo($user, ResetPassword::class);
+});
+
+test('Reset password link cannot be requested with non existing email', function () {
+    Notification::fake();
+
+    $response = $this->post(route('password.email'), ['email' => fake()->email]);
+    expect($response)->status()->toBe(200);
+
+    Notification::assertNothingSent();
+});
+
+test('Reset password link cannot be requested with non valid email', function () {
+    Notification::fake();
+
+    $response = $this->post(route('password.email'), ['email' => fake()->name]);
+    expect($response)->status()->toBe(302);
+
+    Notification::assertNothingSent();
 });
 
 test('Password can be reset with valid token', function () {

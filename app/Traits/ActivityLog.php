@@ -10,13 +10,15 @@ trait ActivityLog
     public function activity(
         string $log,
         Model|int|string|null $causer = null,
-        Model|int|string|null $subject = null,
+        Model|null $subject = null,
         array|Collection $properties = []
     ): void {
-        activity()
+        $activity = activity()
             ->causedBy($causer)
-            ->performedOn($subject)
-            ->withProperties($properties)
-            ->log($log);
+            ->withProperties($properties);
+        if ($subject) {
+            $activity->performedOn($subject);
+        }
+        $activity->log($log);
     }
 }
