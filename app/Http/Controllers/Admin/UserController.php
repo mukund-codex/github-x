@@ -21,10 +21,6 @@ use Symfony\Component\HttpFoundation\Cookie;
 
 class UserController extends Controller
 {
-    public function __construct(protected UserService $userService)
-    {
-    }
-
     public function index(UserListRequest $request): View
     {
 
@@ -57,8 +53,9 @@ class UserController extends Controller
 
     public function store(RegisterUserRequest $request): RedirectResponse
     {
+        $userService = new UserService();
         $userInfo = $request->safe();
-        $user = $this->userService->create($userInfo->toArray());
+        $user = $userService->create($userInfo->toArray());
         $role = $userInfo['role'] ?? null;
         if ($role) {
             $user->assignRole($role);

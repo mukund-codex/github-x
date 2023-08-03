@@ -15,13 +15,10 @@ class RegisteredUserController extends Controller
 {
     use HttpResponse;
 
-    public function __construct(protected UserService $userService)
-    {
-    }
-
     public function store(RegisterUserRequest $request): JsonResponse
     {
-        $user = $this->userService->register($request->safe()->toArray());
+        $userService = new UserService();
+        $user = $userService->register($request->safe()->toArray());
 
         $response = $this->response($user, __('messages.user.registered'), Response::HTTP_CREATED);
         if (app()->environment(['testing', 'local'])) {

@@ -16,10 +16,6 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
-    public function __construct(protected UserService $userService)
-    {
-    }
-
     public function edit(Request $request): View
     {
         return view('profile.edit', ['user' => $request->user(),]);
@@ -30,7 +26,8 @@ class ProfileController extends Controller
         $user = $request->user();
         $user->fill($request->validated());
         if ($request->user()->isDirty('email')) {
-            $this->userService->emailReVerification($user);
+            $userService = new UserService();
+            $userService->emailReVerification($user);
             Auth::logout();
             return Redirect::route('admin.login')
                 ->withErrors(['email' => __('messages.errors.check_inbox_and_verify')]);
