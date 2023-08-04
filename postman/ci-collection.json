@@ -37,7 +37,7 @@
 							"request": {
 								"method": "GET",
 								"header": [],
-								"url": "{{base_url}}/"
+								"url": "{{base_url}}"
 							},
 							"response": [
 								{
@@ -3205,19 +3205,19 @@
 	],
 	"variable": [
 		{
-			"id": "ceb71500-d901-476b-bec5-3932cec8fe68",
+			"id": "a6d8cfe7-2fd7-49bf-94b3-e5beee6c157f",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "36b2cdc1-6984-4cc4-9f55-bbba7674837d",
+			"id": "3862a2d5-2135-4b45-bee3-6830936ffd52",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "f0811307-6195-4fbd-9fcd-58f2c820eb1a",
+			"id": "8772c937-30ad-43dc-bc59-7789ed71ba83",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
