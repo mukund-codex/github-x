@@ -74,6 +74,7 @@ class UserController extends Controller
         if (in_array(app()->environment(), ['testing', 'local'])) {
             $redirect->withCookie(new Cookie('new_user_id', $user->id));
         }
+
         return $redirect;
     }
 
@@ -96,10 +97,11 @@ class UserController extends Controller
         );
     }
 
-    public function verifyEmail(User $user)
+    public function verifyEmail(User $user): RedirectResponse
     {
         $user->email_verified_at = now();
         $user->save();
+
         return Redirect::route('admin.users.index', $user)->with(
             'notification',
             new NotificationVO(

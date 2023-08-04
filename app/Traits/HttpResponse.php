@@ -10,7 +10,7 @@ trait HttpResponse
     protected function response(
         ?array $data = [],
         ?string $message = '',
-        $httpCode = 200
+        int $httpCode = 200
     ): JsonResponse {
         return new JsonResponse(
             ['data' => $data, 'message' => $message],
@@ -21,7 +21,7 @@ trait HttpResponse
     protected function resourceResponse(
         JsonResource $resource,
         ?string $message = '',
-        $httpCode = 200
+        int $httpCode = 200
     ): JsonResponse {
         return $resource
             ->additional(['message' => $message])
