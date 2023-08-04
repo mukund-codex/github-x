@@ -5,6 +5,7 @@ namespace App\Http\Controllers\v1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Profile\UpdateProfileRequest;
 use App\Http\Resources\UserResource;
+use App\Services\UserService;
 use App\Traits\HttpResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
@@ -13,35 +14,35 @@ class ProfileController extends Controller
 {
     use HttpResponse;
 
-    public function show(): UserResource
+    public function show(): JsonResponse
     {
         $user = Auth::user();
-        return (new UserResource($user))->additional([
-            'additional_data' => [
-                'billing_portal_url' => $user->hasStripeId() ? $user->billingPortalUrl() : null
-            ]
-        ]);
+
+        return $this->resourceResponse(new UserResource($user));
     }
 
     public function update(UpdateProfileRequest $request): JsonResponse
     {
-        $request->user()->fill($request->validated());
+        $user = $request->user();
+        $user->fill($request->validated());
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        if ($user->isDirty('email')) {
+            $service = new UserService();
+            $service->emailReVerification($user);
         }
+        $user->save();
 
-        $request->user()->save();
-
-        return (new UserResource($request->user()))
-            ->additional(['message' => __('messages.profile.updated')])
-            ->response();
+        return $this->resourceResponse(
+            new UserResource($request->user()),
+            __('messages.profile.updated')
+        );
     }
 
     public function destroy(): JsonResponse
     {
         $user = Auth::user();
         $user->delete();
+
         return $this->response([], __('messages.profile.deleted'));
     }
 }

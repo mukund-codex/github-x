@@ -25,6 +25,7 @@ class ProfileSubscriptionController extends Controller
         $subscription = $user->subscription();
         $paymentDetails = $this->subscriptionService->getPaymentDetails($paymentMethod);
         return $this->response([
+            'billing_portal_url' => $user->billingPortalUrl(),
             'subscription' => [
                 'status' => $subscription->stripe_status,
                 'created_at' => $subscription->created_at,

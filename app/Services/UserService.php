@@ -33,6 +33,5 @@ class UserService
     {
         $user->email_verified_at = null;
         $user->sendEmailVerificationNotification();
-        $user->save();
     }
 }

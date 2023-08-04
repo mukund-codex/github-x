@@ -28,6 +28,7 @@ class ProfileController extends Controller
         if ($request->user()->isDirty('email')) {
             $userService = new UserService();
             $userService->emailReVerification($user);
+            $user->save();
             Auth::logout();
             return Redirect::route('admin.login')
                 ->withErrors(['email' => __('messages.errors.check_inbox_and_verify')]);
