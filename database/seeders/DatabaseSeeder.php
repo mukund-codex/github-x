@@ -5,7 +5,6 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App;
 use App\Models\User;
-use Config;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -17,11 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call([
-            PermissionSeeder::class
-        ]);
-
-        // \App\Models\User::factory(10)->create();
+        $this->call([PermissionSeeder::class]);
 
         if (App::environment() === 'local' || App::runningUnitTests()) {
             User::updateOrCreate(['email' => 'admin@example.com'], [
