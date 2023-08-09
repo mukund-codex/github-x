@@ -12,8 +12,6 @@ services:
     restart: always
     ports:
       - "1010:80"
-    environment:
-      APP_NAME: "Laravel API boilerplate"
     networks:
       lbp-network:
         ipv4_address: 10.10.1.1
