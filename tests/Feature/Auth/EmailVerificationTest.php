@@ -3,6 +3,7 @@
 use App\Models\User;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Arr;
 
 uses(RefreshDatabase::class);
 
@@ -23,7 +24,10 @@ test('Email can be verified', function () {
 
     Event::assertDispatched(Verified::class);
     $this->assertTrue($user->fresh()->hasVerifiedEmail());
-    $response->assertRedirect(config('app.frontend_url') . config('frontend.verified_email_redirect'));
+    $url = config('app.frontend_url');
+    $path = config('frontend.verified_email_redirect');
+    $param = Arr::query(['user_name' => $user->first_name]);
+    $response->assertRedirect($url . $path . "?$param");
 });
 
 test('Email cannot be verified more then once', function () {
@@ -37,7 +41,10 @@ test('Email cannot be verified more then once', function () {
     $response = $this->actingAs($user)->get($verificationUrl);
     Event::assertNotDispatched(Verified::class);
     $this->assertTrue($user->fresh()->hasVerifiedEmail());
-    $response->assertRedirect(config('app.frontend_url') . config('frontend.verified_email_redirect'));
+    $url = config('app.frontend_url');
+    $path = config('frontend.verified_email_redirect');
+    $param = Arr::query(['user_name' => $user->first_name]);
+    $response->assertRedirect($url . $path . "?$param");
 });
 
 test('Email is not verified with invalid hash', function () {
