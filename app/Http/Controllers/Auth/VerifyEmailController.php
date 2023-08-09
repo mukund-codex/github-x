@@ -7,6 +7,7 @@ use Auth;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Arr;
 
 class VerifyEmailController extends Controller
 {
@@ -18,11 +19,14 @@ class VerifyEmailController extends Controller
     public function __invoke(
         EmailVerificationRequest $request
     ): RedirectResponse {
-        $redirect = redirect()->intended(config('app.frontend_url') . config('frontend.verified_email_redirect'));
+        $url = config('app.frontend_url');
+        $path = config('frontend.verified_email_redirect');
+        $user = $request->user();
+        $param = Arr::query(['user_name' => $user->first_name]);
+        $redirect = redirect()->intended($url . $path . "?$param");
         if ($request->query('no-redirect')) {
             $redirect = redirect()->back();
         }
-        $user = $request->user();
         if ($user->hasVerifiedEmail()) {
             Auth::logout();
 
