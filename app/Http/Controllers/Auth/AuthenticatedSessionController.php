@@ -41,7 +41,7 @@ class AuthenticatedSessionController extends Controller
     {
         $user = $request->user();
         $service = new UserService();
-        $service->destroyToken($user, $request->bearerToken());
+        $service->expireTokens($user);
         $this->activity('Log out', $user, $user);
 
         return $this->response(['token' => ''], __('messages.user.logged_out'));

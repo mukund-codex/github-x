@@ -30,7 +30,7 @@ class ProfileController extends Controller
         if ($user->isDirty('email')) {
             $service = new UserService();
             $service->emailReVerification($user);
-            $service->destroyToken($user, $request->bearerToken());
+            $service->expireTokens($user);
             $message = __('messages.profile.updated_with_email');
         }
         $user->save();

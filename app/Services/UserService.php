@@ -36,13 +36,8 @@ class UserService
         $user->sendEmailVerificationNotification();
     }
 
-    public function destroyToken(User $user, string $bearerToken): void
+    public function expireTokens(User $user): void
     {
-        $token = $user->tokens()->where(
-            'id',
-            Str::before($bearerToken, '|')
-        )->first();
-        $token->expires_at = now();
-        $token->save();
+        $user->tokens()->update(['expires_at' => now()]);
     }
 }
