@@ -6,6 +6,7 @@ use App\Jobs\VerifyEmailJob;
 use App\Models\User;
 use Config;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UserService
 {
@@ -33,5 +34,15 @@ class UserService
     {
         $user->email_verified_at = null;
         $user->sendEmailVerificationNotification();
+    }
+
+    public function destroyToken(User $user, string $bearerToken): void
+    {
+        $token = $user->tokens()->where(
+            'id',
+            Str::before($bearerToken, '|')
+        )->first();
+        $token->expires_at = now();
+        $token->save();
     }
 }

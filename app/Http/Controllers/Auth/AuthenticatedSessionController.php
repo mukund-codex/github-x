@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Services\UserService;
 use App\Traits\ActivityLog;
 use App\Traits\HttpResponse;
 use Illuminate\Http\JsonResponse;
@@ -40,12 +41,8 @@ class AuthenticatedSessionController extends Controller
     public function destroy(Request $request): JsonResponse
     {
         $user = $request->user();
-        $token = $user->tokens()->where(
-            'id',
-            Str::before($request->bearerToken(), '|')
-        )->first();
-        $token->expires_at = now();
-        $token->save();
+        $service = new UserService();
+        $service->destroyToken($user, $request->bearerToken());
         $this->activity('Log out', $user, $user);
 
         return $this->response(['token' => ''], __('messages.user.logged_out'));
