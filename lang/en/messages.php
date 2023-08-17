@@ -16,6 +16,7 @@ return [
     ],
     'profile' => [
         'updated' => 'Profile updated successfully.',
+        'updated_with_email' => 'Profile updated successfully. Check your inbox to verify email',
         'deleted' => 'Profile deleted successfully.',
         'remove_account_confirmation' => 'Are you sure you want to delete your account?',
         'remove_account_consequences' => 'Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.',

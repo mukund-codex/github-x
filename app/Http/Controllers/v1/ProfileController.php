@@ -25,16 +25,18 @@ class ProfileController extends Controller
     {
         $user = $request->user();
         $user->fill($request->validated());
+        $message = __('messages.profile.updated');
 
         if ($user->isDirty('email')) {
             $service = new UserService();
             $service->emailReVerification($user);
+            $message = __('messages.profile.updated_with_email');
         }
         $user->save();
 
         return $this->resourceResponse(
             new UserResource($request->user()),
-            __('messages.profile.updated')
+            $message
         );
     }
 
