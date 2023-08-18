@@ -6,7 +6,6 @@ use App\Jobs\VerifyEmailJob;
 use App\Models\User;
 use Config;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 class UserService
 {
