@@ -857,6 +857,7 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "27c38a8f-ffdd-437d-9ed0-67d819c11cba",
 												"exec": [
 													"pm.test('Reponse code to be 200', function () {",
 													"    pm.expect(pm.response.code).to.be.equal(200);",
@@ -864,20 +865,19 @@
 													"",
 													""
 												],
-												"type": "text/javascript",
-												"id": "27c38a8f-ffdd-437d-9ed0-67d819c11cba"
+												"type": "text/javascript"
 											}
 										},
 										{
 											"listen": "prerequest",
 											"script": {
+												"id": "0ae62b2d-d97a-458d-aab4-21c88db8c154",
 												"exec": [
 													"pm.environment.set('first_name', 'Updated_John');",
 													"pm.environment.set('last_name', 'Updated_Doe');",
 													"pm.environment.set('user_password', 'Password@123_Updated');"
 												],
-												"type": "text/javascript",
-												"id": "0ae62b2d-d97a-458d-aab4-21c88db8c154"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -916,6 +916,11 @@
 												{
 													"key": "password_confirmation",
 													"value": "{{user_password}}",
+													"type": "text"
+												},
+												{
+													"key": "email",
+													"value": "{{user_email}}",
 													"type": "text"
 												}
 											]
@@ -3156,19 +3161,19 @@
 	],
 	"variable": [
 		{
-			"id": "107cb075-b029-44fe-bc62-86b8a06a824d",
+			"id": "cf33a8cf-a5db-4782-a941-22a05c2e60d6",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "fc6f2fec-d923-4774-ade6-7f10bae94033",
+			"id": "d148bc56-da90-4b59-8a70-9c838c02eb71",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "3629325a-ee8f-45a6-bd6a-32c89d2cf42d",
+			"id": "343acb21-c9a3-450d-8ae9-0c887abf0b8b",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
