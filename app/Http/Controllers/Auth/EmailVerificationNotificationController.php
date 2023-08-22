@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Traits\HttpResponse;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -17,7 +16,7 @@ class EmailVerificationNotificationController extends Controller
     public function store(
         Request $request,
         ?User $user
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse {
         $user = $user ?? $request->user();
         if ($user->hasVerifiedEmail()) {
             return $this->response(

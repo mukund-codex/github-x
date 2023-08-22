@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\v1\ProfileController;
+use App\Http\Controllers\v1\ProfileImageController;
 use App\Http\Controllers\v1\ProfileSubscriptionController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,7 +26,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
             Route::delete('/', 'destroy')->name('profile.destroy');
         });
     Route::get('/profile/subscription', ProfileSubscriptionController::class)
-        ->name('profile.subscription');
+        ->name('profile-subscription.show');
+    Route::post('/profile/image', [ProfileImageController::class, 'store'])
+        ->name('profile-image.store');
+    Route::delete('/profile/image', [ProfileImageController::class, 'destroy'])
+        ->name('profile-image.destroy');
 });
 
 Route::get('/', function () {

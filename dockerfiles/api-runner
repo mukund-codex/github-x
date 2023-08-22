@@ -1,5 +1,9 @@
 #!/bin/bash
 
+RUN apt-get install libjpeg-dev libfreetype6-dev -y
+RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg
+RUN docker-php-ext-install gd
+
 composer install
 
 composer run dev

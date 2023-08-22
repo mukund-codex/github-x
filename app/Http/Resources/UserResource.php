@@ -22,7 +22,9 @@ class UserResource extends JsonResource
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
             'roles' => $this->roles->pluck('name'),
-            'has_subscribed' => $this->subscribed()
+            'has_subscribed' => $this->subscribed(),
+            'image' => $this->image,
+            'image_thumbnail' => $this->image_thumbnail,
 //            'notifications_count' => $this->notifications_count,
 //            'tokens_count' => $this->tokens_count,
 //            'permissions_count' => $this->permissions_count,
