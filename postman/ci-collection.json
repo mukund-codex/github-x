@@ -139,7 +139,7 @@
 							"name": "Sign up",
 							"item": [
 								{
-									"name": "sign up api creates user account successfully with valid data Copy",
+									"name": "sign up api creates user account successfully with valid data",
 									"event": [
 										{
 											"listen": "test",
@@ -5603,19 +5603,19 @@
 	],
 	"variable": [
 		{
-			"id": "049ab9cc-196d-47f9-9644-091d79fcb277",
+			"id": "7cba1011-e285-467c-9cc1-158888d96c50",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "e7d24211-8a08-4a74-adae-4b724603ac46",
+			"id": "3019ff60-ad05-4a2d-934a-f4d492fef6a2",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "55ceb7e7-a04f-4380-ad52-79b59754689d",
+			"id": "30c5a1db-29d5-443d-b65b-85951194ed0c",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
