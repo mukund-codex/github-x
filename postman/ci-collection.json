@@ -9,141 +9,6 @@
 			"name": "API",
 			"item": [
 				{
-					"name": "Default",
-					"item": [
-						{
-							"name": "Home page",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"",
-											"pm.test('Reponse code to be 200', function () {",
-											"    pm.expect(pm.response.code).to.be.equal(200);",
-											"});",
-											""
-										],
-										"type": "text/javascript",
-										"id": "8a14a7ff-09ba-455c-9933-f84becd1b803"
-									}
-								}
-							],
-							"id": "9a4e0c41-3369-43f0-8085-9dce9d938638",
-							"protocolProfileBehavior": {
-								"disabledSystemHeaders": {},
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": "{{base_url}}"
-							},
-							"response": [
-								{
-									"id": "4391ffdd-4ad0-49ed-852e-a7e8d9a3b513",
-									"name": "Home page",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"url": "{{base_url}}"
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Date",
-											"value": "Tue, 02 May 2023 07:58:07 GMT"
-										},
-										{
-											"key": "Server",
-											"value": "Apache/2.4.56 (Debian)"
-										},
-										{
-											"key": "X-Powered-By",
-											"value": "PHP/8.2.4"
-										},
-										{
-											"key": "Cache-Control",
-											"value": "no-cache, private"
-										},
-										{
-											"key": "X-RateLimit-Limit",
-											"value": "60"
-										},
-										{
-											"key": "X-RateLimit-Remaining",
-											"value": "59"
-										},
-										{
-											"key": "Access-Control-Allow-Origin",
-											"value": "http://10.10.1.6:3000"
-										},
-										{
-											"key": "Access-Control-Allow-Credentials",
-											"value": "true"
-										},
-										{
-											"key": "Keep-Alive",
-											"value": "timeout=5, max=100"
-										},
-										{
-											"key": "Connection",
-											"value": "Keep-Alive"
-										},
-										{
-											"key": "Transfer-Encoding",
-											"value": "chunked"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n    \"this-is-laravel-api\": \"10.5.1\"\n}"
-								}
-							]
-						}
-					],
-					"id": "73a37a40-c343-4031-9eb2-a49dfbc00fdf",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									""
-								],
-								"id": "b6cb87d1-5edb-48c1-ad8d-c46d69fd138a"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"// Check if response is present",
-									"pm.test(\"Body is present\", function () {",
-									"    ((responseBody) !== undefined && (responseBody.length > 1));",
-									"});",
-									"",
-									"// Content type header to be JSON",
-									"pm.test(\"Content Type header is JSON\", function () {",
-									"    pm.response.to.be.header(\"Content-Type\", \"application/json\");",
-									"});",
-									"",
-									"// Parse and set response as JSON, and save it in a variable for later use",
-									"jsonData = JSON.parse(responseBody);"
-								],
-								"id": "a2ba3be6-2bd2-4450-a3df-85e37403e583"
-							}
-						}
-					]
-				},
-				{
 					"name": "User onboarding",
 					"item": [
 						{
@@ -3161,19 +3026,19 @@
 	],
 	"variable": [
 		{
-			"id": "cf33a8cf-a5db-4782-a941-22a05c2e60d6",
+			"id": "b2e2c119-a4c3-46a5-91be-24cb01344ca6",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "d148bc56-da90-4b59-8a70-9c838c02eb71",
+			"id": "488915be-cf20-4727-bc66-97613691967c",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "343acb21-c9a3-450d-8ae9-0c887abf0b8b",
+			"id": "4ac8b2c0-09be-47f4-848f-95cfa5b89021",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
