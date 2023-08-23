@@ -6578,7 +6578,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "10baac67-e22e-49d0-a492-3ae0ed3bb7c9",
+				"id": "7f5f2d41-c22d-4213-bd02-60c0ebee1315",
 				"type": "text/javascript",
 				"exec": [
 					"",
@@ -6599,29 +6599,47 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "8da603a0-85dd-48a0-a4a0-c2a72d2c8549",
+				"id": "e5ecf3d3-2630-4fc3-8c2f-15b8c5111caf",
 				"type": "text/javascript",
 				"exec": [
-					""
+					"// Parse and set response as JSON, and save it in a variable for later use",
+					"jsonData = JSON.parse(responseBody);",
+					"// VALIDATE JSON",
+					"tests[\"Validate JSON - Body - Present\"] = ((responseBody) !== undefined && (responseBody.length > 1))",
+					"tests[\"Validate JSON - Response - Object\"] = (typeof jsonData) === 'object';",
+					"tests[\"Validate JSON - Header - Content-Type - JSON\"] = postman.getResponseHeader(\"Content-Type\").has('application/json');",
+					"",
+					"// Check if response is present",
+					"pm.test(\"Body is present\", function () {",
+					"    ((responseBody) !== undefined && (responseBody.length > 1));",
+					"});",
+					"",
+					"// Content type header to be JSON",
+					"pm.test(\"Content Type header is JSON\", function () {",
+					"    pm.response.to.be.header(\"Content-Type\", \"application/json\");",
+					"});",
+					"",
+					"// Parse and set response as JSON, and save it in a variable for later use",
+					"jsonData = JSON.parse(responseBody);"
 				]
 			}
 		}
 	],
 	"variable": [
 		{
-			"id": "b53b0983-c7f8-4415-b636-b95634848e6e",
+			"id": "f059b1f2-eb69-463d-a52e-269fd7e5b18f",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "44fe1071-2977-42e4-a1a4-78f3ae4e2ed7",
+			"id": "1708d1c7-3bb6-46b5-bc2f-f36894ed551a",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "f296a7fa-2a3f-43a0-9471-6666eb8bd5a3",
+			"id": "afba9601-0251-400d-a312-569ba5275ff9",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
