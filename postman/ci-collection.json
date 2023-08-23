@@ -5504,16 +5504,17 @@
 								{
 									"listen": "prerequest",
 									"script": {
+										"id": "84a8db25-1bd4-428e-b534-7c00c8231f44",
 										"exec": [
-											""
+											"pm.variables.set(\"user_email\", \"shalini@yopmail.com\");"
 										],
-										"type": "text/javascript",
-										"id": "84a8db25-1bd4-428e-b534-7c00c8231f44"
+										"type": "text/javascript"
 									}
 								},
 								{
 									"listen": "test",
 									"script": {
+										"id": "18755099-e8db-4414-8967-9fea60feb8d9",
 										"exec": [
 											"pm.test('Reponse code to be 200', function () {",
 											"    pm.expect(pm.response.code).to.be.equal(200);",
@@ -5521,8 +5522,7 @@
 											"",
 											"//pm.environment.unset('user_token');"
 										],
-										"type": "text/javascript",
-										"id": "18755099-e8db-4414-8967-9fea60feb8d9"
+										"type": "text/javascript"
 									}
 								}
 							],
@@ -5638,19 +5638,19 @@
 	],
 	"variable": [
 		{
-			"id": "67402120-7733-4601-a1be-dc4ea1095f4a",
+			"id": "8576c3e0-d146-4115-a9f7-4872956e8ba5",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "e539d4ec-5998-4d1f-8c5b-326b2989f2e5",
+			"id": "84fc7eef-7846-4548-bed7-4b856befe43d",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "012f7f20-8093-435c-acca-ea7b4e3c7a8e",
+			"id": "454f9309-237a-48c0-aa83-c89bdff5d6c2",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
