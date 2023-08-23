@@ -5464,6 +5464,9 @@
 											"pm.test('Reponse code to be 200', function () {",
 											"    pm.expect(pm.response.code).to.be.equal(200);",
 											"});",
+											"pm.test(\"Body matches string\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"Reset password link sent. Please check your email.\");",
+											"    });",
 											"",
 											"//pm.environment.unset('user_token');"
 										],
@@ -5638,19 +5641,19 @@
 	],
 	"variable": [
 		{
-			"id": "8576c3e0-d146-4115-a9f7-4872956e8ba5",
+			"id": "d0a39c95-14ea-453c-8a34-15d8df5f7eb5",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "84fc7eef-7846-4548-bed7-4b856befe43d",
+			"id": "6c0733be-f7db-41cb-a50c-694f7ca48b58",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "454f9309-237a-48c0-aa83-c89bdff5d6c2",
+			"id": "e0e35e04-af5a-4e0e-92e7-78f4d286205d",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
