@@ -4516,7 +4516,6 @@
 												"id": "d2ebf584-e76c-40bc-808c-0de61814ff09",
 												"exec": [
 													"\r",
-													"\r",
 													""
 												],
 												"type": "text/javascript"
@@ -5916,19 +5915,19 @@
 	],
 	"variable": [
 		{
-			"id": "458727eb-fd5c-426d-86fe-2822ebbc6d89",
+			"id": "020cb876-1bb6-439c-b802-6871b8d95ee7",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "560a7817-c88f-479a-97b8-c13b988f82c5",
+			"id": "c41396a2-a316-47ee-84ef-68c0eab6d950",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "3baf4d54-fcf9-4f92-a7f1-187575cd0bec",
+			"id": "311da0b8-8504-4d9d-8eac-acdcc7229996",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
