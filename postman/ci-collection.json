@@ -992,7 +992,7 @@
 												"exec": [
 													"pm.environment.set(\"UID\", Math.floor(Math.random() * Math.floor(99999)));\r",
 													"var uid = pm.environment.get(\"UID\");\r",
-													"var email = 'user_1' + uid + '@yopmail';\r",
+													"var email = 'user_' + uid + '@yopmail';\r",
 													"pm.environment.set(\"email\", email);\r",
 													"pm.variables.set(\"password\", \"Admin@12345\");\r",
 													"pm.variables.set(\"password_confirmation\", \"Admin@12345\");\r",
@@ -5641,19 +5641,19 @@
 	],
 	"variable": [
 		{
-			"id": "fd678c1d-5630-48af-b52d-039c8549b0fe",
+			"id": "fb60f4ef-64fe-4b72-851b-2fcaee205b90",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "8dc87954-21d0-4e5e-81fb-0add515539b3",
+			"id": "7074e32f-acb5-4bff-8bdc-04ad4b96208f",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "8126c3a4-97f4-4469-bd85-2355353a43be",
+			"id": "969d8670-c1c5-4828-997b-878a2cacd224",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
