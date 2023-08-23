@@ -474,6 +474,7 @@
 													"pm.environment.set(\"email\", email);\r",
 													"pm.environment.set(\"password\", \"Admin@12345\");\r",
 													"pm.environment.set(\"password_confirmation\", \"Admin@12345\");\r",
+													"pm.variables.set(\"first_name\", \"John\");\r",
 													"pm.variables.set(\"last_name\", \"\");\r",
 													""
 												],
@@ -5634,19 +5635,19 @@
 	],
 	"variable": [
 		{
-			"id": "92f1158d-0ccb-4185-9708-2c25ba04b254",
+			"id": "3102142c-f270-42ec-9b49-bbf1c9c8124a",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "99ed9061-2226-4ad7-bd43-83d0234e8aa8",
+			"id": "c69be332-6f9b-4906-98d8-76455d96a73a",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "21363b34-603f-4f10-a65f-ed8f5f6269f9",
+			"id": "c81a672c-0502-45cd-b4e0-effcc67de4b8",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
