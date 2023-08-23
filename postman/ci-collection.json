@@ -5509,7 +5509,7 @@
 									"script": {
 										"id": "84a8db25-1bd4-428e-b534-7c00c8231f44",
 										"exec": [
-											"pm.variables.set(\"user_email\", \"shalini@yopmail.com\");"
+											"pm.variables.set(\"user_email\", \"shalini123@yopmail.com\");"
 										],
 										"type": "text/javascript"
 									}
@@ -5641,19 +5641,19 @@
 	],
 	"variable": [
 		{
-			"id": "d0a39c95-14ea-453c-8a34-15d8df5f7eb5",
+			"id": "f0389ce0-c66a-4cd0-b76b-4f6d2ebbfd4e",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "6c0733be-f7db-41cb-a50c-694f7ca48b58",
+			"id": "d9a4ed44-20ce-45a0-8e79-f1a381852da7",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "e0e35e04-af5a-4e0e-92e7-78f4d286205d",
+			"id": "afe34423-9683-4a79-ac4a-3003eab33189",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
