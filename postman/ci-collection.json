@@ -5091,7 +5091,7 @@
 					"id": "b92b8244-f5f8-4aec-88e6-22a36216d89c"
 				},
 				{
-					"name": "User off-boarding Copy",
+					"name": "User off-boarding",
 					"item": [
 						{
 							"name": "User Logout",
@@ -6609,19 +6609,19 @@
 	],
 	"variable": [
 		{
-			"id": "a08f05af-cde4-4342-b454-8f709da8155c",
+			"id": "b53b0983-c7f8-4415-b636-b95634848e6e",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "a17bbc75-3c49-43f9-857f-babcdc95cebe",
+			"id": "44fe1071-2977-42e4-a1a4-78f3ae4e2ed7",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "ab0d1de1-af72-4c48-a89a-fd2d49f238f2",
+			"id": "f296a7fa-2a3f-43a0-9471-6666eb8bd5a3",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
