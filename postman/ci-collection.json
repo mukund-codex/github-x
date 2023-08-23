@@ -4453,6 +4453,35 @@
 									]
 								},
 								{
+									"name": "Verify e-mail",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Reponse code to be 200', function () {",
+													"    pm.expect(pm.response.code).to.be.equal(200);",
+													"});",
+													"",
+													""
+												],
+												"type": "text/javascript",
+												"id": "90a4e53a-e3b2-4a56-a379-fffc54b83fa0"
+											}
+										}
+									],
+									"id": "ee333dd6-8a78-41bc-a3dd-ce4e03c1be83",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": "{{verification_url}}"
+									},
+									"response": []
+								},
+								{
 									"name": "User Login  -successful login",
 									"event": [
 										{
@@ -4486,8 +4515,6 @@
 											"script": {
 												"id": "d2ebf584-e76c-40bc-808c-0de61814ff09",
 												"exec": [
-													"pm.variables.set(\"email\", \"shalini@yopmail.com\");\r",
-													"pm.variables.set(\"password\", \"Test@7777!\");\r",
 													"\r",
 													"\r",
 													""
@@ -5889,19 +5916,19 @@
 	],
 	"variable": [
 		{
-			"id": "2abe54b0-1968-49b4-91e2-d43e0bffb166",
+			"id": "458727eb-fd5c-426d-86fe-2822ebbc6d89",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "38f2b575-0ec6-4777-85b4-84a2d9f2b7ab",
+			"id": "560a7817-c88f-479a-97b8-c13b988f82c5",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "4a07be52-b6df-47f5-8040-15facba484ee",
+			"id": "3baf4d54-fcf9-4f92-a7f1-187575cd0bec",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
