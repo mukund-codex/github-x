@@ -133,7 +133,7 @@
 					]
 				},
 				{
-					"name": "User onBoarding Copy",
+					"name": "User onBoarding",
 					"item": [
 						{
 							"name": "Sign up",
@@ -6609,19 +6609,19 @@
 	],
 	"variable": [
 		{
-			"id": "b67e8740-6024-4b96-b385-34af4928789a",
+			"id": "dc396db2-e191-4bef-85a4-7d25d58f17b8",
 			"key": "base_url",
 			"value": "http://10.10.1.1/api/v1",
 			"type": "string"
 		},
 		{
-			"id": "7e739923-09e8-40b3-92e6-4a6790226b99",
+			"id": "71cbc87c-9814-4445-a911-bf8913aad127",
 			"key": "web_url",
 			"value": "http://10.10.1.1",
 			"type": "string"
 		},
 		{
-			"id": "012580db-2775-487f-96ad-862d6489e3b2",
+			"id": "7a326bac-1af6-4209-b7ff-598a5cfeec71",
 			"key": "admin_url",
 			"value": "http://10.10.1.1/admin",
 			"type": "string"
