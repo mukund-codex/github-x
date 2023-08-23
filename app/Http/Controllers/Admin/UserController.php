@@ -71,7 +71,7 @@ class UserController extends Controller
                 __('messages.user.registered')
             )
         );
-        if (in_array(app()->environment(), ['testing', 'local'])) {
+        if (in_array(app()->environment(), ['testing', 'local', 'staging'])) {
             $redirect->withCookie(new Cookie('new_user_id', $user->id));
         }
 

@@ -21,7 +21,7 @@ class RegisteredUserController extends Controller
         $user = $userService->register($request->safe()->toArray());
 
         $response = $this->response($user, __('messages.user.registered'), Response::HTTP_CREATED);
-        if (app()->environment(['testing', 'local'])) {
+        if (app()->environment(['testing', 'local', 'staging'])) {
             $verificationUrl = URL::temporarySignedRoute(
                 'verification.verify',
                 now()->addHour(),
