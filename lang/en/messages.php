@@ -39,5 +39,11 @@ return [
     'errors' => [
         'no_rights_to_dashboard' => 'You have no rights to login to Dashboard',
         'check_inbox_and_verify' => 'Check your inbox and verify e-mail'
+    ],
+    'github' => [
+        'releases' => [
+            'success' => 'Github releases fetched successfully',
+            'fail' => 'Error in fetching Github releases'
+        ]
     ]
 ];
