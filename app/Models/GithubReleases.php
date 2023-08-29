@@ -26,7 +26,8 @@ class GithubReleases extends Model
         'published_at' => 'datetime'
     ];
 
-    public function graphqlQuery() {
+    public function graphqlQuery()
+    {
         return <<<'GRAPHQL'
         {
           repository(owner: "founderandlightning", name: "fl-laravel_boilerplate") {

@@ -12,4 +12,3 @@ it('Runs github:fetch-releases command successfully', function () {
         ->expectsOutput(trans('messages.github.releases.success'))
         ->assertExitCode(0);
 })->group('github');
-

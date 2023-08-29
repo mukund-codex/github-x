@@ -36,7 +36,7 @@ class FetchGithubReleases extends Command
             'Authorization' => 'Bearer ' . $token,
             'Content-Type' => 'application/json'
         ])->post($api_url, [
-            'query' => (new GithubReleases)->graphqlQuery()
+            'query' => (new GithubReleases())->graphqlQuery()
         ]);
 
         if ($response->json()) {
